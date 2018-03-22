@@ -1,6 +1,8 @@
 package aa.plugin.system;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,6 +24,8 @@ public class GameMode implements CommandExecutor, Listener {
 	
 	File file = new File("plugins/71ess/Message.yml");
 	YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+	
+	Map<Player,Player> right_click = new HashMap<Player,Player>();
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)
@@ -88,6 +92,9 @@ public class GameMode implements CommandExecutor, Listener {
 		{
 			if (clicker.isSneaking() && clicker.hasPermission("71ess.gamemode"))
 			{
+				
+				right_click.put(e.getPlayer(), clicked);
+				
 				Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對玩家)");
 				
 				//第一排
@@ -167,7 +174,7 @@ public class GameMode implements CommandExecutor, Listener {
 		
 		if (e.getInventory().getName().contains("遊戲模式選單 (對玩家)"))
 		{
-			Player p = (Player) e.getWhoClicked();
+			Player p = right_click.get((Player)e.getWhoClicked());
 			e.setCancelled(true);
 			
 			if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR)
