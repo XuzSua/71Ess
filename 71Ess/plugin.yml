@@ -1,0 +1,10 @@
+name: 71Ess
+main: aa.plugin.main.Main
+version: 1.0.0
+commands:
+    gm:
+        description: Change gamemode with GUI!!
+    weather:
+        description: Change weather with GUI!!
+    spawn:
+        description: spawn and setspawn !!
