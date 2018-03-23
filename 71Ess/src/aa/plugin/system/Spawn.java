@@ -16,6 +16,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import aa.plugin.main.Main;
+import aa.plugin.main.MessageManager;
 
 public class Spawn implements CommandExecutor, Listener
 {
@@ -41,10 +42,7 @@ public class Spawn implements CommandExecutor, Listener
 						spawn.set("spawnYaw", p.getLocation().getYaw());
 						Main.plugin.SystemReLoad();
 						
-						p.sendMessage("伺服器公共重生點已設定於此 §2W§6: " + p.getLocation().getWorld().getName()
-								 + " §2X§6: " + p.getLocation().getX()
-								 + " §2Y§6: " + p.getLocation().getY()
-								 + " §2Z§6: " + p.getLocation().getZ());
+						p.sendMessage(MessageManager.SPAWN_SET);
 					}
 					break;
 				
@@ -61,6 +59,7 @@ public class Spawn implements CommandExecutor, Listener
 					
 					Location loc = new Location(w, x, y, z, pitch, yaw);
 					p.teleport(loc);
+					p.sendMessage(MessageManager.SPAWN_TP);
 					break;
 					
 				default:
