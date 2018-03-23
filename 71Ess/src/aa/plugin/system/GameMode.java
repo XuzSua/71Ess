@@ -1,8 +1,7 @@
 package aa.plugin.system;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -24,8 +23,6 @@ public class GameMode implements CommandExecutor, Listener {
 	
 	File file = new File("plugins/71ess/Message.yml");
 	YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
-	
-	Map<Player,Player> right_click = new HashMap<Player,Player>();
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)
@@ -82,18 +79,19 @@ public class GameMode implements CommandExecutor, Listener {
 			return false;
 	}
 	
+	
+	String clickedUUID; 
+	
 	@EventHandler
 	public void ClickPlayerInventory(PlayerInteractEntityEvent e)
 	{
 		Player clicker = e.getPlayer();
-		Player clicked = (Player) e.getRightClicked();
-		
 		if (e.getRightClicked() instanceof Player)
 		{
 			if (clicker.isSneaking() && clicker.hasPermission("71ess.gamemode"))
 			{
 				
-				right_click.put(e.getPlayer(), clicked);
+				clickedUUID = e.getRightClicked().getUniqueId().toString();
 				
 				Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對玩家)");
 				
@@ -109,10 +107,10 @@ public class GameMode implements CommandExecutor, Listener {
 				inv.setItem(8, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
 				
 				//第三排
-				inv.setItem(19, createItem.createItem(Material.DIAMOND_PICKAXE, 0, "§a生存模式", ""));
-				inv.setItem(21, createItem.createItem(Material.GRASS, 0, "§d創造模式", ""));
-				inv.setItem(23, createItem.createItem(Material.PAPER, 0, "§5冒險模式", ""));
-				inv.setItem(25, createItem.createItem(Material.BARRIER, 0, "§c觀察模式", ""));
+				inv.setItem(19, createItem.createItem(Material.DIAMOND_PICKAXE, 0, "§a生存模式", clickedUUID));
+				inv.setItem(21, createItem.createItem(Material.GRASS, 0, "§d創造模式", clickedUUID));
+				inv.setItem(23, createItem.createItem(Material.PAPER, 0, "§5冒險模式", clickedUUID));
+				inv.setItem(25, createItem.createItem(Material.BARRIER, 0, "§c觀察模式", clickedUUID));
 				
 				//第四排
 				inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換遊戲模式後請自行關閉選單"));
@@ -133,7 +131,7 @@ public class GameMode implements CommandExecutor, Listener {
 		}
 	}
 	
-	//判斷使用者點擊物品 並且作出相對回應(對自己)
+	//判斷使用者點擊物品 並且作出相對回應
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e)
 	{
@@ -149,7 +147,7 @@ public class GameMode implements CommandExecutor, Listener {
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				p.sendMessage(MessageManager.GAMEMODE_SRUVIVAL);
+				p.sendMessage(MessageManager.GAMEMODE_SURVIVAL);
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式"))
@@ -174,37 +172,44 @@ public class GameMode implements CommandExecutor, Listener {
 		
 		if (e.getInventory().getName().contains("遊戲模式選單 (對玩家)"))
 		{
-			Player p = right_click.get((Player)e.getWhoClicked());
+			Player p = (Player) e.getWhoClicked();
+			Player target = Bukkit.getPlayer(UUID.fromString(clickedUUID));
+
 			e.setCancelled(true);
 			
 			if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR)
 			{
 				return;
 			}
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式"))
+			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals(clickedUUID))
 			{
-				p.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				p.sendMessage(MessageManager.GAMEMODE_SRUVIVAL);
+				target.setGameMode(org.bukkit.GameMode.SURVIVAL);
+				target.sendMessage(MessageManager.GAMEMODE_SURVIVAL_HASBEENCHANGE);
+				p.sendMessage(MessageManager.GAMEMODE_SURVIVAL_TOPLAYER);
 				return;
 			}
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式"))
+			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals(clickedUUID))
 			{
-				p.setGameMode(org.bukkit.GameMode.CREATIVE);
-				p.sendMessage(MessageManager.GAMEMODE_CREATIVE);
+				target.setGameMode(org.bukkit.GameMode.CREATIVE);
+				target.sendMessage(MessageManager.GAMEMODE_CREATIVE_HASBEENCHANGE);
+				p.sendMessage(MessageManager.GAMEMODE_CREATIVE_TOPLAYER);
 				return;
 			}
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式"))
+			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals(clickedUUID))
 			{
-				p.setGameMode(org.bukkit.GameMode.ADVENTURE);
-				p.sendMessage(MessageManager.GAMEMODE_ADVENTURE);
+				target.setGameMode(org.bukkit.GameMode.ADVENTURE);
+				target.sendMessage(MessageManager.GAMEMODE_ADVENTURE_HASBEENCHANGE);
+				p.sendMessage(MessageManager.GAMEMODE_ADVENTURE_TOPLAYER);
 				return;
 			}
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式"))
+			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals(clickedUUID))
 			{
-				p.setGameMode(org.bukkit.GameMode.SPECTATOR);
-				p.sendMessage(MessageManager.GAMEMODE_SPECTATOR);
+				target.setGameMode(org.bukkit.GameMode.SPECTATOR);
+				target.sendMessage(MessageManager.GAMEMODE_SPECTATOR_HASBEENCHANGE);
+				p.sendMessage(MessageManager.GAMEMODE_SPECTATOR_TOPLAYER);
 				return;
 			}
 		}
 	}
+	
 }
