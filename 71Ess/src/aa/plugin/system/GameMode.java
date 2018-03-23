@@ -18,6 +18,8 @@ import org.bukkit.inventory.Inventory;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class GameMode implements CommandExecutor, Listener {
 	
@@ -147,25 +149,25 @@ public class GameMode implements CommandExecutor, Listener {
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				p.sendMessage(MessageManager.GAMEMODE_SURVIVAL);
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.CREATIVE);
-				p.sendMessage(MessageManager.GAMEMODE_CREATIVE);
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.ADVENTURE);
-				p.sendMessage(MessageManager.GAMEMODE_ADVENTURE);
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.SPECTATOR);
-				p.sendMessage(MessageManager.GAMEMODE_SPECTATOR);
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR));
 				return;
 			}
 		}
@@ -184,29 +186,29 @@ public class GameMode implements CommandExecutor, Listener {
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
 				target.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				target.sendMessage(MessageManager.GAMEMODE_SURVIVAL_HASBEENCHANGE);
-				p.sendMessage(MessageManager.GAMEMODE_SURVIVAL_TOPLAYER);
+				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_HASBEENCHANGE));
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_TOPLAYER));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
 				target.setGameMode(org.bukkit.GameMode.CREATIVE);
-				target.sendMessage(MessageManager.GAMEMODE_CREATIVE_HASBEENCHANGE);
-				p.sendMessage(MessageManager.GAMEMODE_CREATIVE_TOPLAYER);
+				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_HASBEENCHANGE));
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_TOPLAYER));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
 				target.setGameMode(org.bukkit.GameMode.ADVENTURE);
-				target.sendMessage(MessageManager.GAMEMODE_ADVENTURE_HASBEENCHANGE);
-				p.sendMessage(MessageManager.GAMEMODE_ADVENTURE_TOPLAYER);
+				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_HASBEENCHANGE));
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_TOPLAYER));
 				return;
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
 				target.setGameMode(org.bukkit.GameMode.SPECTATOR);
-				target.sendMessage(MessageManager.GAMEMODE_SPECTATOR_HASBEENCHANGE);
-				p.sendMessage(MessageManager.GAMEMODE_SPECTATOR_TOPLAYER);
+				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_HASBEENCHANGE));
+				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_TOPLAYER));
 				return;
 			}
 		}
