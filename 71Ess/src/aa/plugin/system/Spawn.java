@@ -91,6 +91,6 @@ public class Spawn implements CommandExecutor, Listener
 		
 		Location loc = new Location(w, x, y, z, pitch, yaw);
 		p.teleport(loc);
-		p.sendMessage("登入此伺服器時系統設定玩家自動傳送回重生點! (避免玩家在一些奇奇怪怪的地方下線以至於上線時被圍毆之類的)");
+		p.sendMessage(MessageManager.SPAWN_LOGIN);
 	}
 }
