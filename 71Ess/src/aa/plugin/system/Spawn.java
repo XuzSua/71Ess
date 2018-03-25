@@ -12,8 +12,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class Spawn implements CommandExecutor, Listener
 {
@@ -29,34 +32,46 @@ public class Spawn implements CommandExecutor, Listener
 					
 					if (p.hasPermission("71ess.setspawn"))
 					{
-						FileConfiguration spawn = Main.plugin.sc;
+						if (!cooldown.CooldownCheck(p.getName() + "_重生點設置"))
+						{
+							p.sendMessage(MessageManager.SPAWN_SET_COOLDOWN);
+							return false;
+						}
+							FileConfiguration spawn = Main.plugin.sc;
 						
-						spawn.set("world", p.getLocation().getWorld().getName());
-						spawn.set("spawnX", p.getLocation().getX());
-						spawn.set("spawnY", p.getLocation().getY());
-						spawn.set("spawnZ", p.getLocation().getZ());
-						spawn.set("spawnPitch", p.getLocation().getPitch());
-						spawn.set("spawnYaw", p.getLocation().getYaw());
-						Main.plugin.SystemReLoad();
-						
-						p.sendMessage(MessageManager.SPAWN_SET);
+							spawn.set("world", p.getLocation().getWorld().getName());
+							spawn.set("spawnX", p.getLocation().getX());
+							spawn.set("spawnY", p.getLocation().getY());
+							spawn.set("spawnZ", p.getLocation().getZ());
+							spawn.set("spawnPitch", p.getLocation().getPitch());
+							spawn.set("spawnYaw", p.getLocation().getYaw());
+							Main.plugin.SystemReLoad();
+
+							cooldown.CooldownSet(p.getName() + "_重生點設置", 5);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.SPAWN_SET));
 					}
 					break;
 				
 				case "tp":
-
-					FileConfiguration spawn = Main.plugin.sc;
+					if (!cooldown.CooldownCheck(p.getName() + "_重生點傳送"))
+					{
+						p.sendMessage(MessageManager.SPAWN_TP_COOLDOWN);
+						return false;
+					}
+						FileConfiguration spawn = Main.plugin.sc;
 					
-					World w = Bukkit.getWorld(spawn.getString("world"));
-					double x = spawn.getDouble("spawnX");
-					double y = spawn.getDouble("spawnY");
-					double z = spawn.getDouble("spawnZ");
-					float pitch = (float) spawn.getDouble("spawnPitch");
-					float yaw = (float) spawn.getDouble("spawnYaw");
+						World w = Bukkit.getWorld(spawn.getString("world"));
+						double x = spawn.getDouble("spawnX");
+						double y = spawn.getDouble("spawnY");
+						double z = spawn.getDouble("spawnZ");
+						float pitch = (float) spawn.getDouble("spawnPitch");
+						float yaw = (float) spawn.getDouble("spawnYaw");
 					
-					Location loc = new Location(w, x, y, z, pitch, yaw);
-					p.teleport(loc);
-					p.sendMessage(MessageManager.SPAWN_TP);
+						Location loc = new Location(w, x, y, z, pitch, yaw);
+						p.teleport(loc);
+						cooldown.CooldownSet(p.getName() + "_重生點傳送", 5);
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.SPAWN_TP));
+					
 					break;
 					
 				default:

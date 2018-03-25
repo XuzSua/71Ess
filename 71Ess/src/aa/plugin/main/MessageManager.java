@@ -22,7 +22,9 @@ public class MessageManager
 	
 	//重生點
 	public final static String SPAWN_SET = Main.plugin.mc.getString("SPAWN_SET", title + "您將伺服器公共重生點設置於此");
+	public final static String SPAWN_SET_COOLDOWN = Main.plugin.mc.getString("SPAWN_SET_COOLDOWN", "§f§l您的重生點§6設置§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String SPAWN_TP = Main.plugin.mc.getString("SPAWN_TP", title + "將您傳送至伺服器公共重生點");
+	public final static String SPAWN_TP_COOLDOWN = Main.plugin.mc.getString("SPAWN_TP_COOLDOWN", "§f§l您的重生點§6傳送§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String SPAWN_LOGIN = Main.plugin.mc.getString("SPAWN_LOGIN", "登入此伺服器時系統設定玩家自動傳送回重生點! (避免玩家在一些奇奇怪怪的地方下線以至於上線時被圍毆之類的)");
 	
 	public static void CreateFile()
@@ -43,8 +45,11 @@ public class MessageManager
 		message.set("GAMEMODE_ADVENTURE_HASBEENCHANGE", GAMEMODE_ADVENTURE_HASBEENCHANGE);
 		message.set("GAMEMODE_SPECTATOR_HASBEENCHANGE", GAMEMODE_SPECTATOR_HASBEENCHANGE);
 		
+		//重生點相關
 		message.set("SPAWN_SET", SPAWN_SET);
+		message.set("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);
 		message.set("SPAWN_TP", SPAWN_TP);
+		message.set("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
 		message.set("SPAWN_LOGIN", SPAWN_LOGIN);
 		Main.plugin.SystemReLoad();
 	}
