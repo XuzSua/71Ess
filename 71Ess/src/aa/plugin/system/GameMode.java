@@ -149,27 +149,39 @@ public class GameMode implements CommandExecutor, Listener {
 			
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式"))
 			{
-				p.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL));
-				return;
+				if (!(p.getGameMode() == org.bukkit.GameMode.SURVIVAL))
+				{
+					p.setGameMode(org.bukkit.GameMode.SURVIVAL);
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式"))
 			{
-				p.setGameMode(org.bukkit.GameMode.CREATIVE);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE));
-				return;
+				if (!(p.getGameMode() == org.bukkit.GameMode.CREATIVE))
+				{
+					p.setGameMode(org.bukkit.GameMode.CREATIVE);
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式"))
 			{
-				p.setGameMode(org.bukkit.GameMode.ADVENTURE);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE));
-				return;
+				if (!(p.getGameMode() == org.bukkit.GameMode.ADVENTURE))
+				{
+					p.setGameMode(org.bukkit.GameMode.ADVENTURE);
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式"))
 			{
-				p.setGameMode(org.bukkit.GameMode.SPECTATOR);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR));
-				return;
+				if (!(p.getGameMode() == org.bukkit.GameMode.SPECTATOR))
+				{
+					p.setGameMode(org.bukkit.GameMode.SPECTATOR);
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR));
+					return;
+				}
 			}
 		}
 		
@@ -184,31 +196,43 @@ public class GameMode implements CommandExecutor, Listener {
 			
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
-				target.setGameMode(org.bukkit.GameMode.SURVIVAL);
-				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_HASBEENCHANGE));
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_TOPLAYER));
-				return;
+				if (!(target.getGameMode() == org.bukkit.GameMode.SURVIVAL)) 
+				{
+					target.setGameMode(org.bukkit.GameMode.SURVIVAL);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_HASBEENCHANGE));
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SURVIVAL_TOPLAYER));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§d創造模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
-				target.setGameMode(org.bukkit.GameMode.CREATIVE);
-				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_HASBEENCHANGE));
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_TOPLAYER));
-				return;
+				if (!(target.getGameMode() == org.bukkit.GameMode.CREATIVE))
+				{
+					target.setGameMode(org.bukkit.GameMode.CREATIVE);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_HASBEENCHANGE));
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_CREATIVE_TOPLAYER));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§5冒險模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
-				target.setGameMode(org.bukkit.GameMode.ADVENTURE);
-				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_HASBEENCHANGE));
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_TOPLAYER));
-				return;
+				if (!(target.getGameMode() == org.bukkit.GameMode.ADVENTURE))
+				{
+					target.setGameMode(org.bukkit.GameMode.ADVENTURE);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_HASBEENCHANGE));
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_ADVENTURE_TOPLAYER));
+					return;
+				}
 			}
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§c觀察模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
-				target.setGameMode(org.bukkit.GameMode.SPECTATOR);
-				target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_HASBEENCHANGE));
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_TOPLAYER));
-				return;
+				if (!(target.getGameMode() == org.bukkit.GameMode.SPECTATOR))
+				{
+					target.setGameMode(org.bukkit.GameMode.SPECTATOR);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_HASBEENCHANGE));
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GAMEMODE_SPECTATOR_TOPLAYER));
+					return;
+				}
 			}
 		}
 	}
