@@ -56,7 +56,7 @@ public class GameMode implements CommandExecutor, Listener {
 					inv.setItem(25, createItem.createItem(Material.BARRIER, 0, "§c觀察模式", ""));
 					
 					//第四排
-					inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換遊戲模式後請自行關閉選單"));
+					inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
 					
 					//第五排
 					inv.setItem(36, createItem.createItem(Material.STAINED_GLASS_PANE, 15, " ", ""));
@@ -73,7 +73,7 @@ public class GameMode implements CommandExecutor, Listener {
 				}
 				
 			} else {
-				p.sendMessage("不給你用");
+				p.sendMessage(MessageManager.HAVENOPERMISSION);
 			}
 		} else {
 			sender.sendMessage("此指令限定玩家使用");
@@ -142,10 +142,8 @@ public class GameMode implements CommandExecutor, Listener {
 			Player p = (Player) e.getWhoClicked();
 			e.setCancelled(true);
 			
-			if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR)
-			{
-				return;
-			}
+			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
+			
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式"))
 			{
 				p.setGameMode(org.bukkit.GameMode.SURVIVAL);
@@ -179,10 +177,8 @@ public class GameMode implements CommandExecutor, Listener {
 
 			e.setCancelled(true);
 			
-			if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR)
-			{
-				return;
-			}
+			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
+			
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a生存模式") && e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID))
 			{
 				target.setGameMode(org.bukkit.GameMode.SURVIVAL);

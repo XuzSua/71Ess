@@ -6,6 +6,9 @@ public class MessageManager
 {
 	public static String title = "§d系統娘 :§f";
 	
+	//就是不給你用
+	public final static String HAVENOPERMISSION = Main.plugin.mc.getString("HAVENOPERMISSION", "不給你用");
+	
 	//遊戲模式
 	public final static String GAMEMODE_SURVIVAL = Main.plugin.mc.getString("GAMEMODE_SURVIVAL", title + "已將您的遊戲模式更改為 (生存模式)");
 	public final static String GAMEMODE_CREATIVE = Main.plugin.mc.getString("GAMEMODE_CREATIVE", title + "已將您的遊戲模式更改為 (創造模式)");
@@ -20,17 +23,24 @@ public class MessageManager
 	public final static String GAMEMODE_ADVENTURE_HASBEENCHANGE = Main.plugin.mc.getString("GAMEMODE_ADVENTURE_HASBEENCHANGE", title + "您的遊戲模式被管理員更改為(冒險模式)");
 	public final static String GAMEMODE_SPECTATOR_HASBEENCHANGE = Main.plugin.mc.getString("GAMEMODE_SPECTATOR_HASBEENCHANGE", title + "您的遊戲模式被管理員更改為 (觀察模式)");
 	
-	//重生點
+	//重生點相關
 	public final static String SPAWN_SET = Main.plugin.mc.getString("SPAWN_SET", title + "您將伺服器公共重生點設置於此");
 	public final static String SPAWN_SET_COOLDOWN = Main.plugin.mc.getString("SPAWN_SET_COOLDOWN", "§f§l您的重生點§6設置§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String SPAWN_TP = Main.plugin.mc.getString("SPAWN_TP", title + "將您傳送至伺服器公共重生點");
 	public final static String SPAWN_TP_COOLDOWN = Main.plugin.mc.getString("SPAWN_TP_COOLDOWN", "§f§l您的重生點§6傳送§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String SPAWN_LOGIN = Main.plugin.mc.getString("SPAWN_LOGIN", "登入此伺服器時系統設定玩家自動傳送回重生點! (避免玩家在一些奇奇怪怪的地方下線以至於上線時被圍毆之類的)");
 	
+	//時間相關
+	public final static String TIME_DAY = Main.plugin.mc.getString("TIME_DAY", title + "您將所在世界更改時間至 (早上)");
+	public final static String TIME_NIGHT = Main.plugin.mc.getString("TIME_NIGHT", title + "您將所在世界更改時間至 (晚上)");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
-
+		
+		//就是不給你用
+		message.set("HAVENOPERMISSION", HAVENOPERMISSION);
+		
 		//遊戲模式
 		message.set("GAMEMODE_SURVIVAL", GAMEMODE_SURVIVAL);
 		message.set("GAMEMODE_CREATIVE", GAMEMODE_CREATIVE);
@@ -51,6 +61,11 @@ public class MessageManager
 		message.set("SPAWN_TP", SPAWN_TP);
 		message.set("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
 		message.set("SPAWN_LOGIN", SPAWN_LOGIN);
+		
+		//時間相關
+		message.set("TIME_DAY", TIME_DAY);
+		message.set("TIME_NIGHT", TIME_NIGHT);
+		
 		Main.plugin.SystemReLoad();
 	}
 }

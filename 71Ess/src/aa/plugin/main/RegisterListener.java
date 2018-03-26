@@ -3,6 +3,7 @@ package aa.plugin.main;
 import aa.plugin.system.GameMode;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Weather;
+import aa.plugin.system.time;
 
 public class RegisterListener
 {
@@ -15,5 +16,6 @@ public class RegisterListener
 		plugin.getServer().getPluginManager().registerEvents(new GameMode(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Weather(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Spawn(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new time(), plugin);
 	}
 }

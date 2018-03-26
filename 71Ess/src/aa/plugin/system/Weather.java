@@ -44,7 +44,7 @@ public class Weather implements CommandExecutor, Listener
 					inv.setItem(24, createItem.createItem(Material.WATER_BUCKET, 0, "§c陰天", ""));
 				
 					//第四排
-					inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換遊戲模式後請自行關閉選單"));
+					inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
 				
 					//第五排
 					inv.setItem(36, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
@@ -76,10 +76,8 @@ public class Weather implements CommandExecutor, Listener
 			Player p = (Player) e.getWhoClicked();
 			e.setCancelled(true);
 			
-			if(e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR)
-			{
-				return;
-			}
+			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
+			
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§a晴天"))
 			{
 				p.getWorld().setStorm(false);
