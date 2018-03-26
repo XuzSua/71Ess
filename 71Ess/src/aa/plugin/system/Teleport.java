@@ -19,7 +19,7 @@ import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class teleport implements CommandExecutor, Listener
+public class Teleport implements CommandExecutor, Listener
 {
 	
 	@Override

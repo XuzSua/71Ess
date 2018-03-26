@@ -17,7 +17,7 @@ import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class time implements CommandExecutor, Listener
+public class Time implements CommandExecutor, Listener
 {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
