@@ -1,5 +1,8 @@
 package aa.plugin.system;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,6 +24,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class Teleport implements CommandExecutor, Listener
 {
+	List<Inventory> inventories = new ArrayList<>();
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)
