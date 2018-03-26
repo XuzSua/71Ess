@@ -34,6 +34,9 @@ public class MessageManager
 	public final static String TIME_DAY = Main.plugin.mc.getString("TIME_DAY", title + "您將所在世界更改時間至 (早上)");
 	public final static String TIME_NIGHT = Main.plugin.mc.getString("TIME_NIGHT", title + "您將所在世界更改時間至 (晚上)");
 	
+	//傳送相關
+	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至目標玩家");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -66,6 +69,8 @@ public class MessageManager
 		message.set("TIME_DAY", TIME_DAY);
 		message.set("TIME_NIGHT", TIME_NIGHT);
 		
+		//傳送相關
+		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
 		Main.plugin.SystemReLoad();
 	}
 }

@@ -3,6 +3,7 @@ package aa.plugin.system;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,6 +28,7 @@ public class Weather implements CommandExecutor, Listener
 				if (args.length == 0)
 				{
 					Inventory inv = Bukkit.createInventory(null, 9*5, "天氣選單");
+					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
 				
 					//第一排
 					inv.setItem(0, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));

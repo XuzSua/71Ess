@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,6 +38,7 @@ public class GameMode implements CommandExecutor, Listener {
 				if (args.length == 0)
 				{
 					Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對自己)");
+					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
 					
 					//第一排
 					inv.setItem(0, createItem.createItem(Material.STAINED_GLASS_PANE, 15, " ", ""));
@@ -96,6 +98,7 @@ public class GameMode implements CommandExecutor, Listener {
 				clickedUUID = e.getRightClicked().getUniqueId().toString();
 				
 				Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對玩家)");
+				clicker.playSound(clicker.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
 				
 				//第一排
 				inv.setItem(0, createItem.createItem(Material.STAINED_GLASS_PANE, 15, " ", ""));
