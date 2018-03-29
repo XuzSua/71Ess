@@ -25,11 +25,11 @@ public class PingDetect extends BukkitRunnable{
 			if(ping > 200)
 			{
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.RED + String.format(MessageManager.PINGERROR,ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.RED + String.format(MessageManager.PINGERROR, ping)));
 				
 			} else {
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.GREEN + String.format(MessageManager.PINGNORMAL,ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.GREEN + String.format(MessageManager.PINGNORMAL, ping)));
 				
 			}
 			
