@@ -1,6 +1,7 @@
 package aa.plugin.main;
 
 import aa.plugin.system.GameMode;
+import aa.plugin.system.Home;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
 import aa.plugin.system.Time;
@@ -18,5 +19,6 @@ public class RegisterCommands
 		plugin.getCommand("spawn").setExecutor(new Spawn());
 		plugin.getCommand("time").setExecutor(new Time());
 		plugin.getCommand("tp").setExecutor(new Teleport());
+		plugin.getCommand("home").setExecutor(new Home());
 	}
 }

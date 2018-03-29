@@ -14,8 +14,8 @@ public class Main extends JavaPlugin
 {
 	public static Main plugin;
 	
-	public File message, spawn;
-	public FileConfiguration mc, sc;
+	public File message, spawn, home;
+	public FileConfiguration mc, sc, hc;
 	
 	public void onEnable()
 	{
@@ -33,11 +33,15 @@ public class Main extends JavaPlugin
 		
 		spawn = new File(this.getDataFolder() + "/spawn.yml");
 		sc = YamlConfiguration.loadConfiguration(spawn);
+		
+		home = new File(this.getDataFolder() + "/home.yml");
+		hc = YamlConfiguration.loadConfiguration(home);
 	}
 	public void SystemReLoad() {
 		try {
 			mc.save(message);
 			sc.save(spawn);
+			hc.save(home);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

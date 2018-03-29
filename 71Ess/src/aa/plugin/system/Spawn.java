@@ -21,6 +21,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class Spawn implements CommandExecutor, Listener
 {
 
+	FileConfiguration spawn = Main.plugin.sc;
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
 		if (args.length > 0)
@@ -36,9 +38,7 @@ public class Spawn implements CommandExecutor, Listener
 						{
 							p.sendMessage(MessageManager.SPAWN_SET_COOLDOWN);
 							return false;
-						}
-							FileConfiguration spawn = Main.plugin.sc;
-						
+						}					
 							spawn.set("world", p.getLocation().getWorld().getName());
 							spawn.set("spawnX", p.getLocation().getX());
 							spawn.set("spawnY", p.getLocation().getY());
@@ -58,8 +58,6 @@ public class Spawn implements CommandExecutor, Listener
 						p.sendMessage(MessageManager.SPAWN_TP_COOLDOWN);
 						return false;
 					}
-						FileConfiguration spawn = Main.plugin.sc;
-					
 						World w = Bukkit.getWorld(spawn.getString("world"));
 						double x = spawn.getDouble("spawnX");
 						double y = spawn.getDouble("spawnY");
