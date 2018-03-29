@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,6 +19,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
@@ -54,7 +55,7 @@ public class Teleport implements CommandExecutor, Listener
 							ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
 							SkullMeta meta = (SkullMeta) item.getItemMeta();
 							meta.setDisplayName("§e" + playersList.get(site).getName());
-							meta.setOwningPlayer(playersList.get(site));
+							meta.setOwningPlayer((OfflinePlayer)playersList.get(site));
 							item.setItemMeta(meta);
 								
 						items[site - (page * listMaximum)] = item;
@@ -63,11 +64,11 @@ public class Teleport implements CommandExecutor, Listener
 					}
 					if (page > 0)
 					{
-						items[51] = createItem.createItem(Material.FEATHER, 0, "上一頁", " ");
+						items[51] = createItem.createItems(Material.FEATHER, 0, "上一頁", " ");
 					}
 					if (playersList.size() - (listMaximum * page + 1) > 0)
 					{
-						items[52] = createItem.createItem(Material.FEATHER, 0, "下一頁", " ");
+						items[52] = createItem.createItems(Material.FEATHER, 0, "下一頁", " ");
 					}
 					inv.setStorageContents(items);
 					p.openInventory(inv);
@@ -88,15 +89,11 @@ public class Teleport implements CommandExecutor, Listener
 				
 			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
 			
-			for (int site = page * listMaximum; site < playersList.size() && site < (page + 1 * listMaximum); site++)
-			{
-				if (e.getCurrentItem().getItemMeta() instanceof SkullMeta)
-				{
-					Location loc = playersList.get(site).getLocation();
-					p.teleport(loc);
-					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TELEPORT_TOPLAYER));
-				}
-			}
+			String ID = e.getCurrentItem().getItemMeta().getDisplayName();
+			
+			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
+			
+			p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TELEPORT_TOPLAYER));
 
 		}
 	}

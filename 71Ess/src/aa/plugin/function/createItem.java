@@ -9,7 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class createItem
 {
 	
-	public static ItemStack createItem(Material material, int subID, String displayname, String lore)
+	public static ItemStack createItems(Material material, int subID, String displayname, String lore)
 	{
 		ItemStack itemS = new ItemStack(material, 1, (short) subID);
 		ItemMeta itemM = itemS.getItemMeta();

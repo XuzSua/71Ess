@@ -31,33 +31,25 @@ public class Weather implements CommandExecutor, Listener
 					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
 				
 					//第一排
-					inv.setItem(0, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(1, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(2, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(3, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(4, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(5, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(6, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(7, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(8, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-				
+					for(int i = 0; i <= 8; i++) {
+						
+						inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						
+					}
+					
 					//第三排
-					inv.setItem(20, createItem.createItem(Material.LAVA_BUCKET, 0, "§a晴天", ""));
-					inv.setItem(24, createItem.createItem(Material.WATER_BUCKET, 0, "§c陰天", ""));
+					inv.setItem(20, createItem.createItems(Material.LAVA_BUCKET, 0, "§a晴天", ""));
+					inv.setItem(24, createItem.createItems(Material.WATER_BUCKET, 0, "§c陰天", ""));
 				
 					//第四排
-					inv.setItem(35, createItem.createItem(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
+					inv.setItem(35, createItem.createItems(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
 				
 					//第五排
-					inv.setItem(36, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(37, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(38, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(39, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(40, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(41, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(42, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(43, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
-					inv.setItem(44, createItem.createItem(Material.STAINED_GLASS_PANE, 0, " ", ""));
+					for(int i = 36; i <= 44; i++) {
+						
+						inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						
+					}
 				
 					p.openInventory(inv);
 				}
