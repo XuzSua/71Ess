@@ -23,6 +23,7 @@ public class Main extends JavaPlugin
 		FileConfig();
 		new RegisterCommands();
 		new RegisterListener(this);
+		new RegisterThread();
 	}
 	
 	public void FileConfig()

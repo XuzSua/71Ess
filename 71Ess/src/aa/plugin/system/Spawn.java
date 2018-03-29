@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 
 import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
@@ -86,14 +86,15 @@ public class Spawn implements CommandExecutor, Listener
 		return false;
 	}
 	
+	//修正，新增初值world，如果spawn沒有設置就自動導向world
 	@EventHandler
-	public void onJoin(PlayerJoinEvent e)
+	public void onJoin(PlayerLoginEvent e)
 	{
 		Player p = e.getPlayer();
 		
 		FileConfiguration spawn = Main.plugin.sc;
 		
-		World w = Bukkit.getWorld(spawn.getString("world"));
+		World w = Bukkit.getWorld(spawn.getString("world","world"));
 		double x = spawn.getDouble("spawnX");
 		double y = spawn.getDouble("spawnY");
 		double z = spawn.getDouble("spawnZ");
