@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import aa.plugin.main.Main;
+import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -15,19 +16,20 @@ public class PingDetect extends BukkitRunnable{
 	Main plugin = Main.plugin;
 	
 	@Override
-	public void run() {
-		
-		for(Player player : Bukkit.getOnlinePlayers()) {
-			
+	public void run()
+	{		
+		for(Player player : Bukkit.getOnlinePlayers())
+		{
 			int ping = ((CraftPlayer)player).getHandle().ping;
 			
-			if(ping > 200) {
+			if(ping > 200)
+			{
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.RED + String.format("系統娘：你的PING值已經高達200以上(目前:%d)，請檢察網路是否有問題!!",ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.RED + String.format(MessageManager.PINGERROR,ping)));
 				
-			}else {
+			} else {
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.GREEN + String.format("系統娘：你的PING值目前正常(目前:%d)，請安心遊玩!",ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.GREEN + String.format(MessageManager.PINGNORMAL,ping)));
 				
 			}
 			

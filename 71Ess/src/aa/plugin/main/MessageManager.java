@@ -37,6 +37,10 @@ public class MessageManager
 	//傳送相關
 	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至目標玩家");
 	
+	//Ping相關
+	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "您的PING值目前正常§e (%d)§f，請安心遊玩!");
+	public final static String PINGERROR = Main.plugin.mc.getString("PINGERROR", title + "您的PING值已經高達200以上§c (%d)§f，請檢察網路是否有問題!!");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -71,6 +75,11 @@ public class MessageManager
 		
 		//傳送相關
 		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
+		
+		//Ping相關
+		message.set("PINGNORMAL", PINGNORMAL);
+		message.set("PINGERROR", PINGERROR);
+		
 		Main.plugin.SystemReLoad();
 	}
 }
