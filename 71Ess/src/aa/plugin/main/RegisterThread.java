@@ -9,7 +9,8 @@ public class RegisterThread {
 	
 	public RegisterThread() {
 		
-		new PingDetect().runTaskTimer(plugin, 0, 20*60);
+		//執行Ping檢查  20 * 秒數
+		new PingDetect().runTaskTimer(plugin, 0, 20 * 20);
 		
 		new LifeTime().runTaskTimer(plugin,0, 20);
 		
