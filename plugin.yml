@@ -12,3 +12,5 @@ commands:
         description: set time with GUI!!
     tp:
         description: teleport to a player with GUI!!
+    home:
+        description: home

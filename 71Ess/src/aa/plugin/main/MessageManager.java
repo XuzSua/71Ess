@@ -31,15 +31,12 @@ public class MessageManager
 	public final static String SPAWN_LOGIN = Main.plugin.mc.getString("SPAWN_LOGIN", "登入此伺服器時系統設定玩家自動傳送回重生點! (避免玩家在一些奇奇怪怪的地方下線以至於上線時被圍毆之類的)");
 	
 	//家相關
-	public final static String HOME_SET_HOME1 = Main.plugin.mc.getString("HOME_SET", "已設置您的 Home1 點");
-	public final static String HOME_SET_HOME2 = Main.plugin.mc.getString("HOME_SET", "已設置您的 Home2 點");
-	public final static String HOME_SET_HOME3 = Main.plugin.mc.getString("HOME_SET", "已設置您的 Home3 點");
+	public final static String HOME_SET_HOME = Main.plugin.mc.getString("HOME_SET", "已設置您的 %s 點");
 	public final static String HOME_SET_COOLDOWN = Main.plugin.mc.getString("HOME_SET_COOLDOWN", "§f§l您的家§6設置§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String HOME_PUTNAME = Main.plugin.mc.getString("HOME_SET_PUTNAME", "請輸入指定Home點");
-	public final static String HOME_TP_HOME1 = Main.plugin.mc.getString("HOME_TP", "已將您傳送至您的 home1");
-	public final static String HOME_TP_HOME2 = Main.plugin.mc.getString("HOME_TP", "已將您傳送至您的 home2");
-	public final static String HOME_TP_HOME3 = Main.plugin.mc.getString("HOME_TP", "已將您傳送至您的 home3");
+	public final static String HOME_TP_HOME = Main.plugin.mc.getString("HOME_TP", "已將您傳送至您的 %s 點");
 	public final static String HOME_TP_COOLDOWN = Main.plugin.mc.getString("HOME_TP_COOLDOWN", "§f§l您的家§6傳送§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
+	public final static String HOME_TP_POINT_NOT_EXIST = Main.plugin.mc.getString("HOME_TP_POINT_NOT_EXIST","點 %d 尚未設置，所以無法傳送");
 	
 	//時間相關
 	public final static String TIME_DAY = Main.plugin.mc.getString("TIME_DAY", title + "您將所在世界更改時間至 (早上)");
@@ -81,15 +78,12 @@ public class MessageManager
 		message.set("SPAWN_LOGIN", SPAWN_LOGIN);
 		
 		//家相關
-		message.set("HOME_SET_HOME1", HOME_SET_HOME1);
-		message.set("HOME_SET_HOME2", HOME_SET_HOME2);
-		message.set("HOME_SET_HOME3", HOME_SET_HOME3);
+		message.set("HOME_SET_HOME1", HOME_SET_HOME);
 		message.set("HOME_SET_COOLDOWN", HOME_SET_COOLDOWN);
 		message.set("HOME_SET_PUTNAME", HOME_PUTNAME);
-		message.set("HOME_TP_HOME1", HOME_TP_HOME1);
-		message.set("HOME_TP_HOME2", HOME_TP_HOME2);
-		message.set("HOME_TP_HOME3", HOME_TP_HOME3);
+		message.set("HOME_TP_HOME1", HOME_TP_HOME);
 		message.set("HOME_TP_COOLDOWN", HOME_TP_COOLDOWN);
+		message.set("HOME_TP_POINT_NOT_EXIST", HOME_TP_POINT_NOT_EXIST);
 		
 		//時間相關
 		message.set("TIME_DAY", TIME_DAY);
