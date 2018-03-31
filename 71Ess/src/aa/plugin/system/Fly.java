@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,7 +20,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class Fly implements CommandExecutor, Listener
 {
 	
-	List<Player> playerFlyMods = new ArrayList<>();
+	static List<Player> playerFlyMods = new ArrayList<>();
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
@@ -44,14 +45,19 @@ public class Fly implements CommandExecutor, Listener
 		}
 		return false;
 	}
+	
 	@EventHandler
 	public void onMove(PlayerMoveEvent e)
 	{
-		for (Player p : Bukkit.getOnlinePlayers())
-		{
-			if (playerFlyMods.contains(p))
+		if(e.getFrom().getX() != e.getTo().getX() || e.getFrom().getY() != e.getTo().getY() || e.getFrom().getZ() != e.getTo().getZ()) {
+			
+			for (Player p : Bukkit.getOnlinePlayers())
 			{
-				
+				if (playerFlyMods.contains(p))
+				{
+					e.getPlayer().getWorld().spawnParticle(Particle.HEART,e.getPlayer().getLocation(),30);
+//					System.out.println("flying");
+				}
 			}
 		}
 	}

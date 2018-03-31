@@ -14,3 +14,5 @@ commands:
         description: teleport to a player with GUI!!
     home:
         description: home
+    fly:
+        description: heyhey redheart FLY!!
