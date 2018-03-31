@@ -1,5 +1,6 @@
 package aa.plugin.main;
 
+import aa.plugin.system.Fly;
 import aa.plugin.system.GameMode;
 import aa.plugin.system.Home;
 import aa.plugin.system.Spawn;
@@ -20,5 +21,6 @@ public class RegisterCommands
 		plugin.getCommand("time").setExecutor(new Time());
 		plugin.getCommand("tp").setExecutor(new Teleport());
 		plugin.getCommand("home").setExecutor(new Home());
+		plugin.getCommand("fly").setExecutor(new Fly());
 	}
 }

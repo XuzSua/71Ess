@@ -49,6 +49,10 @@ public class MessageManager
 	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "您的PING值目前正常§a (%d)§f，請安心遊玩!");
 	public final static String PINGERROR = Main.plugin.mc.getString("PINGERROR", title + "您的PING值已經高達200以上§c (%d)§f，請檢察網路是否有問題!!");
 	
+	//FLY
+	public final static String FLY_SET_TRUE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§a開啟");
+	public final static String FLY_SET_FALSE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§c關閉");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -95,6 +99,10 @@ public class MessageManager
 		//Ping相關
 		message.set("PINGNORMAL", PINGNORMAL);
 		message.set("PINGERROR", PINGERROR);
+		
+		//FLY
+		message.set("FLY_SET_TRUE", FLY_SET_TRUE);
+		message.set("FLY_SET_FALSE", FLY_SET_FALSE);
 		
 		Main.plugin.SystemReLoad();
 	}

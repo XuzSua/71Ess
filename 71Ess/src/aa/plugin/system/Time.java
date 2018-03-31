@@ -38,6 +38,8 @@ public class Time implements CommandExecutor, Listener
 						inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
 						
 					}
+					
+					inv.setItem(4, createItem.createItems(Material.WATCH, 0, " ", ""));
 				
 					//第三排
 					inv.setItem(20, createItem.createItems(Material.DOUBLE_PLANT, 0, "§6早上", ""));

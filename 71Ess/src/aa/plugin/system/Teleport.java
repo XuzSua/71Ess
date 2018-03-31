@@ -73,6 +73,8 @@ public class Teleport implements CommandExecutor, Listener
 					inv.setStorageContents(items);
 					p.openInventory(inv);
 				}
+			} else {
+				p.sendMessage(MessageManager.HAVENOPERMISSION);
 			}
 		}
 		return false;
