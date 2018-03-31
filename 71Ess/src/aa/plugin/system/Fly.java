@@ -17,20 +17,16 @@ import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class Fly implements CommandExecutor, Listener
-{
-	
+public class Fly implements CommandExecutor, Listener {
+
 	static List<Player> playerFlyMods = new ArrayList<>();
-	
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
 		Player p = (Player) sender;
-		if (p.hasPermission("71ess.fly"))
-		{
-			if (cmd.getName().equalsIgnoreCase("fly"))
-			{
-				if (!(playerFlyMods.contains(p)))
-				{
+		if (p.hasPermission("71ess.fly")) {
+			if (cmd.getName().equalsIgnoreCase("fly")) {
+				if (!(playerFlyMods.contains(p))) {
 					p.setAllowFlight(true);
 					playerFlyMods.add(p);
 					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.FLY_SET_TRUE));
@@ -45,19 +41,14 @@ public class Fly implements CommandExecutor, Listener
 		}
 		return false;
 	}
-	
+
 	@EventHandler
-	public void onMove(PlayerMoveEvent e)
-	{
-		if(e.getFrom().getX() != e.getTo().getX() || e.getFrom().getY() != e.getTo().getY() || e.getFrom().getZ() != e.getTo().getZ()) {
-			
-			for (Player p : Bukkit.getOnlinePlayers())
-			{
-				if (playerFlyMods.contains(p))
-				{
-					e.getPlayer().getWorld().spawnParticle(Particle.HEART,e.getPlayer().getLocation(),30);
-//					System.out.println("flying");
-				}
+	public void onMove(PlayerMoveEvent e) {
+
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			if (playerFlyMods.contains(p)) {
+				p.getWorld().spawnParticle(Particle.HEART, p.getLocation(), 30);
+				// System.out.println("flying");
 			}
 		}
 	}
