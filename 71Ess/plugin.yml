@@ -1,0 +1,18 @@
+name: 71ess
+main: aa.plugin.main.Main
+version: 1.0.0
+commands:
+    gm:
+        description: Change gamemode with GUI!!
+    weather:
+        description: Change weather with GUI!!
+    spawn:
+        description: spawn and setspawn !!
+    time:
+        description: set time with GUI!!
+    tp:
+        description: teleport to a player with GUI!!
+    home:
+        description: FUCKING HOME
+    fly:
+        description: heyhey redheart FLY!!
