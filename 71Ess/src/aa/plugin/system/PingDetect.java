@@ -7,7 +7,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import aa.plugin.main.Main;
 import aa.plugin.main.MessageManager;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
@@ -25,11 +24,11 @@ public class PingDetect extends BukkitRunnable{
 			if(ping > 200)
 			{
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.RED + String.format(MessageManager.PINGERROR, ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.PINGERROR, ping)));
 				
 			} else {
 				
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(ChatColor.GREEN + String.format(MessageManager.PINGNORMAL, ping)));
+				player.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.PINGNORMAL, ping)));
 				
 			}
 			

@@ -45,9 +45,7 @@ public class Teleport implements CommandExecutor, Listener
 			{
 				if (args.length == 0)
 				{	
-					
 					playersList.addAll(Bukkit.getOnlinePlayers());
-					
 					for (int site = page * listMaximum; site < playersList.size() && site < ((page + 1) * listMaximum); site++)
 					{
 						//if (playersList.get(site) != p)
@@ -73,6 +71,18 @@ public class Teleport implements CommandExecutor, Listener
 					inv.setStorageContents(items);
 					p.openInventory(inv);
 				}
+				
+				if (args.length == 1)
+				{
+					Player target = Bukkit.getServer().getPlayer(args[0]);
+					if (target == null)
+					{
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TARGETNOTFOUND, args[0])));
+						return true;
+					}
+					p.teleport(target.getLocation());
+					p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, args[0])));
+				}
 			} else {
 				p.sendMessage(MessageManager.HAVENOPERMISSION);
 			}
@@ -95,7 +105,7 @@ public class Teleport implements CommandExecutor, Listener
 			
 			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
 			
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TELEPORT_TOPLAYER));
+			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, Bukkit.getPlayer(ChatColor.stripColor(ID)))));
 
 		}
 	}
