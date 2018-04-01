@@ -43,7 +43,8 @@ public class MessageManager
 	public final static String TIME_NIGHT = Main.plugin.mc.getString("TIME_NIGHT", title + "您將所在世界更改時間至 (晚上)");
 	
 	//傳送相關
-	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至目標玩家");
+	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至 %s");
+	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 %s");
 	
 	//Ping相關
 	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "您的PING值目前正常§a (%d)§f，請安心遊玩!");
@@ -95,6 +96,7 @@ public class MessageManager
 		
 		//傳送相關
 		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
+		message.set("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
 		
 		//Ping相關
 		message.set("PINGNORMAL", PINGNORMAL);
