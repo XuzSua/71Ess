@@ -15,7 +15,7 @@ public class RegisterCommands
 	public RegisterCommands()
 	{
 		//plugin.getCommand("").setExecutor(new (plugin));
-		plugin.getCommand("gm").setExecutor(new GameMode());
+		plugin.getCommand("gamemode").setExecutor(new GameMode());
 		plugin.getCommand("weather").setExecutor(new Weather());
 		plugin.getCommand("spawn").setExecutor(new Spawn());
 		plugin.getCommand("time").setExecutor(new Time());
