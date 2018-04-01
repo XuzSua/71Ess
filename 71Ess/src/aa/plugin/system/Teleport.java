@@ -105,7 +105,7 @@ public class Teleport implements CommandExecutor, Listener
 			
 			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
 			
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, Bukkit.getPlayer(ChatColor.stripColor(ID)))));
+			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, ID)));
 
 		}
 	}
