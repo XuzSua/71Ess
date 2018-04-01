@@ -1,6 +1,6 @@
 package aa.plugin.main;
 
-import aa.plugin.system.GameMode;
+import aa.plugin.system.GameModes;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
 import aa.plugin.system.Time;
@@ -14,7 +14,7 @@ public class RegisterListener
 	{
 		
 		//plugin.getServer().getPluginManager().registerEvents();
-		plugin.getServer().getPluginManager().registerEvents(new GameMode(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new GameModes(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Weather(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Spawn(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Time(), plugin);

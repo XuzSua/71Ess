@@ -1,7 +1,7 @@
 package aa.plugin.main;
 
 import aa.plugin.system.Fly;
-import aa.plugin.system.GameMode;
+import aa.plugin.system.GameModes;
 import aa.plugin.system.Home;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
@@ -15,7 +15,7 @@ public class RegisterCommands
 	public RegisterCommands()
 	{
 		//plugin.getCommand("").setExecutor(new (plugin));
-		plugin.getCommand("gamemode").setExecutor(new GameMode());
+		plugin.getCommand("gamemode").setExecutor(new GameModes());
 		plugin.getCommand("weather").setExecutor(new Weather());
 		plugin.getCommand("spawn").setExecutor(new Spawn());
 		plugin.getCommand("time").setExecutor(new Time());
