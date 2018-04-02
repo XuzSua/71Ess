@@ -84,7 +84,7 @@ public class GameModes implements CommandExecutor, Listener {
 
 						
 						p.setGameMode(gm[mode]);
-						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.title + String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode])));
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode])));
 						return false;
 					}
 					if (args.length == 2)
@@ -92,7 +92,7 @@ public class GameModes implements CommandExecutor, Listener {
 						Player target = Bukkit.getServer().getPlayer(args[1]);
 					
 						target.setGameMode(gm[mode]);
-						target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.title + String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode])));
+						target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode])));
 						return false;
 					}
 				} else {
@@ -179,6 +179,9 @@ public class GameModes implements CommandExecutor, Listener {
 			Player p = (Player) e.getWhoClicked();
 			Player target = Bukkit.getPlayer(UUID.fromString(clickedUUID));
 
+			e.setCancelled(true);
+			
+			
 			Map<String,GameMode> map = new HashMap<String,GameMode>();
 			
 			map.put("生存模式", GameMode.SURVIVAL);
