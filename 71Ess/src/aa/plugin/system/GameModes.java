@@ -180,6 +180,9 @@ public class GameModes implements CommandExecutor, Listener {
 			Player p = (Player) e.getWhoClicked();
 			Player target = Bukkit.getPlayer(UUID.fromString(clickedUUID));
 
+			e.setCancelled(true);
+			
+			
 			Map<String,GameMode> map = new HashMap<String,GameMode>();
 			
 			map.put("生存模式", GameMode.SURVIVAL);
