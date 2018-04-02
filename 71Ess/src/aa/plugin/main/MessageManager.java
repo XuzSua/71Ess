@@ -12,7 +12,7 @@ public class MessageManager
 	//遊戲模式
 	public final static String GAMEMODE_TOPLAYER = Main.plugin.mc.getString("GAMEMODE_TOPLAYER", title + "已將目標玩家的遊戲模式更改為 (%s)");
 	public final static String GAMEMODE_HASBEENCHANGE = Main.plugin.mc.getString("GAMEMODE_HASBEENCHANGE", title + "您的遊戲模式被管理員更改為 (%s)");
-	public final static String GAMEMODE_CHANGE = Main.plugin.mc.getString("GAMEMODE_CHANGE","已將您的遊戲模式更改為 (%s)");
+	public final static String GAMEMODE_CHANGE = Main.plugin.mc.getString("GAMEMODE_CHANGE", title + "已將您的遊戲模式更改為 (%s)");
 	
 	//重生點相關
 	public final static String SPAWN_SET = Main.plugin.mc.getString("SPAWN_SET", title + "您將伺服器公共重生點設置於此");
@@ -56,7 +56,7 @@ public class MessageManager
 		message.set("GAMEMODE_TOPLAYER", GAMEMODE_TOPLAYER);
 		message.set("GAMEMODE_HASBEENCHANGE", GAMEMODE_HASBEENCHANGE);
 		message.set("GAMEMODE_CHANGE ", GAMEMODE_CHANGE);
-		
+	
 		//重生點相關
 		message.set("SPAWN_SET", SPAWN_SET);
 		message.set("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);

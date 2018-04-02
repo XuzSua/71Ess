@@ -39,8 +39,9 @@ public class Home implements CommandExecutor {
 
 				case "set":
 
-					if (!cooldown.CooldownCheck("_家點設置")) {
-						return false;
+					if (!cooldown.CooldownCheck("_家點設置"))
+					{
+						 return false;
 					}
 
 					set(p, args[1]);
