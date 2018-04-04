@@ -127,6 +127,7 @@ public class GameModes implements CommandExecutor, Listener {
 					inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
 					
 				}
+				inv.setItem(4, createItem.createItems(Material.ITEM_FRAME, 0, " ", ""));
 				
 				//第三排
 				inv.setItem(19, createItem.createItems(Material.DIAMOND_PICKAXE, 0, "§a生存模式", "§0" + clickedUUID));
@@ -183,7 +184,7 @@ public class GameModes implements CommandExecutor, Listener {
 			e.setCancelled(true);
 			
 			
-			Map<String,GameMode> map = new HashMap<String,GameMode>();
+			Map<String, GameMode> map = new HashMap<String, GameMode>();
 			
 			map.put("生存模式", GameMode.SURVIVAL);
 			map.put("創造模式", GameMode.CREATIVE);
@@ -192,7 +193,7 @@ public class GameModes implements CommandExecutor, Listener {
 			
 			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
 			
-			if (!e.getCurrentItem().getItemMeta().getLore().get(0).equals("§0" + clickedUUID)) return;
+			if (!(e.getCurrentItem().getItemMeta().getLore().get(0) == ChatColor.stripColor(clickedUUID))) return;
 			
 			String action = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 			
