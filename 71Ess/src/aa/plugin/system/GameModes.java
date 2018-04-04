@@ -48,24 +48,24 @@ public class GameModes implements CommandExecutor, Listener {
 						//第一排
 						for(int i = 0; i <= 8; i++) {
 						
-							inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+							inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 						
 						}
 					
-						inv.setItem(4, createItem.createItems(Material.ITEM_FRAME, 0, " ", ""));
+						inv.setItem(4, createItem.createItemsForGUI(Material.ITEM_FRAME, 0, " ", ""));
 					
 						//第三排
-						inv.setItem(19, createItem.createItems(Material.DIAMOND_PICKAXE, 0, "§a生存模式", ""));
-						inv.setItem(21, createItem.createItems(Material.GRASS, 0, "§d創造模式", ""));
-						inv.setItem(23, createItem.createItems(Material.PAPER, 0, "§5冒險模式", ""));
-						inv.setItem(25, createItem.createItems(Material.BARRIER, 0, "§c觀察模式", ""));
+						inv.setItem(19, createItem.createItemsForGUI(Material.DIAMOND_PICKAXE, 0, "§a生存模式", ""));
+						inv.setItem(21, createItem.createItemsForGUI(Material.GRASS, 0, "§d創造模式", ""));
+						inv.setItem(23, createItem.createItemsForGUI(Material.PAPER, 0, "§5冒險模式", ""));
+						inv.setItem(25, createItem.createItemsForGUI(Material.BARRIER, 0, "§c觀察模式", ""));
 					
 						//第四排
-						inv.setItem(35, createItem.createItems(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
+						inv.setItem(35, createItem.createItemsForGUI(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
 					
 						for(int i = 36; i <= 44; i++) {
 							
-							inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+							inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 						
 						}
 					
@@ -124,24 +124,24 @@ public class GameModes implements CommandExecutor, Listener {
 				//第一排
 				for(int i = 0; i <= 8; i++) {
 					
-					inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+					inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 					
 				}
-				inv.setItem(4, createItem.createItems(Material.ITEM_FRAME, 0, " ", ""));
+				inv.setItem(4, createItem.createItemsForGUI(Material.ITEM_FRAME, 0, " ", ""));
 				
 				//第三排
-				inv.setItem(19, createItem.createItems(Material.DIAMOND_PICKAXE, 0, "§a生存模式", "§0" + clickedUUID));
-				inv.setItem(21, createItem.createItems(Material.GRASS, 0, "§d創造模式", "§0" + clickedUUID));
-				inv.setItem(23, createItem.createItems(Material.PAPER, 0, "§5冒險模式", "§0" + clickedUUID));	
-				inv.setItem(25, createItem.createItems(Material.BARRIER, 0, "§c觀察模式", "§0" + clickedUUID));
+				inv.setItem(19, createItem.createItemsForGUI(Material.DIAMOND_PICKAXE, 0, "§a生存模式", "§0" + clickedUUID));
+				inv.setItem(21, createItem.createItemsForGUI(Material.GRASS, 0, "§d創造模式", "§0" + clickedUUID));
+				inv.setItem(23, createItem.createItemsForGUI(Material.PAPER, 0, "§5冒險模式", "§0" + clickedUUID));	
+				inv.setItem(25, createItem.createItemsForGUI(Material.BARRIER, 0, "§c觀察模式", "§0" + clickedUUID));
 				
 				//第四排
-				inv.setItem(35, createItem.createItems(Material.REDSTONE_BLOCK, 0, "§4警告", "切換遊戲模式後請自行關閉選單"));
+				inv.setItem(35, createItem.createItemsForGUI(Material.REDSTONE_BLOCK, 0, "§4警告", "切換遊戲模式後請自行關閉選單"));
 				
 				//第五排
 				for(int i = 36; i <= 44; i++) {
 					
-					inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+					inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 					
 				}
 				

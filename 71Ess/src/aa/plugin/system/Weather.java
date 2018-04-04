@@ -33,21 +33,21 @@ public class Weather implements CommandExecutor, Listener
 					//第一排
 					for(int i = 0; i <= 8; i++) {
 						
-						inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 						
 					}
 					
 					//第三排
-					inv.setItem(20, createItem.createItems(Material.LAVA_BUCKET, 0, "§a晴天", ""));
-					inv.setItem(24, createItem.createItems(Material.WATER_BUCKET, 0, "§c陰天", ""));
+					inv.setItem(20, createItem.createItemsForGUI(Material.LAVA_BUCKET, 0, "§a晴天", ""));
+					inv.setItem(24, createItem.createItemsForGUI(Material.WATER_BUCKET, 0, "§c陰天", ""));
 				
 					//第四排
-					inv.setItem(35, createItem.createItems(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
+					inv.setItem(35, createItem.createItemsForGUI(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
 				
 					//第五排
 					for(int i = 36; i <= 44; i++) {
 						
-						inv.setItem(i, createItem.createItems(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
 						
 					}
 				
