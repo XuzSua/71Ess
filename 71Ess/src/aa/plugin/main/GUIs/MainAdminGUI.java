@@ -13,17 +13,17 @@ import org.bukkit.inventory.ItemStack;
 
 import aa.plugin.function.createItem;
 
-public class mainAdminGUI implements Listener
+public class MainAdminGUI implements Listener
 {
 	
-	public static void main (Player player)
+	public static void mainAdmin (Player player)
 	{
-		int inventorySizeLevel = 2;
+		int inventorySizeLevel = 5;
 		ItemStack[] items = new ItemStack[inventorySizeLevel * 9];
 
-		items[2] = createItem.createItemsForICON(Material.ELYTRA, 0, 1, "§a傳送", Arrays.asList("§f玩家用傳送相關"));
+		items[11] = createItem.createItemsForICON(Material.ELYTRA, 0, 1, "§a傳送", Arrays.asList(" "));
 		
-		items[17] = createItem.createItemsForICON(Material.BARRIER, 0, 1, "返回至主選單", Arrays.asList(" "));
+		items[44] = createItem.createItemsForICON(Material.BARRIER, 0, 1, "返回至主選單", Arrays.asList(" "));
 		
 		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "管理員使用");
 		inv.setStorageContents(items);
@@ -35,16 +35,18 @@ public class mainAdminGUI implements Listener
 	{
 		Player player = (Player) event.getWhoClicked();
 		event.setCancelled(true);
+		if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+		
 		switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
 		{
-			case 2:
+			case 11:
 				player.closeInventory();
-				player.performCommand("tp");
+				TeleportGUI.teleportGUI(player);
 				break;
 				
-			case 17:
+			case 44:
 				player.closeInventory();
-				mainGUI.main(player);
+				MainGUI.main(player);
 				break;
 				
 			default:

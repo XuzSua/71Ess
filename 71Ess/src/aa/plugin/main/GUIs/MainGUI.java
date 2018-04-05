@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
 
-public class mainGUI implements Listener
+public class MainGUI implements Listener
 {
 	@EventHandler
 	public void openMainGUI (PlayerSwapHandItemsEvent event)
@@ -40,9 +40,7 @@ public class mainGUI implements Listener
 			
 			items[17] = createItem.createItemsForICON(Material.BARRIER, 0, 1, "管理員使用指令", Arrays.asList("§f你想用嗎? 不給你用"));
 		}
-		
-		items[2] = createItem.createItemsForICON(Material.ELYTRA, 0, 1, "§a傳送", Arrays.asList("§f玩家用傳送相關"));
-		
+
 		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "選單功能");
 		inv.setStorageContents(items);
 		player.openInventory(inv);
@@ -53,18 +51,15 @@ public class mainGUI implements Listener
 	{
 		Player player = (Player) event.getWhoClicked();
 		event.setCancelled(true);
+		if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+		
 		switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
 		{
-			case 2:
-				player.closeInventory();
-				
-				break;
-				
 			case 17:
 				if (player.isOp())
 				{
 					player.closeInventory();
-					mainAdminGUI.main(player);
+					MainAdminGUI.mainAdmin(player);
 				} else {
 					player.closeInventory();
 					player.sendMessage(MessageManager.HAVENOPERMISSION);

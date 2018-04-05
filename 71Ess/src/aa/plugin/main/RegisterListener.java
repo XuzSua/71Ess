@@ -1,7 +1,8 @@
 package aa.plugin.main;
 
-import aa.plugin.main.GUIs.mainAdminGUI;
-import aa.plugin.main.GUIs.mainGUI;
+import aa.plugin.main.GUIs.MainAdminGUI;
+import aa.plugin.main.GUIs.MainGUI;
+import aa.plugin.main.GUIs.TeleportGUI;
 import aa.plugin.system.ColorSign;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.Spawn;
@@ -26,7 +27,8 @@ public class RegisterListener
 		plugin.getServer().getPluginManager().registerEvents(new ColorSign(), plugin);
 		
 		//GUIs
-		plugin.getServer().getPluginManager().registerEvents(new mainGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new mainAdminGUI(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new MainGUI(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new MainAdminGUI(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new TeleportGUI(), plugin);
 	}
 }
