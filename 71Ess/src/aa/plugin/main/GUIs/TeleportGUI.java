@@ -1,6 +1,7 @@
 package aa.plugin.main.GUIs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -50,11 +51,11 @@ public class TeleportGUI implements Listener
 		}
 		if (page > 0)
 		{
-			items[51] = createItem.createItemsForGUI(Material.FEATHER, 0, "上一頁", " ");
+			items[51] = createItem.createItemsForICON(Material.FEATHER, 1, 1, "上一頁", Arrays.asList(" "));
 		}
 		if (playersList.size() - (listMaximum * page + 1) > 0)
 		{
-			items[52] = createItem.createItemsForGUI(Material.FEATHER, 0, "下一頁", " ");
+			items[52] = createItem.createItemsForICON(Material.FEATHER, 1, 1, "上一頁", Arrays.asList(" "));
 		}
 		inv.setStorageContents(items);
 		player.openInventory(inv);

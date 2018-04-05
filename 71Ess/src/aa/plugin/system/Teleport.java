@@ -5,13 +5,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import aa.plugin.main.MessageManager;
 import aa.plugin.main.GUIs.TeleportGUI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class Teleport implements CommandExecutor, Listener
+public class Teleport implements CommandExecutor
 {	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)

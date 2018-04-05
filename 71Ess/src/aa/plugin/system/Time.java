@@ -1,23 +1,18 @@
 package aa.plugin.system;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 
-import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import aa.plugin.main.GUIs.TimeGUI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class Time implements CommandExecutor, Listener
+public class Time implements CommandExecutor
 {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
@@ -27,36 +22,56 @@ public class Time implements CommandExecutor, Listener
 		{
 			if (p.hasPermission("71ess.time"))
 			{
-				if (args.length == 0)
+				if (args.length == 0) TimeGUI.Time(p);
+				
+				if (args.length == 1)
 				{
-					Inventory inv = Bukkit.createInventory(null, 9*5, "時間控制");
-					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
-					
-					//第一排
-					for(int i = 0; i <= 8; i++) {
+					switch (args[0])
+					{
+						case "day":
+							
+							p.getLocation().getWorld().setTime(1000);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
+							
+							break;
 						
-						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						case "night":
+							
+							p.getLocation().getWorld().setTime(16000);
+							p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
+							
+							break;
+							
+						default:
+							
+							sender.sendMessage("====================================");
+							sender.sendMessage("/time day 將玩家所處世界更改為早上");
+							sender.sendMessage("/time day <World> 將指定世界更改為早上");
+							sender.sendMessage("/time night 將玩家所處世界更改為晚上");
+							sender.sendMessage("/time night <World> 將指定世界更改為晚上");
+							sender.sendMessage("====================================");
+							
+							break;
+					}
+				}
+				if (args.length == 2)
+				{
+					World w = Bukkit.getServer().getWorld(args[1]);
+					
+					if (args[0].equals("day"))
+					{
+						
+						w.setTime(1000);
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
 						
 					}
-					
-					inv.setItem(4, createItem.createItemsForGUI(Material.WATCH, 0, " ", ""));
-				
-					//第三排
-					inv.setItem(20, createItem.createItemsForGUI(Material.DOUBLE_PLANT, 0, "§6早上", ""));
-					inv.setItem(24, createItem.createItemsForGUI(Material.EYE_OF_ENDER, 0, "§8晚上", ""));
-				
-					//第四排
-					inv.setItem(35, createItem.createItemsForGUI(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
-				
-					//第五排
-					for(int i = 36; i <= 44; i++) {
+					if (args[0].equals("night"))
+					{
 						
-						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						w.setTime(16000);
+						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
 						
 					}
-					
-				
-					p.openInventory(inv);
 				}
 			} else {
 				p.sendMessage(MessageManager.HAVENOPERMISSION);
@@ -65,30 +80,6 @@ public class Time implements CommandExecutor, Listener
 			sender.sendMessage("此指令限定玩家使用");
 		}
 		return false;
-	}
-
-	@EventHandler
-	public void onInventoryClick(InventoryClickEvent e)
-	{
-		if (e.getInventory().getName().contains("時間控制"))
-		{
-			Player p = (Player) e.getWhoClicked();
-			e.setCancelled(true);
-			
-			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-			
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§6早上"))
-			{
-				p.getLocation().getWorld().setTime(1000);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
-				
-			}
-			if (e.getCurrentItem().getItemMeta().getDisplayName().equals("§8晚上"))
-			{
-				p.getLocation().getWorld().setTime(16000);
-				p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
-			}
-		}
 	}
 	
 }
