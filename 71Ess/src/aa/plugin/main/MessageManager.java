@@ -14,6 +14,10 @@ public class MessageManager
 	public final static String GAMEMODE_HASBEENCHANGE = Main.plugin.mc.getString("GAMEMODE_HASBEENCHANGE", title + "您的遊戲模式被管理員更改為 (%s)");
 	public final static String GAMEMODE_CHANGE = Main.plugin.mc.getString("GAMEMODE_CHANGE", title + "已將您的遊戲模式更改為 (%s)");
 	
+	//無敵模式
+	public final static String GOD_ENABLE = Main.plugin.mc.getString("GOD_ENABLE", title + "已將您的無敵模式§a啟用");
+	public final static String GOD_DISABLE = Main.plugin.mc.getString("GOD_DISABLE", title + "已將您的無敵模式§c關閉");
+	
 	//重生點相關
 	public final static String SPAWN_SET = Main.plugin.mc.getString("SPAWN_SET", title + "您將伺服器公共重生點設置於此");
 	public final static String SPAWN_SET_COOLDOWN = Main.plugin.mc.getString("SPAWN_SET_COOLDOWN", "§f§l您的重生點§6設置§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");

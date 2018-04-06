@@ -2,6 +2,7 @@ package aa.plugin.main;
 
 import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
+import aa.plugin.system.God;
 import aa.plugin.system.Home;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
@@ -22,5 +23,6 @@ public class RegisterCommands
 		plugin.getCommand("tp").setExecutor(new Teleport());
 		plugin.getCommand("home").setExecutor(new Home());
 		plugin.getCommand("fly").setExecutor(new Fly());
+		plugin.getCommand("god").setExecutor(new God());
 	}
 }
