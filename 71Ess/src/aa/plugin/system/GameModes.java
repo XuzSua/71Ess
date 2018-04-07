@@ -1,6 +1,5 @@
 package aa.plugin.system;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -13,7 +12,6 @@ import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,9 +25,6 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class GameModes implements CommandExecutor, Listener {
-	
-	File file = new File("plugins/71ess/Message.yml");	
-	YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)

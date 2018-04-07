@@ -54,43 +54,43 @@ public class MessageManager
 		FileConfiguration message = Main.plugin.mc;
 		
 		//就是不給你用
-		message.set("HAVENOPERMISSION", HAVENOPERMISSION);
+		message.get("HAVENOPERMISSION", HAVENOPERMISSION);
 		
 		//遊戲模式
-		message.set("GAMEMODE_TOPLAYER", GAMEMODE_TOPLAYER);
-		message.set("GAMEMODE_HASBEENCHANGE", GAMEMODE_HASBEENCHANGE);
-		message.set("GAMEMODE_CHANGE ", GAMEMODE_CHANGE);
+		message.get("GAMEMODE_TOPLAYER", GAMEMODE_TOPLAYER);
+		message.get("GAMEMODE_HASBEENCHANGE", GAMEMODE_HASBEENCHANGE);
+		message.get("GAMEMODE_CHANGE ", GAMEMODE_CHANGE);
 	
 		//重生點相關
-		message.set("SPAWN_SET", SPAWN_SET);
-		message.set("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);
-		message.set("SPAWN_TP", SPAWN_TP);
-		message.set("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
-		message.set("SPAWN_LOGIN", SPAWN_LOGIN);
+		message.get("SPAWN_SET", SPAWN_SET);
+		message.get("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);
+		message.get("SPAWN_TP", SPAWN_TP);
+		message.get("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
+		message.get("SPAWN_LOGIN", SPAWN_LOGIN);
 		
 		//家相關
-		message.set("HOME_SET_HOME1", HOME_SET_HOME);
-		message.set("HOME_SET_COOLDOWN", HOME_SET_COOLDOWN);
-		message.set("HOME_SET_PUTNAME", HOME_PUTNAME);
-		message.set("HOME_TP_HOME1", HOME_TP_HOME);
-		message.set("HOME_TP_COOLDOWN", HOME_TP_COOLDOWN);
-		message.set("HOME_TP_POINT_NOT_EXIST", HOME_TP_POINT_NOT_EXIST);
+		message.get("HOME_SET_HOME1", HOME_SET_HOME);
+		message.get("HOME_SET_COOLDOWN", HOME_SET_COOLDOWN);
+		message.get("HOME_SET_PUTNAME", HOME_PUTNAME);
+		message.get("HOME_TP_HOME1", HOME_TP_HOME);
+		message.get("HOME_TP_COOLDOWN", HOME_TP_COOLDOWN);
+		message.get("HOME_TP_POINT_NOT_EXIST", HOME_TP_POINT_NOT_EXIST);
 		
 		//時間相關
-		message.set("TIME_DAY", TIME_DAY);
-		message.set("TIME_NIGHT", TIME_NIGHT);
+		message.get("TIME_DAY", TIME_DAY);
+		message.get("TIME_NIGHT", TIME_NIGHT);
 		
 		//傳送相關
-		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
-		message.set("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
+		message.get("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
+		message.get("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
 		
 		//Ping相關
-		message.set("PINGNORMAL", PINGNORMAL);
-		message.set("PINGERROR", PINGERROR);
+		message.get("PINGNORMAL", PINGNORMAL);
+		message.get("PINGERROR", PINGERROR);
 		
 		//FLY
-		message.set("FLY_SET_TRUE", FLY_SET_TRUE);
-		message.set("FLY_SET_FALSE", FLY_SET_FALSE);
+		message.get("FLY_SET_TRUE", FLY_SET_TRUE);
+		message.get("FLY_SET_FALSE", FLY_SET_FALSE);
 		
 		Main.plugin.SystemReLoad();
 	}
