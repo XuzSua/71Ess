@@ -42,7 +42,7 @@ public class TimeGUI implements Listener
 			
 		}
 		
-		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "管理員使用");
+		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "時間選單");
 		inv.setStorageContents(items);
 		player.openInventory(inv);
 	}
@@ -50,26 +50,30 @@ public class TimeGUI implements Listener
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event)
 	{
-		Player player = (Player) event.getWhoClicked();
-		event.setCancelled(true);
-		if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
-		
-		switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+		if (event.getInventory().getName().contains("時間選單"))
 		{
-			case 20:
-				player.closeInventory();
-				player.getLocation().getWorld().setTime(1000);
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
-				break;
-				
-			case 24:
-				player.closeInventory();
-				player.getLocation().getWorld().setTime(16000);
-				player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
-				break;
-				
-			default:
-				break;
+			Player player = (Player) event.getWhoClicked();
+			event.setCancelled(true);
+			if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+			
+			switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+			{
+				case 20:
+					player.closeInventory();
+					player.getLocation().getWorld().setTime(1000);
+					player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
+					break;
+					
+				case 24:
+					player.closeInventory();
+					player.getLocation().getWorld().setTime(16000);
+					player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
+					break;
+					
+				default:
+					break;
+		
+			}
 		}
 	}
 }

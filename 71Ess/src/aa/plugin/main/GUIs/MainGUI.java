@@ -49,27 +49,29 @@ public class MainGUI implements Listener
 	@EventHandler
 	public static void mainClick (InventoryClickEvent event)
 	{
-		Player player = (Player) event.getWhoClicked();
-		event.setCancelled(true);
-		if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
-		
-		switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+		if (event.getInventory().getName().contains("選單功能"))
 		{
-			case 17:
-				if (player.isOp())
-				{
-					player.closeInventory();
-					MainAdminGUI.mainAdmin(player);
-				} else {
-					player.closeInventory();
-					player.sendMessage(MessageManager.HAVENOPERMISSION);
-				}
-				break;
+			Player player = (Player) event.getWhoClicked();
+			event.setCancelled(true);
+			if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+			
+			switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+			{
+				case 17:
+					if (player.isOp())
+					{
+						player.closeInventory();
+						MainAdminGUI.mainAdmin(player);
+					} else {
+						player.closeInventory();
+						player.sendMessage(MessageManager.HAVENOPERMISSION);
+					}
+					break;
+					
+				default:
+					break;
 				
-			default:
-				break;
-				
+			}
 		}
-		
 	}
 }

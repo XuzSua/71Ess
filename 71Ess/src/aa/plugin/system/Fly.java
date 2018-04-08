@@ -4,20 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Particle;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
 
 import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class Fly implements CommandExecutor, Listener {
+public class Fly implements CommandExecutor
+{
 
 	static List<Player> playerFlyMods = new ArrayList<>();
 
@@ -25,7 +22,8 @@ public class Fly implements CommandExecutor, Listener {
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
 		Player p = (Player) sender;
 		if (p.hasPermission("71ess.fly")) {
-			if (cmd.getName().equalsIgnoreCase("fly")) {
+			if (args.length == 0)
+			{
 				if (!(playerFlyMods.contains(p))) {
 					p.setAllowFlight(true);
 					playerFlyMods.add(p);
@@ -36,20 +34,24 @@ public class Fly implements CommandExecutor, Listener {
 					p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.FLY_SET_FALSE));
 				}
 			}
+			if (args.length == 1)
+			{
+				Player target = Bukkit.getServer().getPlayer(args[0]);
+				
+				if (!(playerFlyMods.contains(target))) {
+					target.setAllowFlight(true);
+					playerFlyMods.add(p);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.FLY_SET_TRUE));
+				} else {
+					target.setAllowFlight(false);
+					playerFlyMods.remove(p);
+					target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.FLY_SET_FALSE));
+				}
+			}
 		} else {
 			p.sendMessage(MessageManager.HAVENOPERMISSION);
 		}
 		return false;
 	}
 
-	@EventHandler
-	public void onMove(PlayerMoveEvent e) {
-
-		for (Player p : Bukkit.getOnlinePlayers()) {
-			if (playerFlyMods.contains(p)) {
-				p.getWorld().spawnParticle(Particle.HEART, p.getLocation(), 30);
-				// System.out.println("flying");
-			}
-		}
-	}
 }

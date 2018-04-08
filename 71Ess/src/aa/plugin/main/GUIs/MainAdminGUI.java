@@ -35,30 +35,33 @@ public class MainAdminGUI implements Listener
 	@EventHandler
 	public static void mainClick (InventoryClickEvent event)
 	{
-		Player player = (Player) event.getWhoClicked();
-		event.setCancelled(true);
-		if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
-		
-		switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+		if (event.getInventory().getName().contains("管理員使用"))
 		{
-			case 11:
-				player.closeInventory();
-				TeleportGUI.teleportGUI(player);
-				break;
-				
-			case 13:
-				player.closeInventory();
-				TimeGUI.Time(player);
-				break;
-				
-			case 44:
-				player.closeInventory();
-				MainGUI.main(player);
-				break;
-				
-			default:
-				break;
-		}
-		
+			
+			Player player = (Player) event.getWhoClicked();
+			event.setCancelled(true);
+			if (event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) return;
+			
+			switch (event.getRawSlot() == event.getSlot() ? event.getRawSlot() : -1)
+			{
+				case 11:
+					player.closeInventory();
+					TeleportGUI.teleportGUI(player);
+					break;
+					
+				case 13:
+					player.closeInventory();
+					TimeGUI.Time(player);
+					break;
+					
+				case 44:
+					player.closeInventory();
+					MainGUI.main(player);
+					break;
+					
+				default:
+					break;
+			}
+		}	
 	}
 }
