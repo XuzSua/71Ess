@@ -42,8 +42,8 @@ public class MessageManager
 	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 %s");
 	
 	//Ping相關
-	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "您的PING值目前正常§a (%d)§f，請安心遊玩!");
-	public final static String PINGERROR = Main.plugin.mc.getString("PINGERROR", title + "您的PING值已經高達200以上§c (%d)§f，請檢察網路是否有問題!!");
+	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "PING值目前正常§a (%d)§f，請安心遊玩!");
+	public final static String PINGERROR = Main.plugin.mc.getString("PINGERROR", title + "PING值已經高達200以上§c (%d)§f，請檢察網路是否有問題!!");
 	
 	//FLY
 	public final static String FLY_SET_TRUE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§a開啟");
