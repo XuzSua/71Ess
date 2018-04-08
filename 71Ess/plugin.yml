@@ -4,6 +4,8 @@ version: 1.0.0
 commands:
     gamemode:
         description: Change gamemode with GUI!!
+    gm:
+        description: Change gamemode with GUI!!
     weather:
         description: Change weather with GUI!!
     spawn:
