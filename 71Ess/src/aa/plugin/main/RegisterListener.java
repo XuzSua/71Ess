@@ -4,7 +4,6 @@ import aa.plugin.main.GUIs.MainAdminGUI;
 import aa.plugin.main.GUIs.MainGUI;
 import aa.plugin.main.GUIs.TeleportGUI;
 import aa.plugin.main.GUIs.TimeGUI;
-import aa.plugin.system.ColorSign;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.Spawn;
@@ -22,7 +21,6 @@ public class RegisterListener
 		plugin.getServer().getPluginManager().registerEvents(new GameModes(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Weather(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Spawn(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new ColorSign(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new God(), plugin);
 		
 		//GUIs

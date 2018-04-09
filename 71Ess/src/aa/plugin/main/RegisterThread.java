@@ -14,5 +14,5 @@ public class RegisterThread {
 		//現實時間同步
 		//new LifeTime().runTaskTimer(plugin,0, 20);
 	}
-
+ 
 }

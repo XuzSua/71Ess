@@ -52,7 +52,27 @@ public class Weather implements CommandExecutor, Listener
 					}
 				
 					p.openInventory(inv);
+					
+				}else if(args.length == 1) {
+					
+					String action = args[0];
+					
+					if(action.equals("rain")) {
+						
+						p.getWorld().setStorm(true);
+						p.getWorld().setThundering(true);
+						p.sendMessage("已經您所在地圖更改天氣 " + ChatColor.GOLD + p.getWorld().getName() + "§f (陰天)");
+						
+					} else {
+						
+						p.getWorld().setStorm(false);
+						p.getWorld().setThundering(false);
+						p.sendMessage("已經您所在地圖更改天氣 " + ChatColor.GOLD + p.getWorld().getName() + "§f (晴天)");
+						
+					}
+
 				}
+				
 			} else {
 				p.sendMessage("不給你用");
 			}

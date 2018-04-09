@@ -2,6 +2,8 @@ name: 71Ess
 main: aa.plugin.main.Main
 version: 1.0.0
 commands:
+    gm:
+        description: Change gamemode with GUI!!
     gamemode:
         description: Change gamemode with GUI!!
     weather:
@@ -16,3 +18,7 @@ commands:
         description: home
     fly:
         description: heyhey redheart FLY!!
+    god:
+        description: change mode to god
+    ping:
+        description: get player's ping
