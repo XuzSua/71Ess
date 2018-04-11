@@ -14,6 +14,8 @@ commands:
         description: set time with GUI!!
     tp:
         description: teleport to a player with GUI!!
+    tpa:
+        description: tpa a player with fucking GUI!
     home:
         description: FUCKING HOME
     fly:

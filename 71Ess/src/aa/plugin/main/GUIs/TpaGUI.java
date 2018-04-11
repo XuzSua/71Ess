@@ -2,28 +2,26 @@ package aa.plugin.main.GUIs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import aa.plugin.function.createItem;
-import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class TeleportGUI implements Listener
-{	
-	
+public class TpaGUI
+{
 	public static void teleportGUI(Player player)
 	{
 		int listMaximum = 45;
@@ -31,7 +29,7 @@ public class TeleportGUI implements Listener
 		ItemStack[] items = new ItemStack[inventorySizeLevel * 9];
 		List<Player> playersList = new ArrayList<Player>();
 		
-		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "線上玩家列表 (管理員傳送用)");
+		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "線上玩家列表 (玩家傳送用)");
 		int page = 0;
 		
 		playersList.addAll(Bukkit.getOnlinePlayers());
@@ -64,8 +62,11 @@ public class TeleportGUI implements Listener
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event)
 	{
-		if (event.getInventory().getName().contains("線上玩家列表 (管理員傳送用)"))
+		if (event.getInventory().getName().contains("線上玩家列表 (玩家傳送用)"))
 		{
+			
+			Map<Player, Player> teleport = new HashMap<>();
+			
 			Player p = (Player) event.getWhoClicked();
 			event.setCancelled(true);
 				
@@ -73,10 +74,23 @@ public class TeleportGUI implements Listener
 			
 			String ID = event.getCurrentItem().getItemMeta().getDisplayName();
 			
-			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
+			Player target = Bukkit.getPlayer(ChatColor.stripColor(ID));
 			
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, ID)));
-
+			
+			
+			if (!(teleport.containsKey(p)))
+			{
+				TextComponent targetGet = new TextComponent();
+				{
+					targetGet.setText(String.format("%s 此玩家發送給您一個傳送邀請! (對方傳送至您)", p));
+				}
+				
+				teleport.put(p, target);
+				
+				
+				
+			}
+			
 		}
 	}
 }
