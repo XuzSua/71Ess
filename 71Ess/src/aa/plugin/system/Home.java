@@ -15,8 +15,6 @@ import org.bukkit.entity.Player;
 import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
 import aa.plugin.main.MessageManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class Home implements CommandExecutor {
 
@@ -103,8 +101,7 @@ public class Home implements CommandExecutor {
 		Main.plugin.SystemReLoad();
 
 		cooldown.CooldownSet("_家點設置", 5);
-		player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-				new TextComponent(MessageManager.HOME_SET_HOME.replaceAll("%s", point)));
+		player.sendActionBar(String.format(MessageManager.HOME_SET_HOME, point));
 
 	}
 
@@ -126,9 +123,7 @@ public class Home implements CommandExecutor {
 
 		if (home.get(player.getUniqueId() + String.format(".%s", point)) == null) {
 
-			player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-					new TextComponent(MessageManager.HOME_TP_POINT_NOT_EXIST.replaceAll("%d", point)));
-
+			player.sendActionBar(String.format(MessageManager.HOME_TP_POINT_NOT_EXIST, point));
 			return;
 		}
 
@@ -140,8 +135,7 @@ public class Home implements CommandExecutor {
 		Location loc1 = new Location(w1, x1, y1, z1);
 		player.teleport(loc1);
 		cooldown.CooldownSet(player.getName() + "_家點傳送", 5);
-		player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
-				new TextComponent(MessageManager.HOME_TP_HOME.replaceAll("%s", point)));
+		player.sendActionBar(String.format(MessageManager.HOME_TP_HOME, point));
 
 	}
 

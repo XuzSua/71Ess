@@ -18,8 +18,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class TeleportGUI implements Listener
 {	
@@ -75,7 +73,7 @@ public class TeleportGUI implements Listener
 			
 			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
 			
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, ID)));
+			p.sendActionBar(String.format(MessageManager.TELEPORT_TOPLAYER, ID));
 
 		}
 	}

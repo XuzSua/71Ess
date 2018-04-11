@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import aa.plugin.main.MessageManager;
 import aa.plugin.main.GUIs.TeleportGUI;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class Teleport implements CommandExecutor
 {	
@@ -29,11 +27,11 @@ public class Teleport implements CommandExecutor
 					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if (target == null)
 					{
-						p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TARGETNOTFOUND, args[0])));
+						p.sendActionBar(String.format(MessageManager.TELEPORT_TARGETNOTFOUND, args[0]));
 						return true;
 					}
 					p.teleport(target.getLocation());
-					p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new TextComponent(String.format(MessageManager.TELEPORT_TOPLAYER, args[0])));
+					p.sendActionBar(String.format(MessageManager.TELEPORT_TOPLAYER, args[0]));
 					return false;
 					
 				}

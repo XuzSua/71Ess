@@ -13,8 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class TimeGUI implements Listener
 {
@@ -61,13 +59,13 @@ public class TimeGUI implements Listener
 				case 20:
 					player.closeInventory();
 					player.getLocation().getWorld().setTime(1000);
-					player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_DAY));
+					player.sendActionBar(MessageManager.TIME_DAY);
 					break;
 					
 				case 24:
 					player.closeInventory();
 					player.getLocation().getWorld().setTime(16000);
-					player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.TIME_NIGHT));
+					player.sendActionBar(MessageManager.TIME_NIGHT);
 					break;
 					
 				default:

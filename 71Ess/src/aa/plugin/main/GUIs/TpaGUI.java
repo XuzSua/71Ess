@@ -82,6 +82,7 @@ public class TpaGUI
 			{
 				TextComponent targetGet = new TextComponent();
 				{
+					targetGet.setBold(true);
 					targetGet.setText(String.format("%s 此玩家發送給您一個傳送邀請! (對方傳送至您)", p));
 				}
 				

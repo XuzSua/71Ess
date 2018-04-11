@@ -15,8 +15,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import aa.plugin.main.MessageManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class God implements CommandExecutor, Listener
 {
@@ -39,7 +37,7 @@ public class God implements CommandExecutor, Listener
 					{
 						
 						godList.add(p.getName());
-						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GOD_ENABLE));
+						p.sendActionBar(MessageManager.GOD_ENABLE);
 						return false;
 						
 					}
@@ -47,7 +45,7 @@ public class God implements CommandExecutor, Listener
 					{
 						
 						godList.remove(p.getName());
-						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GOD_DISABLE));
+						p.sendActionBar(MessageManager.GOD_DISABLE);
 						return false;
 						
 					}
@@ -64,14 +62,14 @@ public class God implements CommandExecutor, Listener
 						{
 							
 							godList.add(target.getName());
-							target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GOD_ENABLE));
+							target.sendActionBar(MessageManager.GOD_ENABLE);
 							return false;
 						}
 						if (godList.contains(target.getName()))
 						{
 							
 							godList.remove(target.getName());
-							target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(MessageManager.GOD_DISABLE));
+							target.sendActionBar(MessageManager.GOD_DISABLE);
 							return false;
 						}
 						

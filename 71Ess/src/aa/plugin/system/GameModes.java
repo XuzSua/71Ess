@@ -21,8 +21,6 @@ import org.bukkit.inventory.Inventory;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class GameModes implements CommandExecutor, Listener {
 	
@@ -79,7 +77,7 @@ public class GameModes implements CommandExecutor, Listener {
 
 						
 						p.setGameMode(gm[mode]);
-						p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode])));
+						p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode]));
 						return false;
 					}
 					if (args.length == 2)
@@ -87,7 +85,7 @@ public class GameModes implements CommandExecutor, Listener {
 						Player target = Bukkit.getServer().getPlayer(args[1]);
 					
 						target.setGameMode(gm[mode]);
-						target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode])));
+						target.sendActionBar(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode]));
 						return false;
 					}
 				} else {
@@ -166,7 +164,7 @@ public class GameModes implements CommandExecutor, Listener {
 			String action = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 			
 			p.setGameMode(map.get(action));
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_CHANGE, action)));
+			p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE, action));
 			
 		}
 		
@@ -193,8 +191,8 @@ public class GameModes implements CommandExecutor, Listener {
 			String action = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 			
 			target.setGameMode(map.get(action));
-			target.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,action)));
-			p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(String.format(MessageManager.GAMEMODE_TOPLAYER, action)));
+			target.sendActionBar(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,action));
+			p.sendActionBar(String.format(MessageManager.GAMEMODE_TOPLAYER,action));
 			
 		}
 	}
