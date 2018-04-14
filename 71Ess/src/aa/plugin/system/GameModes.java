@@ -73,9 +73,13 @@ public class GameModes implements CommandExecutor, Listener {
 					String[] gamemode = { "生存模式","創造模式","冒險模式","觀察者模式" };		
 				
 					if (args.length == 1)
-					{				
-
-						
+					{
+						if(mode > 3 || mode < 0) {
+							
+							p.sendMessage("遊戲模式不存在!(最多0-3)，你輸入了: " + mode);
+							return false;
+							
+						}
 						p.setGameMode(gm[mode]);
 						p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode]));
 						return false;
