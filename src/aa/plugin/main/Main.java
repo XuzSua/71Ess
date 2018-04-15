@@ -7,7 +7,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import aa.plugin.main.RegisterCommands;
-import aa.plugin.main.RegisterListener;
 import aa.plugin.main.Main;
 
 public class Main extends JavaPlugin
@@ -22,7 +21,7 @@ public class Main extends JavaPlugin
 		plugin = this;
 		FileConfig();
 		new RegisterCommands();
-		new RegisterListener(this);
+		new RegisterListeners(this);
 		new RegisterThread();
 	}
 	
