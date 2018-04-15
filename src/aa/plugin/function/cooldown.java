@@ -28,7 +28,7 @@ public class cooldown
         }
     }
 
-    // 冷卻設定
+    // 冷卻設定 
     public static void CooldownSetByMillisecond(String CooldownName, Integer Millisecond) {
         // 判斷是否存在冷卻
         if (GlobalVar.CooldownMap.containsKey(CooldownName)) {
