@@ -26,6 +26,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class TpaGUI
 {
+	
 	public static void teleportGUI(Player player)
 	{
 		int listMaximum = 45;
@@ -64,6 +65,7 @@ public class TpaGUI
 	}
 	
 	Map<Player, Player> teleport = new HashMap<>();
+	
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event)
 	{
