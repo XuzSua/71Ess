@@ -10,6 +10,7 @@ import aa.plugin.system.Teleport;
 import aa.plugin.system.Tell;
 import aa.plugin.system.Time;
 import aa.plugin.system.Tpa;
+import aa.plugin.system.Tpall;
 import aa.plugin.system.Weather;
 
 public class RegisterCommands
@@ -32,6 +33,6 @@ public class RegisterCommands
 		plugin.getCommand("ping").setExecutor(new PingDetect());
 		plugin.getCommand("tell").setExecutor(new Tell());
 		plugin.getCommand("r").setExecutor(new Tell());
-
+		plugin.getCommand("tpall").setExecutor(new Tpall());
 	}
 }

@@ -28,3 +28,5 @@ commands:
         description: send a private message to a player
     r:
         description: resend a private message to a player
+    tpall:
+        description: teleport all player to sender
