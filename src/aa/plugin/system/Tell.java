@@ -21,45 +21,49 @@ public class Tell implements CommandExecutor
 		
 		if (sender instanceof Player)
 		{
-			Player player = (Player) sender;
-			Player target = Bukkit.getServer().getPlayer(args[0]);
 			
-			if (cmd.getName().equalsIgnoreCase("tell"))
+			Player player = (Player) sender;
+			if (player.hasPermission("71ess.tell"))
 			{
-				if (target != null) 
+				Player target = Bukkit.getServer().getPlayer(args[0]);
+				
+				if (cmd.getName().equalsIgnoreCase("tell"))
 				{
-					String msg = "";
-					for (int i = 1 ; i != args.length ; i++)
+					if (target != null) 
 					{
-						msg += args[i] + " ";
+						String msg = "";
+						for (int i = 1 ; i != args.length ; i++)
+						{
+							msg += args[i] + " ";
+						}
+							
+						target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §d" + msg);
+						player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §d" + msg);
+							
+						lastSentMsg.put(player, target);
+					} else {
+							
+						player.sendMessage(MessageManager.TELL_PLAYERNULL);
+							
 					}
-						
-					target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §d" + msg);
-					player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §d" + msg);
-						
-					lastSentMsg.put(player, target);
-				} else {
-						
-					player.sendMessage(MessageManager.TELL_PLAYERNULL);
-						
+					return false;
 				}
-				return false;
-			}
-			if (cmd.getName().equalsIgnoreCase("r"))
-			{
-				if (target != null) 
+				if (cmd.getName().equalsIgnoreCase("r"))
 				{
-					String msg = "";
-					for (int i = 1 ; i != args.length ; i++)
+					if (target != null) 
 					{
-						msg += args[i] + " ";
+						String msg = "";
+						for (int i = 1 ; i != args.length ; i++)
+						{
+							msg += args[i] + " ";
+						}
+						
+						lastSentMsg.get(target).sendMessage("§6" + player.getName() + " §e--> §6" + lastSentMsg.get(target) + " §7" + msg);
+						player.sendMessage("§6" + player.getName() + " §e--> §6" + lastSentMsg.get(target) + " §7" + msg);
+					} else {
+						
+						player.sendMessage(MessageManager.TELL_PLAYERNULL);
 					}
-					
-					lastSentMsg.get(target).sendMessage("§6" + player.getName() + " §e--> §6" + lastSentMsg.get(target) + " §7" + msg);
-					player.sendMessage("§6" + player.getName() + " §e--> §6" + lastSentMsg.get(target) + " §7" + msg);
-				} else {
-					
-					player.sendMessage(MessageManager.TELL_PLAYERNULL);
 				}
 			}
 		

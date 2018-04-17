@@ -32,5 +32,6 @@ public class RegisterCommands
 		plugin.getCommand("ping").setExecutor(new PingDetect());
 		plugin.getCommand("tell").setExecutor(new Tell());
 		plugin.getCommand("r").setExecutor(new Tell());
+
 	}
 }
