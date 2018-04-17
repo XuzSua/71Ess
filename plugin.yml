@@ -24,3 +24,7 @@ commands:
         description: get player's ping
     tpa:
         description: sent a invite of teleport require to player 
+    tell:
+        description: send a private message to a player
+    r:
+        description: resend a private message to a player

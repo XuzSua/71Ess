@@ -4,7 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 public class MessageManager
 {
-	public static String title = "§d系統娘 :§f";
+	public static String title = "§d系統娘 : §f";
 	
 	//就是不給你用
 	public final static String HAVENOPERMISSION = Main.plugin.mc.getString("HAVENOPERMISSION", "不給你用");
@@ -49,6 +49,9 @@ public class MessageManager
 	public final static String FLY_SET_TRUE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§a開啟");
 	public final static String FLY_SET_FALSE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§c關閉");
 	
+	//私訊
+	public final static String TELL_PLAYERNULL = Main.plugin.mc.getString("TELL_PLAYERNULL", title + "找不到目標玩家!");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -92,6 +95,8 @@ public class MessageManager
 		message.get("FLY_SET_TRUE", FLY_SET_TRUE);
 		message.get("FLY_SET_FALSE", FLY_SET_FALSE);
 		
+		//私訊
+		message.get("TELL_PLAYERNULL", TELL_PLAYERNULL);
 		Main.plugin.SystemReLoad();
 	}
 }
