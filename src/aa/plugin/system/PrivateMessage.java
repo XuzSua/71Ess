@@ -55,8 +55,8 @@ public class PrivateMessage implements CommandExecutor {
 							msg += args[i] + " ";
 						}
 						
-						target.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target) + " §7" + msg);
-						player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target) + " §7" + msg);
+						target.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
+						player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
 						
 					}
 					
@@ -80,8 +80,8 @@ public class PrivateMessage implements CommandExecutor {
 					msg += args[i] + " ";
 				}
 				
-				lastsent.get(target).sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target) + " §7" + msg);
-				player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target) + " §7" + msg);
+				lastsent.get(target).sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
+				player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
 				
 			}
 			
