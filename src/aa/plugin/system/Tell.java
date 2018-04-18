@@ -25,10 +25,18 @@ public class Tell implements CommandExecutor
 			Player player = (Player) sender;
 			if (player.hasPermission("71ess.tell"))
 			{
-				Player target = Bukkit.getServer().getPlayer(args[0]);
+	
+				
 				
 				if (cmd.getName().equalsIgnoreCase("tell"))
 				{
+					if (args.length == 0)
+					{
+						player.sendMessage(MessageManager.TELL_ERRORCOMMAND);
+						return false;
+					}
+					
+					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if (target != null) 
 					{
 						String msg = "";
@@ -50,6 +58,13 @@ public class Tell implements CommandExecutor
 				}
 				if (cmd.getName().equalsIgnoreCase("r"))
 				{
+					if (args.length == 0)
+					{
+						player.sendMessage(MessageManager.TELL_ERRORCOMMAND);
+						return false;
+					}
+					
+					Player target = Bukkit.getServer().getPlayer(args[0]);
 					if (target != null) 
 					{
 						String msg = "";
@@ -64,7 +79,7 @@ public class Tell implements CommandExecutor
 						
 						player.sendMessage(MessageManager.TELL_PLAYERNULL);
 					}
-				}
+				}	
 			}
 		
 		} else {
