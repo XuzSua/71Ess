@@ -5,9 +5,9 @@ import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.Home;
 import aa.plugin.system.PingDetect;
+import aa.plugin.system.PrivateMessage;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
-import aa.plugin.system.Tell;
 import aa.plugin.system.Time;
 import aa.plugin.system.Tpa;
 import aa.plugin.system.Tpall;
@@ -31,8 +31,8 @@ public class RegisterCommands
 		plugin.getCommand("fly").setExecutor(new Fly());
 		plugin.getCommand("god").setExecutor(new God());
 		plugin.getCommand("ping").setExecutor(new PingDetect());
-		plugin.getCommand("tell").setExecutor(new Tell());
-		plugin.getCommand("r").setExecutor(new Tell());
+		plugin.getCommand("msg").setExecutor(new PrivateMessage());
+		plugin.getCommand("msgr").setExecutor(new PrivateMessage());
 		plugin.getCommand("tpall").setExecutor(new Tpall());
 	}
 }
