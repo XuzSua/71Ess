@@ -12,117 +12,142 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import aa.plugin.main.Main;
 import aa.plugin.main.GUIs.TpaGUI;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
+class Invite {
 
-class Invite{
-	
 	Player inviter;
 	Player target;
-	
+
 }
 
-public class Tpa implements CommandExecutor
-{
+public class Tpa implements CommandExecutor {
 
-	Map<Player,Invite> map = new HashMap<>();
-	
+	Map<Player, Invite> map = new HashMap<>();
+
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
-		
-		if (args.length == 0)
-		{
+
+		if (args.length == 0) {
 			Player player = (Player) sender;
 			TpaGUI.teleportGUI(player);
 			return false;
 		}
-		
-		if(args[0].equals("yes")) {
-			
+
+		if (args[0].equals("accept")) {
+
 			Player target = (Player) sender;
-			
-			//如果邀請不存在的話
-			if(!map.containsKey(target)) {
-				
+
+			// 如果邀請不存在的話
+			if (!map.containsKey(target)) {
+
 				target.sendMessage("邀請不存在。");
 				return false;
-				
+
 			}
-			
+
 			Invite inv = map.get(target);
-			
+
 			Player inviter = inv.inviter;
 
-			inviter.sendMessage(target.getName() + " §a§l接受§f你的傳送請求");
-			
+			if (inviter == null) {
+
+				target.sendMessage("邀請人已不存在。");
+				return false;
+
+			}
+
+			inviter.sendMessage(target.getName() + " 接受了你的傳送請求");
+
 			inviter.teleport(target.getLocation());
-			
+
 			map.remove(target);
-			
-		}else if(args[0].equals("no")) {
-			
+
+		} else if (args[0].equals("denied")) {
+
 			Player target = (Player) sender;
-			
-			//如果邀請不存在的話
-			if(!map.containsKey(target)) {
-				
+
+			// 如果邀請不存在的話
+			if (!map.containsKey(target)) {
+
 				target.sendMessage("邀請不存在。");
 				return false;
-				
+
 			}
-			
+
 			Invite inv = map.get(target);
-			
-			Player inviter = inv.inviter;			
-			
-			inviter.sendMessage(target.getName() + " §c§l拒絕§f你的傳送請求");
-			
+
+			Player inviter = inv.inviter;
+
+			if (inviter == null)
+				return false;
+
+			inviter.sendMessage(target.getName() + " 拒絕了你的傳送請求");
+
 			map.remove(target);
-			
-		}else {
-			
-			Player target = Bukkit.getServer().getPlayer(args[0]);
-			Player inviter = (Player)sender;
-			
-			if(map.containsKey(target)) {
-				
+
+		} else {
+
+			Player target = Bukkit.getPlayer(args[0]);
+			Player inviter = (Player) sender;
+
+			if (target == null) {
+
+				inviter.sendMessage("玩家不存在");
+				return false;
+
+			}
+
+			if (map.containsKey(target)) {
+
 				inviter.sendMessage("邀請已存在，請等待回覆。");
 				return false;
+
 			}
-			
+
 			Invite inv = new Invite();
-			
+
 			inv.inviter = inviter;
 			inv.target = target;
 			
+			inviter.sendMessage("已發送傳送邀請給 " + target.getName());
+
 			map.put(target, inv);
-			
-			target.sendMessage("=================================================================");
-			target.sendMessage("");
-			target.sendMessage(String.format("§f你接到了一封來自於 §6§l%s §f的傳送請求", inviter.getName()));
-			target.sendMessage("");
-			target.sendMessage("§a§l接受§f請輸入/tpa yes ， §c§l拒絕§f請輸入/tpa no");
-			target.sendMessage("");
-			target.sendMessage("§f此封邀請將在§a 1 分鐘§f後§4§l自動刪除");
-			target.sendMessage("");
-			target.sendMessage("=================================================================");
-			
-			if (!(map.containsKey(target)))
-			{
-				new BukkitRunnable() {
+
+			TextComponent accept = new TextComponent("接受請輸入/tpa accept");
+
+			accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊接受!").create()));
+			accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa accept"));
+
+			TextComponent denied = new TextComponent("接受請輸入/tpa denied");
+
+			denied.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊拒絕!").create()));
+			denied.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa denied"));
+
+			target.sendMessage(String.format("你接到了一封來自於 %s 的傳送請求", inviter.getName()));
+			target.spigot().sendMessage(accept);
+			target.spigot().sendMessage(denied);
+
+			target.sendMessage("此封邀請將在1分鐘後自動刪除");
+
+			new BukkitRunnable() {
+
+				public void run() {
+
+					if(map.get(target) == null) return;
 					
-					public void run() {
-						
-						inviter.sendMessage("邀請已被自動刪除。");
-						target.sendMessage("邀請已被自動刪除。");
-						map.remove(target);
-						
-					}
-					
-				}.runTaskLater(Main.plugin, 20*60);
-			}
-			
+					inviter.sendMessage("邀請已被自動刪除。");
+					map.remove(target);
+
+				}
+
+			}.runTaskLater(Main.plugin, 20 * 60);
+
 		}
-		
+
 		return false;
 	}
 
