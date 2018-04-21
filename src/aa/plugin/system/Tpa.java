@@ -61,7 +61,6 @@ public class Tpa implements CommandExecutor {
 			}
 
 			inviter.sendMessage("§6§l" + target.getName() + " §a§l接受§f§l你的傳送請求");
-			target.sendMessage("將您傳送至 §6§l" + inviter.getName());
 			
 			target.teleport(inviter.getLocation());
 
