@@ -50,7 +50,7 @@ public class MessageManager
 	public final static String FLY_SET_FALSE = Main.plugin.mc.getString("FLY_SET_TRUE", title + "您的飛行模式已被§c關閉");
 	
 	//私訊
-	public final static String TELL_ERRORCOMMAND = Main.plugin.mc.getString("TELL_ERRORCOMMAND", title + "/tell <玩家> <訊息>");
+	public final static String TELL_ERRORCOMMAND = Main.plugin.mc.getString("TELL_ERRORCOMMAND", title + "/msg <玩家> <訊息>");
 	public final static String TELL_PLAYERNULL = Main.plugin.mc.getString("TELL_PLAYERNULL", title + "找不到目標玩家!");
 	
 	public static void CreateFile()

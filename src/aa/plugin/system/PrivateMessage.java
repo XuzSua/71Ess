@@ -1,5 +1,6 @@
 package aa.plugin.system;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,9 +12,17 @@ import org.bukkit.entity.Player;
 
 import aa.plugin.main.MessageManager;
 
+class MessageSave{
+	
+	Player player;
+	
+	String message;
+	
+}
+
 public class PrivateMessage implements CommandExecutor {
 
-	Map<Player, Player> lastsent = new HashMap<>();
+	static Map<Player, MessageSave> lastsent = new HashMap<>();
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args)
@@ -47,16 +56,17 @@ public class PrivateMessage implements CommandExecutor {
 						
 					} else {
 						
-						lastsent.put(player, target);
+						String msg = String.join("", Arrays.copyOfRange(args, 1, args.length));
+
+						MessageSave ms = new MessageSave();
 						
-						String msg = "";
-						for (int i = 1 ; i != args.length ; i++)
-						{
-							msg += args[i] + " ";
-						}
+						ms.player = target;
+						ms.message = msg;
 						
-						target.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
-						player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
+						lastsent.put(player, ms);
+						
+						target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
+						player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 						
 					}
 					
@@ -71,17 +81,16 @@ public class PrivateMessage implements CommandExecutor {
 					return false;
 				}
 				
-				Player target = lastsent.get(player);
-				lastsent.put(player, target);
-	
-				String msg = "";
-				for (int i = 1 ; i != args.length ; i++)
-				{
-					msg += args[i] + " ";
-				}
+				MessageSave ms = lastsent.get(player);
 				
-				lastsent.get(target).sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
-				player.sendMessage("§6" + player.getName() + " §e--> §6" + lastsent.get(target).getName() + " §7" + msg);
+				Player target = ms.player;
+				
+//				lastsent.put(player, target);
+	
+				String msg = ms.message;
+				
+				target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
+				player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 				
 			}
 			
