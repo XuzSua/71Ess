@@ -60,9 +60,10 @@ public class Tpa implements CommandExecutor {
 
 			}
 
-			inviter.sendMessage(target.getName() + " §a§l接受§f§l你的傳送請求");
-
-			inviter.teleport(target.getLocation());
+			inviter.sendMessage("§6§l" + target.getName() + " §a§l接受§f§l你的傳送請求");
+			target.sendMessage("將您傳送至 §6§l" + inviter.getName());
+			
+			target.teleport(inviter.getLocation());
 
 			map.remove(target);
 
@@ -85,7 +86,7 @@ public class Tpa implements CommandExecutor {
 			if (inviter == null)
 				return false;
 
-			inviter.sendMessage(target.getName() + " §c§l拒絕§f§l你的傳送請求");
+			inviter.sendMessage("§6§l" + target.getName() + " §c§l拒絕§f§l你的傳送請求");
 
 			map.remove(target);
 
@@ -128,13 +129,18 @@ public class Tpa implements CommandExecutor {
 
 			denied.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊§c§l拒絕!").create()));
 			denied.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa no"));
-
-			target.sendMessage(String.format("§f§l你接到了一封來自於 §6§l%s §f的傳送請求", inviter.getName()));
 			accept.addExtra(nothing);
 			accept.addExtra(denied);
 			
+			target.sendMessage("=================================================================");
+            target.sendMessage("");
+			target.sendMessage(String.format("§f§l你接到了一封來自於 §6§l%s §f§l的傳送請求", inviter.getName()));
+			target.sendMessage("");
 			target.sendMessage(accept);
-			target.sendMessage("§f§l此封邀請將在 §a1 分鐘§f§l後§4§l自動刪除");
+			target.sendMessage("");
+            target.sendMessage("§f此封邀請將在§a 1 分鐘§f後§4§l自動刪除");
+            target.sendMessage("");
+            target.sendMessage("=================================================================");
 
 			new BukkitRunnable() {
 
