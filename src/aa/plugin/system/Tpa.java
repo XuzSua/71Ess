@@ -60,7 +60,7 @@ public class Tpa implements CommandExecutor {
 
 			}
 
-			inviter.sendMessage(target.getName() + " §a接受§f你的傳送請求");
+			inviter.sendMessage(target.getName() + " §a§l接受§f§l你的傳送請求");
 
 			inviter.teleport(target.getLocation());
 
@@ -85,7 +85,7 @@ public class Tpa implements CommandExecutor {
 			if (inviter == null)
 				return false;
 
-			inviter.sendMessage(target.getName() + " §c拒絕§f你的傳送請求");
+			inviter.sendMessage(target.getName() + " §c§l拒絕§f§l你的傳送請求");
 
 			map.remove(target);
 
@@ -113,25 +113,28 @@ public class Tpa implements CommandExecutor {
 			inv.inviter = inviter;
 			inv.target = target;
 			
-			inviter.sendMessage("已發送傳送邀請給 §6" + target.getName());
+			inviter.sendMessage("§f§l已發送傳送邀請給 §6§l" + target.getName());
 
 			map.put(target, inv);
 
-			TextComponent accept = new TextComponent("接受請輸入/tpa accept");
+			TextComponent accept = new TextComponent("§f[§a§l接受§f]");
 
-			accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊接受!").create()));
-			accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa accept"));
+			accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊§a§l接受!").create()));
+			accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa yes"));
 
-			TextComponent denied = new TextComponent("接受請輸入/tpa denied");
+			TextComponent nothing = new TextComponent(" ， ");
+			
+			TextComponent denied = new TextComponent("§f[§c§l拒絕§f]");
 
-			denied.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊拒絕!").create()));
-			denied.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa denied"));
+			denied.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊§c§l拒絕!").create()));
+			denied.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa no"));
 
-			target.sendMessage(String.format("你接到了一封來自於 §6%s §f的傳送請求", inviter.getName()));
-			target.spigot().sendMessage(accept);
-			target.spigot().sendMessage(denied);
-
-			target.sendMessage("此封邀請將在 §a1 分鐘§f後§4§l自動刪除");
+			target.sendMessage(String.format("§f§l你接到了一封來自於 §6§l%s §f的傳送請求", inviter.getName()));
+			accept.addExtra(nothing);
+			accept.addExtra(denied);
+			
+			target.sendMessage(accept);
+			target.sendMessage("§f§l此封邀請將在 §a1 分鐘§f§l後§4§l自動刪除");
 
 			new BukkitRunnable() {
 
