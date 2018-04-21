@@ -1,5 +1,7 @@
 package aa.plugin.function;
 
+
+
 import aa.plugin.main.GlobalVar;
 
 public class cooldown 

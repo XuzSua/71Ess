@@ -10,7 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
+import aa.plugin.main.MessageManager;
+import aa.plugin.main.GUIs.TpaGUI;
+
 
 class Invite{
 	
@@ -26,6 +30,13 @@ public class Tpa implements CommandExecutor
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
+		
+		if (args.length == 0)
+		{
+			Player player = (Player) sender;
+			TpaGUI.teleportGUI(player);
+			return false;
+		}
 		
 		if(args[0].equals("accept")) {
 			
@@ -71,6 +82,13 @@ public class Tpa implements CommandExecutor
 			
 		}else {
 			
+			Player player = (Player) sender;
+			if (!(cooldown.CooldownCheck(player.getName() + "_發送傳送邀請冷卻")))
+			{
+				player.sendMessage(MessageManager.TPA_INVITE_COOLDOWN);
+				return false;
+			}
+			
 			Player target = Bukkit.getPlayer(args[0]);
 			Player inviter = (Player)sender;
 			
@@ -91,16 +109,19 @@ public class Tpa implements CommandExecutor
 			target.sendMessage("接受請輸入/tpa accept ， 不接受請輸入/tpa denied");
 			target.sendMessage("此封邀請將在1分鐘後自動刪除");
 			
-			new BukkitRunnable() {
-				
-				public void run() {
+			if (map.containsKey(target))
+			{
+				new BukkitRunnable() {
 					
-					inviter.sendMessage("邀請已被自動刪除。");
-					map.remove(target);
+					public void run() {
+						
+						inviter.sendMessage("邀請已被自動刪除。");
+						map.remove(target);
+						
+					}
 					
-				}
-				
-			}.runTaskLater(Main.plugin, 20*60);
+				}.runTaskLater(Main.plugin, 20*60);
+			}
 			
 		}
 		

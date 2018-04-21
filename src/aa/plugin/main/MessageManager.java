@@ -40,6 +40,7 @@ public class MessageManager
 	//傳送相關
 	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至 %s");
 	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 %s");
+	public final static String TPA_INVITE_COOLDOWN = Main.plugin.mc.getString("TPA_INVITE_COOLDOWN", title + "§f§l您的§a傳送邀請§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	
 	//Ping相關
 	public final static String PINGNORMAL = Main.plugin.mc.getString("PINGNORMAL", title + "PING值目前正常§a (%d)§f，請安心遊玩!");
@@ -58,47 +59,49 @@ public class MessageManager
 		FileConfiguration message = Main.plugin.mc;
 		
 		//就是不給你用
-		message.get("HAVENOPERMISSION", HAVENOPERMISSION);
+		message.set("HAVENOPERMISSION", HAVENOPERMISSION);
 		
 		//遊戲模式
-		message.get("GAMEMODE_TOPLAYER", GAMEMODE_TOPLAYER);
-		message.get("GAMEMODE_HASBEENCHANGE", GAMEMODE_HASBEENCHANGE);
-		message.get("GAMEMODE_CHANGE ", GAMEMODE_CHANGE);
+		message.set("GAMEMODE_TOPLAYER", GAMEMODE_TOPLAYER);
+		message.set("GAMEMODE_HASBEENCHANGE", GAMEMODE_HASBEENCHANGE);
+		message.set("GAMEMODE_CHANGE ", GAMEMODE_CHANGE);
 	
 		//重生點相關
-		message.get("SPAWN_SET", SPAWN_SET);
-		message.get("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);
-		message.get("SPAWN_TP", SPAWN_TP);
-		message.get("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
-		message.get("SPAWN_LOGIN", SPAWN_LOGIN);
+		message.set("SPAWN_SET", SPAWN_SET);
+		message.set("SPAWN_SET_COOLDOWN", SPAWN_SET_COOLDOWN);
+		message.set("SPAWN_TP", SPAWN_TP);
+		message.set("SPAWN_TP_COOLDOWN", SPAWN_TP_COOLDOWN);
+		message.set("SPAWN_LOGIN", SPAWN_LOGIN);
 		
 		//家相關
-		message.get("HOME_SET_HOME1", HOME_SET_HOME);
-		message.get("HOME_SET_COOLDOWN", HOME_SET_COOLDOWN);
-		message.get("HOME_SET_PUTNAME", HOME_PUTNAME);
-		message.get("HOME_TP_HOME1", HOME_TP_HOME);
-		message.get("HOME_TP_COOLDOWN", HOME_TP_COOLDOWN);
-		message.get("HOME_TP_POINT_NOT_EXIST", HOME_TP_POINT_NOT_EXIST);
+		message.set("HOME_SET_HOME1", HOME_SET_HOME);
+		message.set("HOME_SET_COOLDOWN", HOME_SET_COOLDOWN);
+		message.set("HOME_SET_PUTNAME", HOME_PUTNAME);
+		message.set("HOME_TP_HOME1", HOME_TP_HOME);
+		message.set("HOME_TP_COOLDOWN", HOME_TP_COOLDOWN);
+		message.set("HOME_TP_POINT_NOT_EXIST", HOME_TP_POINT_NOT_EXIST);
 		
 		//時間相關
-		message.get("TIME_DAY", TIME_DAY);
-		message.get("TIME_NIGHT", TIME_NIGHT);
+		message.set("TIME_DAY", TIME_DAY);
+		message.set("TIME_NIGHT", TIME_NIGHT);
 		
 		//傳送相關
-		message.get("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
-		message.get("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
+		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
+		message.set("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
+		message.set("TPA_INVITE_COOLDOWN", TPA_INVITE_COOLDOWN);
+		
 		
 		//Ping相關
-		message.get("PINGNORMAL", PINGNORMAL);
-		message.get("PINGERROR", PINGERROR);
+		message.set("PINGNORMAL", PINGNORMAL);
+		message.set("PINGERROR", PINGERROR);
 		
 		//FLY
-		message.get("FLY_SET_TRUE", FLY_SET_TRUE);
-		message.get("FLY_SET_FALSE", FLY_SET_FALSE);
+		message.set("FLY_SET_TRUE", FLY_SET_TRUE);
+		message.set("FLY_SET_FALSE", FLY_SET_FALSE);
 		
 		//私訊
-		message.get("TELL_PLAYERNULL", TELL_PLAYERNULL);
-		message.get("TELL_ERRORCOMMAND", TELL_ERRORCOMMAND);
+		message.set("TELL_PLAYERNULL", TELL_PLAYERNULL);
+		message.set("TELL_ERRORCOMMAND", TELL_ERRORCOMMAND);
 		Main.plugin.SystemReLoad();
 	}
 }
