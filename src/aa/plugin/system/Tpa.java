@@ -37,7 +37,7 @@ public class Tpa implements CommandExecutor {
 			return false;
 		}
 
-		if (args[0].equals("accept")) {
+		if (args[0].equals("yes")) {
 
 			Player target = (Player) sender;
 
@@ -60,13 +60,13 @@ public class Tpa implements CommandExecutor {
 
 			}
 
-			inviter.sendMessage(target.getName() + " 接受了你的傳送請求");
+			inviter.sendMessage(target.getName() + " §a接受§f你的傳送請求");
 
 			inviter.teleport(target.getLocation());
 
 			map.remove(target);
 
-		} else if (args[0].equals("denied")) {
+		} else if (args[0].equals("no")) {
 
 			Player target = (Player) sender;
 
@@ -85,7 +85,7 @@ public class Tpa implements CommandExecutor {
 			if (inviter == null)
 				return false;
 
-			inviter.sendMessage(target.getName() + " 拒絕了你的傳送請求");
+			inviter.sendMessage(target.getName() + " §c拒絕§f你的傳送請求");
 
 			map.remove(target);
 
@@ -96,7 +96,7 @@ public class Tpa implements CommandExecutor {
 
 			if (target == null) {
 
-				inviter.sendMessage("玩家不存在");
+				inviter.sendMessage("§c玩家不存在");
 				return false;
 
 			}
@@ -113,7 +113,7 @@ public class Tpa implements CommandExecutor {
 			inv.inviter = inviter;
 			inv.target = target;
 			
-			inviter.sendMessage("已發送傳送邀請給 " + target.getName());
+			inviter.sendMessage("已發送傳送邀請給 §6" + target.getName());
 
 			map.put(target, inv);
 
@@ -127,11 +127,11 @@ public class Tpa implements CommandExecutor {
 			denied.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("點擊拒絕!").create()));
 			denied.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpa denied"));
 
-			target.sendMessage(String.format("你接到了一封來自於 %s 的傳送請求", inviter.getName()));
+			target.sendMessage(String.format("你接到了一封來自於 §6%s §f的傳送請求", inviter.getName()));
 			target.spigot().sendMessage(accept);
 			target.spigot().sendMessage(denied);
 
-			target.sendMessage("此封邀請將在1分鐘後自動刪除");
+			target.sendMessage("此封邀請將在 §a1 分鐘§f後§4§l自動刪除");
 
 			new BukkitRunnable() {
 
