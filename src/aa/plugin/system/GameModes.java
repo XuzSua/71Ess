@@ -21,6 +21,7 @@ import org.bukkit.inventory.Inventory;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import aa.plugin.main.GUIs.GamemodeGUI;
 
 public class GameModes implements CommandExecutor, Listener {
 	
@@ -35,39 +36,9 @@ public class GameModes implements CommandExecutor, Listener {
 				{
 					if (args.length == 0)
 					{
-						Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對自己)");
-						p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
-					
-						//第一排
-						for(int i = 0; i <= 8; i++) {
-						
-							inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
-						
-						}
-					
-						inv.setItem(4, createItem.createItemsForGUI(Material.ITEM_FRAME, 0, " ", ""));
-					
-						//第三排
-						inv.setItem(19, createItem.createItemsForGUI(Material.DIAMOND_PICKAXE, 0, "§a生存模式", ""));
-						inv.setItem(21, createItem.createItemsForGUI(Material.GRASS, 0, "§d創造模式", ""));
-						inv.setItem(23, createItem.createItemsForGUI(Material.PAPER, 0, "§5冒險模式", ""));
-						inv.setItem(25, createItem.createItemsForGUI(Material.BARRIER, 0, "§c觀察模式", ""));
-					
-						//第四排
-						inv.setItem(35, createItem.createItemsForGUI(Material.REDSTONE_BLOCK, 0, "§4警告", "切換後請自行關閉選單"));
-					
-						for(int i = 36; i <= 44; i++) {
-							
-							inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
-						
-						}
-					
-						p.openInventory(inv);
-						
+						GamemodeGUI.GameModeGUI(p);
 						return false;
-						
 					}
-					
 					GameMode[] gm = { GameMode.SURVIVAL, GameMode.CREATIVE, GameMode.ADVENTURE, GameMode.SPECTATOR };
 					int mode = Integer.parseInt(args[0]);
 					String[] gamemode = { "生存模式","創造模式","冒險模式","觀察者模式" };		
@@ -151,27 +122,6 @@ public class GameModes implements CommandExecutor, Listener {
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e)
 	{
-		if (e.getInventory().getName().contains("遊戲模式選單 (對自己)"))
-		{
-			e.setCancelled(true);
-			Player p = (Player) e.getWhoClicked();
-			
-			Map<String,GameMode> map = new HashMap<String,GameMode>();
-			
-			map.put("生存模式", GameMode.SURVIVAL);
-			map.put("創造模式", GameMode.CREATIVE);
-			map.put("冒險模式", GameMode.ADVENTURE);
-			map.put("觀察模式", GameMode.SPECTATOR);
-			
-			if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
-			
-			String action = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
-			
-			p.setGameMode(map.get(action));
-			p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE, action));
-			
-		}
-		
 		if (e.getInventory().getName().contains("遊戲模式選單 (對玩家)"))
 		{
 			e.setCancelled(true);

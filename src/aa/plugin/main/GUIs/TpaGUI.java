@@ -2,15 +2,14 @@ package aa.plugin.main.GUIs;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -18,21 +17,10 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import aa.plugin.function.cooldown;
 import aa.plugin.function.createItem;
+import aa.plugin.main.MessageManager;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 
-class Invite
-{
-	
-	Player inviter;
-	Player target;
-	
-}
-
-public class TpaGUI
+public class TpaGUI implements Listener
 {
 	
 	public static void teleportGUI(Player player)
@@ -72,8 +60,6 @@ public class TpaGUI
 		player.openInventory(inv);
 	}
 	
-	Map<Player, Player> teleport = new HashMap<>();
-	
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event)
 	{
@@ -88,50 +74,14 @@ public class TpaGUI
 			String ID = event.getCurrentItem().getItemMeta().getDisplayName();
 			
 			Player target = Bukkit.getPlayer(ChatColor.stripColor(ID));
-			
-			
-			if (!(teleport.containsKey(target)))
+
+			if (!(cooldown.CooldownCheck(p.getName() + "_發送邀請冷卻")))
 			{
-				if (!cooldown.CooldownCheck(p.getName() + "_傳送請求發送延遲"))
-				{
-					p.sendMessage("§f§l您的§a傳送請求§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
-					return;
-					
-				} else {
-					
-					teleport.remove(target);
-				}
-				
-				TextComponent tpInvite = new TextComponent();
-				
-					tpInvite.setText(String.format("%s 此玩家發送給您一個傳送邀請! (邀請將於 5 秒鐘後失效)", p));
-					
-				TextComponent targetAccept = new TextComponent("§a接受");
-				{
-					
-					targetAccept.setBold(true);
-					targetAccept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpa accept"));
-					targetAccept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§a接受傳送請求").create()));
-					
-				}
-				TextComponent targetDeny = new TextComponent("§c拒絕");
-				{
-					
-					targetDeny.setBold(true);
-					targetDeny.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpa denied"));
-					targetDeny.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§c拒絕傳送請求").create()));
-					
-				}
-				
-				tpInvite.addExtra(targetAccept);
-				tpInvite.addExtra(targetDeny);
-				
-				target.sendMessage(tpInvite);
-				
-				cooldown.CooldownSet(p.getName() + "_傳送請求發送延遲", 5);
-				teleport.put(target, p);
-				
+				p.sendMessage(MessageManager.TPA_INVITE_COOLDOWN);
+				return;
 			}
+			p.performCommand("tpa " + target.getName());
+			cooldown.CooldownSet(p.getName() + "_發送邀請冷卻", 5);
 			
 		}
 	}

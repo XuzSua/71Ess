@@ -25,6 +25,8 @@ public class MainAdminGUI implements Listener
 		
 		items[13] = createItem.createItemsForICON(Material.WATCH, 0, 1, "§6時間", Arrays.asList(" "));
 		
+		items[15] = createItem.createItemsForICON(Material.DIRT, 0, 1, "§e遊戲模式", Arrays.asList(" ")); 
+		
 		items[44] = createItem.createItemsForICON(Material.BARRIER, 0, 1, "返回至主選單", Arrays.asList(" "));
 		
 		Inventory inv = Bukkit.createInventory(null, inventorySizeLevel * 9, "管理員使用");
@@ -52,6 +54,11 @@ public class MainAdminGUI implements Listener
 				case 13:
 					player.closeInventory();
 					TimeGUI.Time(player);
+					break;
+					
+				case 15:
+					player.closeInventory();
+					GamemodeGUI.GameModeGUI(player);
 					break;
 					
 				case 44:

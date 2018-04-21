@@ -1,9 +1,11 @@
 package aa.plugin.main;
 
+import aa.plugin.main.GUIs.GamemodeGUI;
 import aa.plugin.main.GUIs.MainAdminGUI;
 import aa.plugin.main.GUIs.MainGUI;
 import aa.plugin.main.GUIs.TeleportGUI;
 import aa.plugin.main.GUIs.TimeGUI;
+import aa.plugin.main.GUIs.TpaGUI;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.SignEditor;
@@ -32,5 +34,7 @@ public class RegisterListeners
 		plugin.getServer().getPluginManager().registerEvents(new MainAdminGUI(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new TeleportGUI(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new TimeGUI(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new GamemodeGUI(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new TpaGUI(), plugin);
 	}
 }
