@@ -54,6 +54,10 @@ public class MessageManager
 	public final static String TELL_ERRORCOMMAND = Main.plugin.mc.getString("TELL_ERRORCOMMAND", title + "/msg <玩家> <訊息>");
 	public final static String TELL_PLAYERNULL = Main.plugin.mc.getString("TELL_PLAYERNULL", title + "找不到目標玩家!");
 	
+	//告示牌編輯
+	public final static String SIGNEDITOR_COPYING = Main.plugin.mc.getString("SIGNEDITOR_COPYING", title + "§f§l您複製一個告示牌 §a蹲下 + 左鍵 §f§l其他告示牌完成貼上");
+	public final static String SIGNEDITOR_PASTING = Main.plugin.mc.getString("SIGNEDITOR_PASTING", title + "§f§l您完成 §a貼上 §f動作");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -102,6 +106,11 @@ public class MessageManager
 		//私訊
 		message.set("TELL_PLAYERNULL", TELL_PLAYERNULL);
 		message.set("TELL_ERRORCOMMAND", TELL_ERRORCOMMAND);
+		
+		//告示牌編輯
+		message.set("SIGNEDITOR_COPYING", SIGNEDITOR_COPYING);
+		message.set("SIGNEDITOR_PASTING", SIGNEDITOR_PASTING);
+		
 		Main.plugin.SystemReLoad();
 	}
 }

@@ -11,6 +11,8 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import aa.plugin.main.MessageManager;
+
 public class SignEditor implements Listener
 {
 	@EventHandler
@@ -42,7 +44,7 @@ public class SignEditor implements Listener
 					{
 									
 						coping.put(player, lines);
-						player.sendActionBar("將告示牌內容複製");
+						player.sendMessage(MessageManager.SIGNEDITOR_COPYING);
 						
 					}else if (coping.containsKey(player))
 					{
@@ -57,7 +59,7 @@ public class SignEditor implements Listener
 						sign.update();
 						
 						coping.remove(player);
-						player.sendActionBar("將告示牌內容貼上");
+						player.sendMessage(MessageManager.SIGNEDITOR_PASTING);
 						
 					}
 				}
