@@ -24,6 +24,14 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
+class Invite
+{
+	
+	Player inviter;
+	Player target;
+	
+}
+
 public class TpaGUI
 {
 	
@@ -102,7 +110,7 @@ public class TpaGUI
 				{
 					
 					targetAccept.setBold(true);
-					targetAccept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpaccept"));
+					targetAccept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpa accept"));
 					targetAccept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§a接受傳送請求").create()));
 					
 				}
@@ -110,7 +118,7 @@ public class TpaGUI
 				{
 					
 					targetDeny.setBold(true);
-					targetDeny.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpdeny"));
+					targetDeny.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpa denied"));
 					targetDeny.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§c拒絕傳送請求").create()));
 					
 				}
@@ -118,7 +126,7 @@ public class TpaGUI
 				tpInvite.addExtra(targetAccept);
 				tpInvite.addExtra(targetDeny);
 				
-				p.sendMessage(tpInvite);
+				target.sendMessage(tpInvite);
 				
 				cooldown.CooldownSet(p.getName() + "_傳送請求發送延遲", 5);
 				teleport.put(target, p);

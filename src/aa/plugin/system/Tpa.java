@@ -10,9 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
-import aa.plugin.main.MessageManager;
 import aa.plugin.main.GUIs.TpaGUI;
 
 
@@ -38,7 +36,7 @@ public class Tpa implements CommandExecutor
 			return false;
 		}
 		
-		if(args[0].equals("accept")) {
+		if(args[0].equals("yes")) {
 			
 			Player target = (Player) sender;
 			
@@ -54,13 +52,13 @@ public class Tpa implements CommandExecutor
 			
 			Player inviter = inv.inviter;
 
-			inviter.sendMessage(target.getName() + " 接受了你的傳送請求");
+			inviter.sendMessage(target.getName() + " §a§l接受§f你的傳送請求");
 			
 			inviter.teleport(target.getLocation());
 			
 			map.remove(target);
 			
-		}else if(args[0].equals("denied")) {
+		}else if(args[0].equals("no")) {
 			
 			Player target = (Player) sender;
 			
@@ -76,26 +74,19 @@ public class Tpa implements CommandExecutor
 			
 			Player inviter = inv.inviter;			
 			
-			inviter.sendMessage(target.getName() + " 拒絕了你的傳送請求");
+			inviter.sendMessage(target.getName() + " §c§l拒絕§f你的傳送請求");
 			
 			map.remove(target);
 			
 		}else {
 			
-			Player player = (Player) sender;
-			if (!(cooldown.CooldownCheck(player.getName() + "_發送傳送邀請冷卻")))
-			{
-				player.sendMessage(MessageManager.TPA_INVITE_COOLDOWN);
-				return false;
-			}
-			
-			Player target = Bukkit.getPlayer(args[0]);
+			Player target = Bukkit.getServer().getPlayer(args[0]);
 			Player inviter = (Player)sender;
 			
 			if(map.containsKey(target)) {
 				
 				inviter.sendMessage("邀請已存在，請等待回覆。");
-				
+				return false;
 			}
 			
 			Invite inv = new Invite();
@@ -105,17 +96,24 @@ public class Tpa implements CommandExecutor
 			
 			map.put(target, inv);
 			
-			target.sendMessage(String.format("你接到了一封來自於 %s 的傳送請求",inviter.getName()));
-			target.sendMessage("接受請輸入/tpa accept ， 不接受請輸入/tpa denied");
-			target.sendMessage("此封邀請將在1分鐘後自動刪除");
+			target.sendMessage("=================================================================");
+			target.sendMessage("");
+			target.sendMessage(String.format("§f你接到了一封來自於 §6§l%s §f的傳送請求", inviter.getName()));
+			target.sendMessage("");
+			target.sendMessage("§a§l接受§f請輸入/tpa yes ， §c§l拒絕§f請輸入/tpa no");
+			target.sendMessage("");
+			target.sendMessage("§f此封邀請將在§a 1 分鐘§f後§4§l自動刪除");
+			target.sendMessage("");
+			target.sendMessage("=================================================================");
 			
-			if (map.containsKey(target))
+			if (!(map.containsKey(target)))
 			{
 				new BukkitRunnable() {
 					
 					public void run() {
 						
 						inviter.sendMessage("邀請已被自動刪除。");
+						target.sendMessage("邀請已被自動刪除。");
 						map.remove(target);
 						
 					}
