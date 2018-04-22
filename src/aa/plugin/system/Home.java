@@ -41,6 +41,13 @@ public class Home implements CommandExecutor {
 					{
 						 return false;
 					}
+					
+					if (args[1] == null) {
+						
+						p.sendMessage("請輸入home1,home2,home3");
+						return false;
+						
+					}
 
 					set(p, args[1]);
 
