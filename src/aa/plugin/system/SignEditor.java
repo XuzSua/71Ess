@@ -27,7 +27,7 @@ public class SignEditor implements Listener
 	static Map<Player, String[]> coping = new HashMap<>();
 	
 	@EventHandler
-	public void copySign(PlayerInteractEvent event)
+	public void EnterEditormode(PlayerInteractEvent event)
 	{
 		Player player = event.getPlayer();
 		if (player.hasPermission("71ess.signedit"))
@@ -36,6 +36,7 @@ public class SignEditor implements Listener
 			{
 				if (event.getClickedBlock().getState() instanceof Sign)
 				{
+					
 					event.setCancelled(true);
 					Sign sign = (Sign) event.getClickedBlock().getState();
 					String[] lines = sign.getLines();					

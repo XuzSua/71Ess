@@ -22,17 +22,28 @@ public class RegisterCommands
 		//plugin.getCommand("").setExecutor(new (plugin));
 		plugin.getCommand("gamemode").setExecutor(new GameModes());
 		plugin.getCommand("gm").setExecutor(new GameModes());
+		
 		plugin.getCommand("weather").setExecutor(new Weather());
+		
 		plugin.getCommand("spawn").setExecutor(new Spawn());
+		
 		plugin.getCommand("time").setExecutor(new Time());
+		
 		plugin.getCommand("tp").setExecutor(new Teleport());
+		
 		plugin.getCommand("tpa").setExecutor(new Tpa());
+		
 		plugin.getCommand("home").setExecutor(new Home());
+		
 		plugin.getCommand("fly").setExecutor(new Fly());
+		
 		plugin.getCommand("god").setExecutor(new God());
+		
 		plugin.getCommand("ping").setExecutor(new PingDetect());
+		
 		plugin.getCommand("msg").setExecutor(new PrivateMessage());
 		plugin.getCommand("msgr").setExecutor(new PrivateMessage());
+		
 		plugin.getCommand("tpall").setExecutor(new Tpall());
 	}
 }

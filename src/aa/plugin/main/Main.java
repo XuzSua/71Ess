@@ -35,6 +35,7 @@ public class Main extends JavaPlugin
 		
 		home = new File(this.getDataFolder() + "/home.yml");
 		hc = YamlConfiguration.loadConfiguration(home);
+
 	}
 	public void SystemReLoad() {
 		try {

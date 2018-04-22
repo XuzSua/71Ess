@@ -79,6 +79,12 @@ public class Home implements CommandExecutor {
 
 	public void set(Player player, String point) {
 
+		if (point == null)
+		{
+			player.sendMessage("請指定home1, home2, home3");
+			return;
+		}
+		
 		List<String> list = new ArrayList<String>();
 
 		list.add("home1");
