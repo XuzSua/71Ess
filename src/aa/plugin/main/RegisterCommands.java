@@ -6,6 +6,7 @@ import aa.plugin.system.God;
 import aa.plugin.system.Home;
 import aa.plugin.system.PingDetect;
 import aa.plugin.system.PrivateMessage;
+import aa.plugin.system.SignEditor;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
 import aa.plugin.system.Time;
@@ -45,5 +46,7 @@ public class RegisterCommands
 		plugin.getCommand("msgr").setExecutor(new PrivateMessage());
 		
 		plugin.getCommand("tpall").setExecutor(new Tpall());
+		
+		plugin.getCommand("signedit").setExecutor(new SignEditor());
 	}
 }
