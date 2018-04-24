@@ -3,10 +3,11 @@ package aa.plugin.main;
 import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
+import aa.plugin.system.Heal;
 import aa.plugin.system.Home;
 import aa.plugin.system.PingDetect;
 import aa.plugin.system.PrivateMessage;
-import aa.plugin.system.SignEditor;
+import aa.plugin.system.SignEditorBySigtuna;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.Teleport;
 import aa.plugin.system.Time;
@@ -47,6 +48,8 @@ public class RegisterCommands
 		
 		plugin.getCommand("tpall").setExecutor(new Tpall());
 		
-		plugin.getCommand("signedit").setExecutor(new SignEditor());
+		plugin.getCommand("signedit").setExecutor(new SignEditorBySigtuna());
+		
+		plugin.getCommand("heal").setExecutor(new Heal());
 	}
 }

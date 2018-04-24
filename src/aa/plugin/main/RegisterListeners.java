@@ -8,7 +8,7 @@ import aa.plugin.main.GUIs.TimeGUI;
 import aa.plugin.main.GUIs.TpaGUI;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
-import aa.plugin.system.SignEditor;
+import aa.plugin.system.SignEditorBySigtuna;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.TradeChannel;
 import aa.plugin.system.Weather;
@@ -26,7 +26,7 @@ public class RegisterListeners
 		plugin.getServer().getPluginManager().registerEvents(new Weather(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Spawn(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new God(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new SignEditor(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new SignEditorBySigtuna(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new TradeChannel(), plugin);
 		
 		//GUIs

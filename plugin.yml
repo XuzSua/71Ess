@@ -30,5 +30,8 @@ commands:
         description: resend a private message to a player
     tpall:
         description: teleport all player to sender
+    #I just fucking rewrite this shit.
     signedit:
         description: edit your fucking signs!
+    heal:
+        description: heal your body
