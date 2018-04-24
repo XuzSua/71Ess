@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -68,6 +69,9 @@ public class PrivateMessage implements CommandExecutor {
 						target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 						player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 						
+						target.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+						player.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+						
 					}
 					
 				}
@@ -92,6 +96,8 @@ public class PrivateMessage implements CommandExecutor {
 				target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 				player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 				
+				target.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+				player.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
 			}
 			
 		}
