@@ -16,6 +16,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+
 class SignData{
 	
 	Player creator;
@@ -129,7 +135,7 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 		
 		if(!player.hasPermission("71ess.signedit")) {
 			
-			sender.sendMessage("不讓你用");
+			sender.sendMessage(MessageManager.HAVENOPERMISSION);
 			return false;
 			
 		}
@@ -142,34 +148,50 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 		
 		switch(args[0]) {
 		
-		case "copy":
+			case "copy":
 			
-			copy(player);
-			break;
+				copy(player);
+				break;
 			
-		case "clear":
+			case "clear":
 			
-			map.remove(player);
-			player.sendMessage("清除成功。");
-			break;
+				map.remove(player);
+				player.sendMessage("清除成功。");
+				break;
 			
-		default:
+			default:
 			
-			help(player);
-			break;
+				help(player);
+				break;
 			
 		}
 		
 		return false;
 	}
 	
-	public void help(Player player) {
+	public void help(Player player)
+	{
+		
+		TextComponent copy = new TextComponent("- copy");
+		{
+			
+			copy.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit copy").create()));
+			copy.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit copy"));
+			
+		}
+		TextComponent reset = new TextComponent("- reset");
+		{
+			
+			reset.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit reset").create()));
+			reset.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit reset"));
+			
+		}
 		
 		player.sendMessage("=================================================================");
 		player.sendMessage("");
-		player.sendMessage("/signedit <下方指令>");
-		player.sendMessage("- copy" + "     " + "將主告示牌訊息複製到 所有記錄的告示牌上");
-		player.sendMessage("- clear" + "    " + "清除所有儲存的告示牌記錄(包括主告示牌)");
+		player.sendMessage("/signedit 透過鼠標移動到下方指令並點選 自動輸入指令!");
+		player.sendMessage(copy + "     " + "將主告示牌訊息複製到 所有記錄的告示牌上");
+		player.sendMessage(reset + "    " + "清除所有告示牌點選紀錄 (包含主告示牌)");
 		player.sendMessage("");
 		player.sendMessage("=================================================================");
 		

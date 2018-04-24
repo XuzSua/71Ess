@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import aa.plugin.main.MessageManager;
+
 public class Heal implements CommandExecutor{
 
 	@Override
@@ -23,7 +25,7 @@ public class Heal implements CommandExecutor{
 		
 		if(!player.hasPermission("71ess.heal")) {
 			
-			player.sendMessage("不讓你用");
+			player.sendMessage(MessageManager.HAVENOPERMISSION);
 			return false;
 			
 		}
