@@ -139,32 +139,37 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 			return false;
 			
 		}
-		
-		if(args.length == 0) {
-			
+		if (args.length == 0)
+		{
 			help(player);
+			return false;
+		}
+		
+		if (args.length > 0)
+		{		
+			switch(args[0])
+			{
+			
+				case "copy":
+			
+					copy(player);
+					break;
+			
+				case "reset":
+				
+					map.remove(player);
+					player.sendMessage("清除成功。");
+					break;
+			
+				default:
+			
+					help(player);
+					break;
+			
+			}
 			
 		}
 		
-		switch(args[0]) {
-		
-			case "copy":
-			
-				copy(player);
-				break;
-			
-			case "clear":
-			
-				map.remove(player);
-				player.sendMessage("清除成功。");
-				break;
-			
-			default:
-			
-				help(player);
-				break;
-			
-		}
 		
 		return false;
 	}
@@ -172,30 +177,24 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 	public void help(Player player)
 	{
 		
-		TextComponent copy = new TextComponent();
-		{
+		TextComponent copy = new TextComponent("- copy");
 		
-			copy.setText("- copy");
-			copy.setBold(true);
-			copy.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit copy").create()));
-			copy.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit copy"));
-			
-		}
-		TextComponent reset = new TextComponent();
-		{
-			
-			reset.setText("- reset");
-			reset.setBold(true);
-			reset.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit reset").create()));
-			reset.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit reset"));
-			
-		}
+		copy.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit copy").create()));
+		copy.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit copy"));	
+		copy.addExtra("     " + "§7將主告示牌訊息複製到 所有記錄的告示牌上");
+		
+		TextComponent reset = new TextComponent("- reset");	
+		
+		reset.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit reset").create()));
+		reset.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit reset"));
+		reset.addExtra("    " + "§7清除所有告示牌點選紀錄 (包含主告示牌)");
 		
 		player.sendMessage("=================================================================");
 		player.sendMessage("");
-		player.sendMessage("/signedit 透過鼠標移動到下方指令並點選 自動輸入指令!");
-		player.sendMessage(copy + "     " + "將主告示牌訊息複製到 所有記錄的告示牌上");
-		player.sendMessage(reset + "    " + "清除所有告示牌點選紀錄 (包含主告示牌)");
+		player.sendMessage("/signedit 透過鼠標移動到下方指令並點選 §a§l自動輸入指令!");
+		player.sendMessage("");
+		player.sendMessage(copy);
+		player.sendMessage(reset);
 		player.sendMessage("");
 		player.sendMessage("=================================================================");
 		
