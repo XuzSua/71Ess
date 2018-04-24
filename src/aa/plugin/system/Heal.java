@@ -36,7 +36,7 @@ public class Heal implements CommandExecutor{
 			
 			player.setFoodLevel(20);
 			
-			player.sendMessage("狀態回復完成");
+			player.sendMessage(String.format(MessageManager.HEAL_PLAYER, player.getName()));
 			
 		}
 		
@@ -46,7 +46,7 @@ public class Heal implements CommandExecutor{
 			
 			if(target == null) {
 				
-				player.sendMessage("玩家不存在");
+				player.sendMessage(MessageManager.HEAL_PLAYERNOTFOUND);
 				return false;
 				
 			}
@@ -55,9 +55,9 @@ public class Heal implements CommandExecutor{
 			
 			target.setFoodLevel(20);
 			
-			target.sendMessage("狀態回復完成");
+			target.sendMessage(String.format(MessageManager.HEAL_PLAYER, args[0]));
 			
-			player.sendMessage("回復 " + target.getName() + " 的狀態完成");
+			player.sendMessage(String.format(MessageManager.HEAL_PLAYER, args[0]));
 			
 		}
 		

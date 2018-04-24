@@ -39,7 +39,9 @@ public class MessageManager
 	
 	//傳送相關
 	public final static String TELEPORT_TOPLAYER = Main.plugin.mc.getString("TELEPORT_TOPLAYER", title + "已將您傳送至 %s");
-	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 %s");
+	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 §6§l%s");
+	public final static String TELEPORT_PLAYERTOPLAYER = Main.plugin.mc.getString("TELEPORT_PLAYERTOPLAYER", title + "已將指定玩家傳送至 §6§l%s");
+	public final static String TELEPORT_PLAYERHASBEENTP = Main.plugin.mc.getString("TELEPORT_PLAYERHASBEENTP", title + "您已被傳送到目標玩家 §6§%s");
 	public final static String TPA_INVITE_COOLDOWN = Main.plugin.mc.getString("TPA_INVITE_COOLDOWN", title + "§f§l您的§a傳送邀請§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	
 	//Ping相關
@@ -58,6 +60,9 @@ public class MessageManager
 	public final static String SIGNEDITOR_COPYING = Main.plugin.mc.getString("SIGNEDITOR_COPYING", title + "§f§l您複製一個告示牌 §a蹲下 + 左鍵 §f§l其他告示牌完成貼上");
 	public final static String SIGNEDITOR_PASTING = Main.plugin.mc.getString("SIGNEDITOR_PASTING", title + "§f§l您完成 §a貼上 §f動作");
 	
+	//回血
+	public final static String HEAL_PLAYER = Main.plugin.mc.getString("HEAL_PLAYERNOTFOUND", title + "§f§l已將該玩家的狀態回滿 §6§l%s");
+	public final static String HEAL_PLAYERNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 §6§l%s");
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -92,6 +97,8 @@ public class MessageManager
 		//傳送相關
 		message.set("TELEPORT_TOPLAYER", TELEPORT_TOPLAYER);
 		message.set("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
+		message.set("TELEPORT_PLAYERTOPLAYER", TELEPORT_PLAYERTOPLAYER);
+		message.set("TELEPORT_PLAYERHASBEENTP", TELEPORT_PLAYERHASBEENTP);
 		message.set("TPA_INVITE_COOLDOWN", TPA_INVITE_COOLDOWN);
 		
 		
@@ -110,6 +117,9 @@ public class MessageManager
 		//告示牌編輯
 		message.set("SIGNEDITOR_COPYING", SIGNEDITOR_COPYING);
 		message.set("SIGNEDITOR_PASTING", SIGNEDITOR_PASTING);
+		
+		//回血
+		message.set("HEAL_PLAYERNOTFOUND", HEAL_PLAYERNOTFOUND);
 		
 		Main.plugin.SystemReLoad();
 	}

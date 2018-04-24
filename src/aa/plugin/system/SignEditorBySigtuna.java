@@ -172,16 +172,20 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 	public void help(Player player)
 	{
 		
-		TextComponent copy = new TextComponent("- copy");
+		TextComponent copy = new TextComponent();
 		{
-			
+		
+			copy.setText("- copy");
+			copy.setBold(true);
 			copy.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit copy").create()));
 			copy.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit copy"));
 			
 		}
-		TextComponent reset = new TextComponent("- reset");
+		TextComponent reset = new TextComponent();
 		{
 			
+			reset.setText("- reset");
+			reset.setBold(true);
 			reset.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("/signedit reset").create()));
 			reset.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/signedit reset"));
 			

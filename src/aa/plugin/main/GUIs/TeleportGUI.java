@@ -73,7 +73,7 @@ public class TeleportGUI implements Listener
 			
 			p.teleport(Bukkit.getPlayer(ChatColor.stripColor(ID)));
 			
-			p.sendActionBar(String.format(MessageManager.TELEPORT_TOPLAYER, ID));
+			p.sendMessage(String.format(MessageManager.TELEPORT_TOPLAYER, ID));
 
 		}
 	}
