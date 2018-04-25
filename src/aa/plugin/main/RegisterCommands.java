@@ -1,5 +1,6 @@
 package aa.plugin.main;
 
+import aa.plugin.system.Afk;
 import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
@@ -32,6 +33,7 @@ public class RegisterCommands
 		plugin.getCommand("time").setExecutor(new Time());
 		
 		plugin.getCommand("tp").setExecutor(new Teleport());
+		plugin.getCommand("tpc").setExecutor(new Teleport());
 		
 		plugin.getCommand("tpa").setExecutor(new Tpa());
 		
@@ -51,5 +53,7 @@ public class RegisterCommands
 		plugin.getCommand("signedit").setExecutor(new SignEditorBySigtuna());
 		
 		plugin.getCommand("heal").setExecutor(new Heal());
+		
+		plugin.getCommand("afk").setExecutor(new Afk());
 	}
 }

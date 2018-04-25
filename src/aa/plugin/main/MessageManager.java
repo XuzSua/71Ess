@@ -42,6 +42,10 @@ public class MessageManager
 	public final static String TELEPORT_TARGETNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 §6§l%s");
 	public final static String TELEPORT_PLAYERTOPLAYER = Main.plugin.mc.getString("TELEPORT_PLAYERTOPLAYER", title + "已將指定玩家傳送至 §6§l%s");
 	public final static String TELEPORT_PLAYERHASBEENTP = Main.plugin.mc.getString("TELEPORT_PLAYERHASBEENTP", title + "您已被傳送到目標玩家 §6§%s");
+	
+	public final static String TPC_TARGETNOTFOUND = Main.plugin.mc.getString("TPC_TARGETNOTFOUND", title + "找不到該玩家 §6§l%s");
+	public final static String TPC_ERRORCOMMAND = Main.plugin.mc.getString("TPC_ERRORCOMMAND", title + "請輸入正確的指令 /tpc <Player> <X> <Y> <Z>");
+	public final static String TPC_TELEPORTDONE = Main.plugin.mc.getString("TPC_TELEPORTDONE", title + "將您傳送至 X: %.3f Y: %.3f Z: %.3f");
 	public final static String TPA_INVITE_COOLDOWN = Main.plugin.mc.getString("TPA_INVITE_COOLDOWN", title + "§f§l您的§a傳送邀請§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	
 	//Ping相關
@@ -63,6 +67,13 @@ public class MessageManager
 	//回血
 	public final static String HEAL_PLAYER = Main.plugin.mc.getString("HEAL_PLAYERNOTFOUND", title + "§f§l已將該玩家的狀態回滿 §6§l%s");
 	public final static String HEAL_PLAYERNOTFOUND = Main.plugin.mc.getString("TELEPORT_TARGETNOTFOUND", title + "該玩家並不在線上 §6§l%s");
+	
+	//Afk
+	public final static String AFK_COOLDOWN = Main.plugin.mc.getString("AFK_COOLDOWN", title + "§f§l您的§a掛機§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
+	public final static String AFK_ENABLE = Main.plugin.mc.getString("AFK_ENABLE", title + "您已§a進入§f掛機模式 無法受到任何傷害!");
+	public final static String AFK_DISABLE = Main.plugin.mc.getString("AFK_DISABLE", title + "您已§c離開§f掛機模式");
+	
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -99,8 +110,10 @@ public class MessageManager
 		message.set("TELEPORT_TARGETNOTFOUND", TELEPORT_TARGETNOTFOUND);
 		message.set("TELEPORT_PLAYERTOPLAYER", TELEPORT_PLAYERTOPLAYER);
 		message.set("TELEPORT_PLAYERHASBEENTP", TELEPORT_PLAYERHASBEENTP);
+		message.set("TPC_TARGETNOTFOUND", TPC_TARGETNOTFOUND);
+		message.set("TPC_ERRORCOMMAND", TPC_ERRORCOMMAND);
+		message.set("TPC_TELEPORTDONE", TPC_TELEPORTDONE);
 		message.set("TPA_INVITE_COOLDOWN", TPA_INVITE_COOLDOWN);
-		
 		
 		//Ping相關
 		message.set("PINGNORMAL", PINGNORMAL);
@@ -121,6 +134,10 @@ public class MessageManager
 		//回血
 		message.set("HEAL_PLAYERNOTFOUND", HEAL_PLAYERNOTFOUND);
 		
+		//Afk
+		message.set("AFK_COOLDOWN", AFK_COOLDOWN);
+		message.set("AFK_ENABLE", AFK_ENABLE);
+		message.set("AFK_DISABLE", AFK_DISABLE);
 		Main.plugin.SystemReLoad();
 	}
 }
