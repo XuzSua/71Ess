@@ -1,6 +1,7 @@
 package aa.plugin.main;
 
 import aa.plugin.system.Afk;
+import aa.plugin.system.Back;
 import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
@@ -55,5 +56,7 @@ public class RegisterCommands
 		plugin.getCommand("heal").setExecutor(new Heal());
 		
 		plugin.getCommand("afk").setExecutor(new Afk());
+		
+		plugin.getCommand("back").setExecutor(new Back());
 	}
 }
