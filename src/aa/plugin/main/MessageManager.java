@@ -25,6 +25,8 @@ public class MessageManager
 	public final static String SPAWN_TP_COOLDOWN = Main.plugin.mc.getString("SPAWN_TP_COOLDOWN", "§f§l您的重生點§6傳送§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String SPAWN_LOGIN = Main.plugin.mc.getString("SPAWN_LOGIN", "登入此伺服器時系統設定玩家自動傳送回重生點! (避免玩家在一些奇奇怪怪的地方下線以至於上線時被圍毆之類的)");
 	
+	public final static String AUTORESPAWN = Main.plugin.mc.getString("AUTORESPAWN", title + "§c§l您已死亡 §a§l自動復活並且傳送回重生點");
+	
 	//家相關
 	public final static String HOME_SET_HOME = Main.plugin.mc.getString("HOME_SET", "已設置您的 %s 點");
 	public final static String HOME_SET_COOLDOWN = Main.plugin.mc.getString("HOME_SET_COOLDOWN", "§f§l您的家§6設置§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
@@ -71,8 +73,7 @@ public class MessageManager
 	//Afk
 	public final static String AFK_COOLDOWN = Main.plugin.mc.getString("AFK_COOLDOWN", title + "§f§l您的§a掛機§f§l指令正於冷卻當中 (冷卻時間為 5 秒鐘一次)");
 	public final static String AFK_ENABLE = Main.plugin.mc.getString("AFK_ENABLE", title + "您已§a進入§f掛機模式 無法受到任何傷害!");
-	public final static String AFK_DISABLE = Main.plugin.mc.getString("AFK_DISABLE", title + "您已§c離開§f掛機模式");
-	
+	public final static String AFK_DISABLE = Main.plugin.mc.getString("AFK_DISABLE", title + "您已§c離開§f掛機模式");	
 	
 	public static void CreateFile()
 	{		
@@ -114,6 +115,8 @@ public class MessageManager
 		message.set("TPC_ERRORCOMMAND", TPC_ERRORCOMMAND);
 		message.set("TPC_TELEPORTDONE", TPC_TELEPORTDONE);
 		message.set("TPA_INVITE_COOLDOWN", TPA_INVITE_COOLDOWN);
+		
+		message.set("AUTORESPAWN", AUTORESPAWN);
 		
 		//Ping相關
 		message.set("PINGNORMAL", PINGNORMAL);

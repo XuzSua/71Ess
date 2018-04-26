@@ -7,6 +7,7 @@ import aa.plugin.main.GUIs.TeleportGUI;
 import aa.plugin.main.GUIs.TimeGUI;
 import aa.plugin.main.GUIs.TpaGUI;
 import aa.plugin.system.Afk;
+import aa.plugin.system.AutoRespawn;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.SignEditorBySigtuna;
@@ -30,6 +31,7 @@ public class RegisterListeners
 		plugin.getServer().getPluginManager().registerEvents(new SignEditorBySigtuna(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new TradeChannel(), plugin);
 		plugin.getServer().getPluginManager().registerEvents(new Afk(), plugin);
+		plugin.getServer().getPluginManager().registerEvents(new AutoRespawn(), plugin);
 		
 		//GUIs
 		plugin.getServer().getPluginManager().registerEvents(new MainGUI(), plugin);
