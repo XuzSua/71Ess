@@ -36,6 +36,8 @@ public class Heal implements CommandExecutor{
 			
 			player.setFoodLevel(20);
 			
+			player.setFireTicks(0);
+			
 			player.sendMessage(String.format(MessageManager.HEAL_PLAYER, player.getName()));
 			
 		}
@@ -54,6 +56,8 @@ public class Heal implements CommandExecutor{
 			target.setHealth(target.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
 			
 			target.setFoodLevel(20);
+			
+			target.setFireTicks(0);
 			
 			target.sendMessage(String.format(MessageManager.HEAL_PLAYER, args[0]));
 			
