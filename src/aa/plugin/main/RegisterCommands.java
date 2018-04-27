@@ -3,6 +3,7 @@ package aa.plugin.main;
 import aa.plugin.system.Afk;
 import aa.plugin.system.Back;
 import aa.plugin.system.Broadcast;
+import aa.plugin.system.ChatManager;
 import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
@@ -62,5 +63,7 @@ public class RegisterCommands
 		
 		plugin.getCommand("broadcast").setExecutor(new Broadcast());
 		plugin.getCommand("bc").setExecutor(new Broadcast());
+		
+		plugin.getCommand("chat").setExecutor(new ChatManager());
 	}
 }

@@ -75,6 +75,12 @@ public class MessageManager
 	public final static String AFK_ENABLE = Main.plugin.mc.getString("AFK_ENABLE", title + "您已§a進入§f掛機模式 無法受到任何傷害!");
 	public final static String AFK_DISABLE = Main.plugin.mc.getString("AFK_DISABLE", title + "您已§c離開§f掛機模式");	
 	
+	//聊天欄管理
+	public final static String CHAT_CLEAR = Main.plugin.mc.getString("CHAT_CLEAR", title + "§f§l管理員 §6§l%s §f§l將伺服器聊天欄清除所有訊息!");
+	
+	//自動復活
+	public final static String AUTORESPAWN_DEATHMESSAGE = Main.plugin.mc.getString("AUTORESPAWN_DEATHMESSAGE", title + "§f§l您已死亡 輸入 /back 即可回到上一個點!");
+	
 	public static void CreateFile()
 	{		
 		FileConfiguration message = Main.plugin.mc;
@@ -141,6 +147,13 @@ public class MessageManager
 		message.set("AFK_COOLDOWN", AFK_COOLDOWN);
 		message.set("AFK_ENABLE", AFK_ENABLE);
 		message.set("AFK_DISABLE", AFK_DISABLE);
+		
+		//聊天欄管理
+		message.set("CHAT_CLEAR", CHAT_CLEAR);
+		
+		//自動重生
+		message.set("AUTORESPAWN_DEATHMESSAGE", AUTORESPAWN_DEATHMESSAGE);
+		
 		Main.plugin.SystemReLoad();
 	}
 }

@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
+import aa.plugin.main.MessageManager;
+
 public class Back implements CommandExecutor, Listener
 {
 
@@ -23,7 +25,7 @@ public class Back implements CommandExecutor, Listener
 	{
 		Player player = event.getEntity();
 		backpoint.put(player, player.getLocation());
-		player.sendMessage("您已死亡, 可以透過 /back 回到您的死亡點");
+		player.sendMessage(MessageManager.AUTORESPAWN_DEATHMESSAGE);
 	}
 
 	@EventHandler
@@ -31,7 +33,6 @@ public class Back implements CommandExecutor, Listener
 	{
 		Player player = event.getPlayer();
 		backpoint.put(player, player.getLocation());
-		player.sendMessage("您已傳送, 可以透過 /back 回到您的上一個傳送點");
 	}
 	
 	@Override
@@ -42,16 +43,16 @@ public class Back implements CommandExecutor, Listener
 			Player player = (Player) sender;
 			if (player.hasPermission("71ess.back"))
 			{
-				if (!(backpoint.containsKey(player)))
+				if (backpoint.containsKey(player))
 				{
-					player.sendMessage("您沒有上一個傳送點可供傳送");
-					return false;
-				}else if (backpoint.containsKey(player))
-				{
-					Location loc = backpoint.get(player);
-					player.teleport(loc);
+					player.teleport(backpoint.get(player));
 					player.sendMessage("已將您傳送回上一個點");
-					return false;
+					
+					backpoint.remove(player);
+					
+				} else {
+				
+					player.sendMessage("您沒有上一個傳送點可供傳送");
 				}
 			}
 		}

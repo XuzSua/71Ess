@@ -1,5 +1,7 @@
 package aa.plugin.main;
 
+import org.bukkit.plugin.PluginManager;
+
 import aa.plugin.main.GUIs.GamemodeGUI;
 import aa.plugin.main.GUIs.MainAdminGUI;
 import aa.plugin.main.GUIs.MainGUI;
@@ -8,6 +10,7 @@ import aa.plugin.main.GUIs.TimeGUI;
 import aa.plugin.main.GUIs.TpaGUI;
 import aa.plugin.system.Afk;
 import aa.plugin.system.AutoRespawn;
+import aa.plugin.system.Back;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.SignEditorBySigtuna;
@@ -19,26 +22,29 @@ public class RegisterListeners
 {
 	Main main = Main.plugin;
 	
+	PluginManager pm = main.getServer().getPluginManager();
+	
 	public RegisterListeners(Main plugin) 
 	{
 		
-		//plugin.getServer().getPluginManager().registerEvents();
+		//pm.registerEvents();
 		
-		plugin.getServer().getPluginManager().registerEvents(new GameModes(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new Weather(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new Spawn(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new God(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new SignEditorBySigtuna(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new TradeChannel(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new Afk(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new AutoRespawn(), plugin);
+		pm.registerEvents(new GameModes(), plugin);
+		pm.registerEvents(new Weather(), plugin);
+		pm.registerEvents(new Spawn(), plugin);
+		pm.registerEvents(new God(), plugin);
+		pm.registerEvents(new SignEditorBySigtuna(), plugin);
+		pm.registerEvents(new TradeChannel(), plugin);
+		pm.registerEvents(new Afk(), plugin);
+		pm.registerEvents(new AutoRespawn(), plugin);
+		pm.registerEvents(new Back(), plugin);
 		
 		//GUIs
-		plugin.getServer().getPluginManager().registerEvents(new MainGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new MainAdminGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new TeleportGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new TimeGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new GamemodeGUI(), plugin);
-		plugin.getServer().getPluginManager().registerEvents(new TpaGUI(), plugin);
+		pm.registerEvents(new MainGUI(), plugin);
+		pm.registerEvents(new MainAdminGUI(), plugin);
+		pm.registerEvents(new TeleportGUI(), plugin);
+		pm.registerEvents(new TimeGUI(), plugin);
+		pm.registerEvents(new GamemodeGUI(), plugin);
+		pm.registerEvents(new TpaGUI(), plugin);
 	}
 }

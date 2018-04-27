@@ -25,6 +25,7 @@ public class AutoRespawn implements Listener
 		player.sendMessage(MessageManager.AUTORESPAWN);
 		player.sendMessage("");
 		
+		
 		FileConfiguration spawn = Main.plugin.sc;
 		
 		World w = Bukkit.getWorld(spawn.getString("world"));
@@ -36,7 +37,6 @@ public class AutoRespawn implements Listener
 	
 		Location loc = new Location(w, x, y, z, pitch, yaw);
 		player.teleport(loc);
-		
 	}
 	
 }
