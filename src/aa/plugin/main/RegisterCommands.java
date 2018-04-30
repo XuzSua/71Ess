@@ -9,6 +9,7 @@ import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.Heal;
 import aa.plugin.system.Home;
+import aa.plugin.system.MoneySystem;
 import aa.plugin.system.PingDetect;
 import aa.plugin.system.PrivateMessage;
 import aa.plugin.system.SignEditorBySigtuna;
@@ -67,5 +68,7 @@ public class RegisterCommands
 		plugin.getCommand("bc").setExecutor(new Broadcast());
 		
 		plugin.getCommand("chat").setExecutor(new ChatManager());
+		
+		plugin.getCommand("money").setExecutor(new MoneySystem());
 	}
 }

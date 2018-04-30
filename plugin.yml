@@ -49,3 +49,5 @@ commands:
         description: bc
     chat:
         description: chat
+    money:
+        description: moneySystem
