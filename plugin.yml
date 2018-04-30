@@ -27,6 +27,8 @@ commands:
         description: get player's ping
     tpa:
         description: sent a invite of teleport require to player 
+    tphere:
+        description: sent a invite of teleport require to player 
     msg:
         description: send a private message to a player
     msgr:

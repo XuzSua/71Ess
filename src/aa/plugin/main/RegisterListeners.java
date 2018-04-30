@@ -13,6 +13,7 @@ import aa.plugin.system.AutoRespawn;
 import aa.plugin.system.Back;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
+import aa.plugin.system.LoginQuitMessage;
 import aa.plugin.system.SignEditorBySigtuna;
 import aa.plugin.system.Spawn;
 import aa.plugin.system.TradeChannel;
@@ -38,6 +39,7 @@ public class RegisterListeners
 		pm.registerEvents(new Afk(), plugin);
 		pm.registerEvents(new AutoRespawn(), plugin);
 		pm.registerEvents(new Back(), plugin);
+		pm.registerEvents(new LoginQuitMessage(), plugin);
 		
 		//GUIs
 		pm.registerEvents(new MainGUI(), plugin);

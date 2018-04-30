@@ -17,6 +17,7 @@ import aa.plugin.system.Teleport;
 import aa.plugin.system.Time;
 import aa.plugin.system.Tpa;
 import aa.plugin.system.Tpall;
+import aa.plugin.system.Tphere;
 import aa.plugin.system.Weather;
 
 public class RegisterCommands
@@ -39,6 +40,7 @@ public class RegisterCommands
 		plugin.getCommand("tpc").setExecutor(new Teleport());
 		
 		plugin.getCommand("tpa").setExecutor(new Tpa());
+		plugin.getCommand("tphere").setExecutor(new Tphere());
 		
 		plugin.getCommand("home").setExecutor(new Home());
 		

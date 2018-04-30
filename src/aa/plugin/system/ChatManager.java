@@ -10,7 +10,7 @@ import aa.plugin.main.MessageManager;
 
 public class ChatManager implements CommandExecutor
 {
-
+	//指令部分
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lable, String[] args) {
 		
@@ -53,5 +53,5 @@ public class ChatManager implements CommandExecutor
 		
 		return false;
 	}
-	
+
 }
