@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import aa.plugin.main.MessageManager;
 import ess.classes.EcoData;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -40,35 +41,97 @@ public class MoneySystem implements CommandExecutor
 					{
 						case "show":
 							
-							int money = ed.getMoney();
+							if (player.hasPermission("71ess.money.show"))
+							{
+								int money = ed.getMoney();
+								
+								player.sendMessage("您目前有 " + money + " 元");
+								
+								if (args.length == 2)
+								{
+									
+									Player SHOWtarget = Bukkit.getServer().getPlayer(args[1]);
+									
+									EcoData targetED = new EcoData(SHOWtarget);
+									
+									int targetmoney = targetED.getMoney();
+									
+									player.sendMessage(SHOWtarget.getName() + " 的金錢為 " + targetmoney);
+									
+								}
+								
+							} else {
+								
+								player.sendMessage(MessageManager.HAVENOPERMISSION);
+							}
 							
-							player.sendMessage("您目前有 " + money + " 元");
 							
 							break;
 						
 						case "give":
 							
-							int amount = Integer.parseInt(args[1]);
-							
-							if (args[1] == null)
+							if (player.hasPermission("71ess.money.give"))
 							{
+								int amount = Integer.parseInt(args[1]);
 								
-								player.sendMessage("請輸入一個值");
-								return false;
+								if (args[1] == null)
+								{
+									
+									player.sendMessage("請輸入一個值");
+									return false;
+									
+								}
+								if (args.length == 3)
+								{
+									
+									Player GIVEtarget = Bukkit.getServer().getPlayer(args[2]);
+									
+									EcoData.giveMoney(GIVEtarget, amount);
+									GIVEtarget.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) ed.getMoney());
+									player.sendMessage("您給予對方 " + amount + " 元");
+								}
+								EcoData.giveMoney(player, amount);
 								
+								player.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) ed.getMoney());
+							} else {
+								
+								player.sendMessage(MessageManager.HAVENOPERMISSION);
 							}
-							if (args.length == 3)
-							{
-								
-								Player target = Bukkit.getServer().getPlayer(args[2]);
-								
-								EcoData.giveMoney(target, amount);
-								target.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) ed.getMoney());
-								player.sendMessage("您給予對方 " + amount + " 元");
-							}
-							EcoData.giveMoney(player, amount);
 							
-							player.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) ed.getMoney());
+							break;
+							
+						case "set":
+							
+							if (player.hasPermission("71ess.money.set"))
+							{
+								int setmoney = Integer.parseInt(args[1]);
+								
+								if (args[1] == null)
+								{
+									
+									player.sendMessage("請輸入一個值");
+									return false;
+									
+								}
+								if (args.length == 3)
+								{
+									
+									Player SETtarget = Bukkit.getServer().getPlayer(args[2]);
+									
+									EcoData.setMoney(SETtarget, setmoney);
+									
+									SETtarget.sendMessage("您的財富已被設置為 " + setmoney + " 元");
+									player.sendMessage("您將對方的金錢設置為 " + setmoney + " 元");
+									
+								}
+								EcoData.setMoney(player, setmoney);
+								
+								player.sendMessage("您的財富已被設置為 " + setmoney + " 元");
+								
+							} else {
+								
+								player.sendMessage(MessageManager.HAVENOPERMISSION);
+							}
 							
 							break;
 							
@@ -104,6 +167,7 @@ public class MoneySystem implements CommandExecutor
 		player.sendMessage("=================================================================");
 		player.sendMessage("");
 		player.sendMessage("/money 透過鼠標移動到下方指令並點選 §a§l自動輸入指令!");
+		player.sendMessage("若要對其他人進行動作 請在指令最後方加上對方ID");
 		player.sendMessage("");
 		player.sendMessage(show);
 		player.sendMessage(give);

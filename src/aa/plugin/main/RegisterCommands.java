@@ -8,7 +8,6 @@ import aa.plugin.system.Fly;
 import aa.plugin.system.GameModes;
 import aa.plugin.system.God;
 import aa.plugin.system.Heal;
-import aa.plugin.system.Home;
 import aa.plugin.system.MoneySystem;
 import aa.plugin.system.PingDetect;
 import aa.plugin.system.PrivateMessage;
@@ -42,8 +41,6 @@ public class RegisterCommands
 		
 		plugin.getCommand("tpa").setExecutor(new Tpa());
 		plugin.getCommand("tphere").setExecutor(new Tphere());
-		
-		plugin.getCommand("home").setExecutor(new Home());
 		
 		plugin.getCommand("fly").setExecutor(new Fly());
 		
