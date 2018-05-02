@@ -46,77 +46,80 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 	@EventHandler
 	public void onClick(PlayerInteractEvent e) {
 		
-		//Action
-		if(e.getAction() != Action.LEFT_CLICK_BLOCK || !e.getPlayer().isSneaking()) {
-			
-			return;
-			
-		}
-		
-		e.setCancelled(true);
-		
-		//Check click block is a sign.
-		if(!(e.getClickedBlock().getState() instanceof Sign)) {
-			
-			return;
-			
-		}
-		
-		Sign sign = (Sign)e.getClickedBlock().getState();
-		Player player = e.getPlayer();
-		
-		if(map.get(player) == null) {
-			
-			SignSet set = new SignSet();	
-			SignData sd = new SignData();
-			
-			sd.creator = player;
-			sd.info = sign.getLines();
-			
-			set.sd = sd;
-			set.main_location = e.getClickedBlock().getLocation();
-			
-			map.put(player,set);
-			
-			player.sendMessage("新增主告示牌");
-			
-		} else {
-			
-			Location loc = e.getClickedBlock().getLocation();
-			
-			SignSet set = map.get(player);
-			
-			if(set.unclick.contains(loc)) {
+		if (e.getPlayer().hasPermission("71ess.signedit"))
+		{
+			//Action
+			if(e.getAction() != Action.LEFT_CLICK_BLOCK || !e.getPlayer().isSneaking()) {
 				
-				set.unclick.remove(loc);
+				return;
 				
-				set.list.remove(loc);
+			}
+			
+			e.setCancelled(true);
+			
+			//Check click block is a sign.
+			if(!(e.getClickedBlock().getState() instanceof Sign)) {
 				
-				player.sendMessage("反向選擇告示牌");
+				return;
 				
-			}else {
+			}
+			
+			Sign sign = (Sign)e.getClickedBlock().getState();
+			Player player = e.getPlayer();
+			
+			if(map.get(player) == null) {
 				
-				if(set.main_location.equals(loc)) {
-					
-					player.sendMessage("與主告示牌座標重疊，無意義行為。");
-					
-				}
-				
+				SignSet set = new SignSet();	
 				SignData sd = new SignData();
 				
 				sd.creator = player;
 				sd.info = sign.getLines();
 				
-				set.unclick.add(loc);
+				set.sd = sd;
+				set.main_location = e.getClickedBlock().getLocation();
 				
-				set.list.add(loc);
+				map.put(player,set);
 				
-				player.sendMessage("新增告示牌" + set.list.size());
+				player.sendMessage("新增主告示牌");
+				
+			} else {
+				
+				Location loc = e.getClickedBlock().getLocation();
+				
+				SignSet set = map.get(player);
+				
+				if(set.unclick.contains(loc)) {
+					
+					set.unclick.remove(loc);
+					
+					set.list.remove(loc);
+					
+					player.sendMessage("反向選擇告示牌");
+					
+				}else {
+					
+					if(set.main_location.equals(loc)) {
+						
+						player.sendMessage("與主告示牌座標重疊，無意義行為。");
+						
+					}
+					
+					SignData sd = new SignData();
+					
+					sd.creator = player;
+					sd.info = sign.getLines();
+					
+					set.unclick.add(loc);
+					
+					set.list.add(loc);
+					
+					player.sendMessage("新增告示牌" + set.list.size());
+					
+				}
+				
+				map.put(player, set);
 				
 			}
-			
-			map.put(player, set);
-			
 		}
 		
 	}

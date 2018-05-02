@@ -90,32 +90,35 @@ public class Afk implements CommandExecutor, Listener
 		{
 			
 			Player player = (Player) sender;
-			if (!(cooldown.CooldownCheck(player.getName() + "_掛機模式")))
+			if (player.hasPermission("71ess.afk"))
 			{
-				player.sendMessage(MessageManager.AFK_COOLDOWN);
-				return false;
-			}
-			if (!(afkmod.contains(player.getUniqueId())))
-			{
-				afkmod.add(player.getUniqueId());
-				player.sendMessage(MessageManager.AFK_ENABLE);
-				for (Player onlineplayer : Bukkit.getServer().getOnlinePlayers())
+				if (!(cooldown.CooldownCheck(player.getName() + "_掛機模式")))
 				{
-					onlineplayer.sendMessage(String.format("§6§l%s §a進入§f掛機模式!", player.getName()));
+					player.sendMessage(MessageManager.AFK_COOLDOWN);
+					return false;
 				}
-				cooldown.CooldownSet(player.getName() + "_掛機模式", 5);
-				return false;
-			}
-			if (afkmod.contains(player.getUniqueId()))
-			{
-				afkmod.remove(player.getUniqueId());
-				player.sendMessage(MessageManager.AFK_DISABLE);
-				for (Player onlineplayer : Bukkit.getServer().getOnlinePlayers())
+				if (!(afkmod.contains(player.getUniqueId())))
 				{
-					onlineplayer.sendMessage(String.format("§6§l%s §c離開§f掛機模式!", player.getName()));
+					afkmod.add(player.getUniqueId());
+					player.sendMessage(MessageManager.AFK_ENABLE);
+					for (Player onlineplayer : Bukkit.getServer().getOnlinePlayers())
+					{
+						onlineplayer.sendMessage(String.format("§6§l%s §a進入§f掛機模式!", player.getName()));
+					}
+					cooldown.CooldownSet(player.getName() + "_掛機模式", 5);
+					return false;
 				}
-				cooldown.CooldownSet(player.getName() + "_掛機模式", 5);
-				return false;
+				if (afkmod.contains(player.getUniqueId()))
+				{
+					afkmod.remove(player.getUniqueId());
+					player.sendMessage(MessageManager.AFK_DISABLE);
+					for (Player onlineplayer : Bukkit.getServer().getOnlinePlayers())
+					{
+						onlineplayer.sendMessage(String.format("§6§l%s §c離開§f掛機模式!", player.getName()));
+					}
+					cooldown.CooldownSet(player.getName() + "_掛機模式", 5);
+					return false;
+				}
 			}
 				
 		}

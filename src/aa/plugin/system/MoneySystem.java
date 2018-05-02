@@ -86,9 +86,12 @@ public class MoneySystem implements CommandExecutor
 									
 									Player GIVEtarget = Bukkit.getServer().getPlayer(args[2]);
 									
+									EcoData GtargetED = new EcoData(GIVEtarget);
+									
 									EcoData.giveMoney(GIVEtarget, amount);
-									GIVEtarget.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) ed.getMoney());
+									GIVEtarget.sendMessage("您被給予 " + amount + " 元 " + "目前擁有 " + (int) GtargetED.getMoney());
 									player.sendMessage("您給予對方 " + amount + " 元");
+									return false;
 								}
 								EcoData.giveMoney(player, amount);
 								
@@ -122,6 +125,7 @@ public class MoneySystem implements CommandExecutor
 									
 									SETtarget.sendMessage("您的財富已被設置為 " + setmoney + " 元");
 									player.sendMessage("您將對方的金錢設置為 " + setmoney + " 元");
+									return false;
 									
 								}
 								EcoData.setMoney(player, setmoney);
