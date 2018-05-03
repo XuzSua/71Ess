@@ -47,14 +47,14 @@ public class Home implements CommandExecutor
 	public static void home (Player player, String homeName)
 	{
 		
-		World w = Bukkit.getWorld(home.getString("world"));
-		double x = home.getDouble("spawnX");
-		double y = home.getDouble("spawnY");
-		double z = home.getDouble("spawnZ");
-		float pitch = (float) home.getDouble("spawnPitch");
-		float yaw = (float) home.getDouble("spawnYaw");
+		World w = Bukkit.getWorld(home.getString(homeName + ".world","world"));
+		double x = home.getDouble(homeName + ".homeX");
+		double y = home.getDouble(homeName + ".homeY");
+		double z = home.getDouble(homeName + ".homeZ");
+		float pitch = (float) home.getDouble(homeName + ".homePitch");
+		float yaw = (float) home.getDouble(homeName + ".homeYaw");
 	
-		Location loc = new Location(w, x, y, z, pitch, yaw);
+		Location loc = new Location(w, x, y + 1, z, pitch, yaw);
 		player.teleport(loc);
 		
 		player.sendMessage("傳送至您的家 " + homeName);
@@ -63,9 +63,9 @@ public class Home implements CommandExecutor
 	public static void setHome(Player player, String homeName)
 	{
 		home.set(homeName + ".world", player.getLocation().getWorld().getName());
-		home.set(homeName + ".homeX", player.getLocation().getX());
-		home.set(homeName + ".homeY", player.getLocation().getY());
-		home.set(homeName + ".homeZ", player.getLocation().getZ());
+		home.set(homeName + ".homeX", player.getLocation().getBlockX());
+		home.set(homeName + ".homeY", player.getLocation().getBlockY());
+		home.set(homeName + ".homeZ", player.getLocation().getBlockZ());
 		home.set(homeName + ".homePitch", player.getLocation().getPitch());
 		home.set(homeName + ".homeYaw", player.getLocation().getYaw());
 		
