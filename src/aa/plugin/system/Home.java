@@ -62,8 +62,6 @@ public class Home implements CommandExecutor
 	
 	public static void setHome(Player player, String homeName)
 	{
-		if (player == null) return;
-			
 		home.set(homeName + ".world", player.getLocation().getWorld().getName());
 		home.set(homeName + ".homeX", player.getLocation().getX());
 		home.set(homeName + ".homeY", player.getLocation().getY());
@@ -78,10 +76,7 @@ public class Home implements CommandExecutor
 	}
 	
 	public static void delHome(Player player, String homeName)
-	{
-	
-		if (player == null) return;
-		
+	{		
 		Set<String> set = home.getKeys(false);
 		for (String name : set)
 		{
