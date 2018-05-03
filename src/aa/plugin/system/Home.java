@@ -25,17 +25,36 @@ public class Home implements CommandExecutor
 			Player player = (Player) sender;
 			if (cmd.getName().equalsIgnoreCase("home"))
 			{
-				
+				if (args[0] == null)
+				{
+					
+					player.sendMessage("請輸入你的家名稱");
+					return true;
+					
+				}
 				home(player, args[0]);
 				
 			} else if (cmd.getName().equalsIgnoreCase("sethome"))
 			{
-			
+				if (args[0] == null)
+				{
+					
+					player.sendMessage("請輸入一個名稱來命名你的家");
+					return true;
+					
+				}
 				setHome(player, args[0]);
 				
 			} else if (cmd.getName().equalsIgnoreCase("delhome"))
 			{
 				
+				if (args[0] == null)
+				{
+					
+					player.sendMessage("請輸入你的家名稱來刪除");
+					return true;
+					
+				}
 				delHome(player, args[0]);
 				
 			}
@@ -62,12 +81,14 @@ public class Home implements CommandExecutor
 	
 	public static void setHome(Player player, String homeName)
 	{
-		home.set(homeName + ".world", player.getLocation().getWorld().getName());
-		home.set(homeName + ".homeX", player.getLocation().getBlockX());
-		home.set(homeName + ".homeY", player.getLocation().getBlockY());
-		home.set(homeName + ".homeZ", player.getLocation().getBlockZ());
-		home.set(homeName + ".homePitch", player.getLocation().getPitch());
-		home.set(homeName + ".homeYaw", player.getLocation().getYaw());
+		String playerID = player.getName();
+		
+		home.set(playerID + "." + homeName + ".world", player.getLocation().getWorld().getName());
+		home.set(playerID + "." + homeName + ".homeX", player.getLocation().getBlockX());
+		home.set(playerID + "." + homeName + ".homeY", player.getLocation().getBlockY());
+		home.set(playerID + "." + homeName + ".homeZ", player.getLocation().getBlockZ());
+		home.set(playerID + "." + homeName + ".homePitch", player.getLocation().getPitch());
+		home.set(playerID + "." + homeName + ".homeYaw", player.getLocation().getYaw());
 		
 		Main.plugin.SystemReLoad();
 
