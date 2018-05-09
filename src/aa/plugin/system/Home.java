@@ -1,7 +1,5 @@
 package aa.plugin.system;
 
-import java.util.Set;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -25,92 +23,55 @@ public class Home implements CommandExecutor
 			Player player = (Player) sender;
 			if (cmd.getName().equalsIgnoreCase("home"))
 			{
-				if (args[0] == null)
-				{
-					
-					player.sendMessage("請輸入你的家名稱");
-					return true;
-					
-				}
-				home(player, args[0]);
+				home(player);
 				
 			} else if (cmd.getName().equalsIgnoreCase("sethome"))
 			{
-				if (args[0] == null)
-				{
-					
-					player.sendMessage("請輸入一個名稱來命名你的家");
-					return true;
-					
-				}
-				setHome(player, args[0]);
-				
-			} else if (cmd.getName().equalsIgnoreCase("delhome"))
-			{
-				
-				if (args[0] == null)
-				{
-					
-					player.sendMessage("請輸入你的家名稱來刪除");
-					return true;
-					
-				}
-				delHome(player, args[0]);
-				
+				setHome(player);	
 			}
 		}
 		
 		return false;
 	}
 	
-	public static void home (Player player, String homeName)
+	public static void home (Player player)
 	{
 		
-		World w = Bukkit.getWorld(home.getString(homeName + ".world","world"));
-		double x = home.getDouble(homeName + ".homeX");
-		double y = home.getDouble(homeName + ".homeY");
-		double z = home.getDouble(homeName + ".homeZ");
-		float pitch = (float) home.getDouble(homeName + ".homePitch");
-		float yaw = (float) home.getDouble(homeName + ".homeYaw");
-	
-		Location loc = new Location(w, x, y + 1, z, pitch, yaw);
-		player.teleport(loc);
+		if(home.getString(player.getName()) == null) {
+			
+			player.sendMessage("尚未設置家點，請設置");
+			
+		}
 		
-		player.sendMessage("傳送至您的家 " + homeName);
+		World w = Bukkit.getWorld(home.getString(player.getName() + ".world","world"));
+		String location = home.getString(player.getName() + ".home_location");
+		
+		String[] array = location.split(",");
+		
+		int x = Integer.parseInt(array[0]);
+		int y = Integer.parseInt(array[1]);
+		int z = Integer.parseInt(array[2]);
+		
+		player.teleport(new Location(w,x,y,z));
+		
+		player.sendMessage("傳送至您的家");
 	}
 	
-	public static void setHome(Player player, String homeName)
+	public static void setHome(Player player)
 	{
 		String playerID = player.getName();
 		
-		home.set(playerID + "." + homeName + ".world", player.getLocation().getWorld().getName());
-		home.set(playerID + "." + homeName + ".homeX", player.getLocation().getBlockX());
-		home.set(playerID + "." + homeName + ".homeY", player.getLocation().getBlockY());
-		home.set(playerID + "." + homeName + ".homeZ", player.getLocation().getBlockZ());
-		home.set(playerID + "." + homeName + ".homePitch", player.getLocation().getPitch());
-		home.set(playerID + "." + homeName + ".homeYaw", player.getLocation().getYaw());
+		Location loc = player.getLocation();
+		
+		String location = String.format("%d,%d,%d", loc.getBlockX(),loc.getBlockY(),loc.getBlockZ());
+
+		home.set(playerID + ".world", player.getLocation().getWorld().getName());
+		home.set(playerID + ".home_location", location);
 		
 		Main.plugin.SystemReLoad();
 
 		player.sendMessage("已將您的家點設置於此");
 		
-	}
-	
-	public static void delHome(Player player, String homeName)
-	{		
-		Set<String> set = home.getKeys(false);
-		for (String name : set)
-		{
-			if (name.equalsIgnoreCase(homeName))
-			{
-				home.set(name, null);
-				break;
-			}
-		}
-		
-		Main.plugin.SystemReLoad();
-		
-		player.sendMessage("已將您的家 " + homeName + " 移除!");
 	}
 	
 }
