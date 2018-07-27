@@ -22,6 +22,8 @@ import org.bukkit.inventory.Inventory;
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
 import aa.plugin.main.GUIs.GamemodeGUI;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class GameModes implements CommandExecutor, Listener {
 	
@@ -52,7 +54,7 @@ public class GameModes implements CommandExecutor, Listener {
 							
 						}
 						p.setGameMode(gm[mode]);
-						p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode]));
+						sendActionBar(p, String.format(MessageManager.GAMEMODE_CHANGE,gamemode[mode]));
 						return false;
 					}
 					if (args.length == 2)
@@ -60,7 +62,7 @@ public class GameModes implements CommandExecutor, Listener {
 						Player target = Bukkit.getServer().getPlayer(args[1]);
 					
 						target.setGameMode(gm[mode]);
-						target.sendActionBar(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode]));
+						sendActionBar(target, String.format(MessageManager.GAMEMODE_HASBEENCHANGE,gamemode[mode]));
 						return false;
 					}
 				} else {
@@ -87,12 +89,12 @@ public class GameModes implements CommandExecutor, Listener {
 				clickedUUID = e.getRightClicked().getUniqueId().toString();
 				
 				Inventory inv = Bukkit.createInventory(null, 9*5, "遊戲模式選單 (對玩家)");
-				clicker.playSound(clicker.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+				clicker.playSound(clicker.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
 				
 				//第一排
 				for(int i = 0; i <= 8; i++) {
 					
-					inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+					inv.setItem(i, createItem.createItemsForGUI(Material.WHITE_STAINED_GLASS_PANE, 15, " ", ""));
 					
 				}
 				inv.setItem(4, createItem.createItemsForGUI(Material.ITEM_FRAME, 0, " ", ""));
@@ -109,7 +111,7 @@ public class GameModes implements CommandExecutor, Listener {
 				//第五排
 				for(int i = 36; i <= 44; i++) {
 					
-					inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+					inv.setItem(i, createItem.createItemsForGUI(Material.WHITE_STAINED_GLASS_PANE, 15, " ", ""));
 					
 				}
 				
@@ -145,10 +147,16 @@ public class GameModes implements CommandExecutor, Listener {
 			String action = ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName());
 			
 			target.setGameMode(map.get(action));
-			target.sendActionBar(String.format(MessageManager.GAMEMODE_HASBEENCHANGE,action));
-			p.sendActionBar(String.format(MessageManager.GAMEMODE_TOPLAYER,action));
+			sendActionBar(target, String.format(MessageManager.GAMEMODE_HASBEENCHANGE,action));
+			sendActionBar(p, String.format(MessageManager.GAMEMODE_TOPLAYER,action));
 			
 		}
+	}
+	
+	public void sendActionBar(Player player,String str) {
+		
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(str).create());
+		
 	}
 	
 }

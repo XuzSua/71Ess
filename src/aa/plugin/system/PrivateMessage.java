@@ -69,8 +69,8 @@ public class PrivateMessage implements CommandExecutor {
 						target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 						player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 						
-						target.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
-						player.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+						target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
+						player.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
 						
 					}
 					
@@ -96,8 +96,8 @@ public class PrivateMessage implements CommandExecutor {
 				target.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 				player.sendMessage("§6" + player.getName() + " §e--> §6" + target.getName() + " §7" + msg);
 				
-				target.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
-				player.playSound(target.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+				target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
+				player.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
 			}
 			
 		}

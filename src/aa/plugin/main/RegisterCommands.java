@@ -10,7 +10,6 @@ import aa.plugin.system.God;
 import aa.plugin.system.Heal;
 import aa.plugin.system.Home;
 import aa.plugin.system.MoneySystem;
-import aa.plugin.system.PingDetect;
 import aa.plugin.system.PrivateMessage;
 import aa.plugin.system.SignEditorBySigtuna;
 import aa.plugin.system.Spawn;
@@ -47,7 +46,7 @@ public class RegisterCommands
 		
 		plugin.getCommand("god").setExecutor(new God());
 		
-		plugin.getCommand("ping").setExecutor(new PingDetect());
+//		plugin.getCommand("ping").setExecutor(new PingDetect());
 		
 		plugin.getCommand("msg").setExecutor(new PrivateMessage());
 		plugin.getCommand("msgr").setExecutor(new PrivateMessage());

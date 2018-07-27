@@ -141,7 +141,7 @@ public class Tpa implements CommandExecutor {
 		            target.sendMessage("");
 					target.sendMessage(String.format("§f§l你接到了一封來自於 §6§l%s §f§l的傳送請求", inviter.getName()));
 					target.sendMessage("");
-					target.sendMessage(accept);
+					target.spigot().sendMessage(accept);
 					target.sendMessage("");
 		            target.sendMessage("§f此封邀請將在§a 1 分鐘§f後§4§l自動刪除");
 		            target.sendMessage("");

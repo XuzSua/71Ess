@@ -17,6 +17,8 @@ import org.bukkit.inventory.ItemStack;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class GamemodeGUI implements Listener
 {
@@ -28,7 +30,7 @@ public class GamemodeGUI implements Listener
 		
 		for(int i = 0; i <= 8; i++) {
 			
-			items[i] = createItem.createItemsForICON(Material.STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
+			items[i] = createItem.createItemsForICON(Material.WHITE_STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
 			
 		}
 		
@@ -43,7 +45,7 @@ public class GamemodeGUI implements Listener
 		//第五排
 		for(int i = 36; i <= 44; i++) {
 			
-			items[i] = createItem.createItemsForICON(Material.STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
+			items[i] = createItem.createItemsForICON(Material.WHITE_STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
 			
 		}
 		
@@ -72,7 +74,7 @@ public class GamemodeGUI implements Listener
 			String action = ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName());
 			
 			p.setGameMode(map.get(action));
-			p.sendActionBar(String.format(MessageManager.GAMEMODE_CHANGE, action));
+			p.spigot().sendMessage(ChatMessageType.ACTION_BAR,new ComponentBuilder(String.format(MessageManager.GAMEMODE_CHANGE, action)).create());
 		
 			
 		}

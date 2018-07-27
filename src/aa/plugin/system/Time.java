@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 
 import aa.plugin.main.MessageManager;
 import aa.plugin.main.GUIs.TimeGUI;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class Time implements CommandExecutor
 {
@@ -29,14 +31,14 @@ public class Time implements CommandExecutor
 						case "day":
 							
 							p.getLocation().getWorld().setTime(1000);
-							p.sendActionBar(MessageManager.TIME_DAY);
+							sendActionBar(p, MessageManager.TIME_DAY);
 							
 							break;
 						
 						case "night":
 							
 							p.getLocation().getWorld().setTime(16000);
-							p.sendActionBar(MessageManager.TIME_NIGHT);
+							sendActionBar(p, MessageManager.TIME_NIGHT);
 							
 							break;
 							
@@ -60,14 +62,14 @@ public class Time implements CommandExecutor
 					{
 						
 						w.setTime(1000);
-						p.sendActionBar(MessageManager.TIME_DAY);
+						sendActionBar(p, MessageManager.TIME_DAY);
 						
 					}
 					if (args[0].equals("night"))
 					{
 						
 						w.setTime(16000);
-						p.sendActionBar(MessageManager.TIME_NIGHT);
+						sendActionBar(p, MessageManager.TIME_NIGHT);
 						
 					}
 				}
@@ -78,6 +80,12 @@ public class Time implements CommandExecutor
 			sender.sendMessage("此指令限定玩家使用");
 		}
 		return false;
+	}
+	
+	public void sendActionBar(Player player,String str) {
+		
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(str).create());
+		
 	}
 	
 }

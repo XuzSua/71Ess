@@ -196,8 +196,8 @@ public class SignEditorBySigtuna implements Listener,CommandExecutor{
 		player.sendMessage("");
 		player.sendMessage("/signedit 透過鼠標移動到下方指令並點選 §a§l自動輸入指令!");
 		player.sendMessage("");
-		player.sendMessage(copy);
-		player.sendMessage(reset);
+		player.spigot().sendMessage(copy);
+		player.spigot().sendMessage(reset);
 		player.sendMessage("");
 		player.sendMessage("=================================================================");
 		

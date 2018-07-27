@@ -10,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class Fly implements CommandExecutor
 {
@@ -25,11 +27,11 @@ public class Fly implements CommandExecutor
 				if (!(playerFlyMods.contains(p))) {
 					p.setAllowFlight(true);
 					playerFlyMods.add(p);
-					p.sendActionBar(MessageManager.FLY_SET_TRUE);
+					sendActionBar(p, MessageManager.FLY_SET_TRUE);
 				} else {
 					p.setAllowFlight(false);
 					playerFlyMods.remove(p);
-					p.sendActionBar(MessageManager.FLY_SET_FALSE);
+					sendActionBar(p, MessageManager.FLY_SET_FALSE);
 				}
 			}
 			if (args.length == 1)
@@ -39,17 +41,23 @@ public class Fly implements CommandExecutor
 				if (!(playerFlyMods.contains(target))) {
 					target.setAllowFlight(true);
 					playerFlyMods.add(p);
-					target.sendActionBar(MessageManager.FLY_SET_TRUE);
+					sendActionBar(target, MessageManager.FLY_SET_TRUE);
 				} else {
 					target.setAllowFlight(false);
 					playerFlyMods.remove(p);
-					target.sendActionBar(MessageManager.FLY_SET_FALSE);
+					sendActionBar(target, MessageManager.FLY_SET_FALSE);
 				}
 			}
 		} else {
 			p.sendMessage(MessageManager.HAVENOPERMISSION);
 		}
 		return false;
+	}
+	
+	public void sendActionBar(Player player,String str) {
+		
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(str).create());
+		
 	}
 
 }

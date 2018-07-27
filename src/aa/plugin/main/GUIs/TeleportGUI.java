@@ -37,7 +37,7 @@ public class TeleportGUI implements Listener
 		{
 			//if (playersList.get(site) != p)
 			{
-				ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short)3);
+				ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1, (short)3);
 				SkullMeta meta = (SkullMeta) item.getItemMeta();
 				meta.setDisplayName("§e" + playersList.get(site).getName());
 				meta.setOwningPlayer((OfflinePlayer)playersList.get(site));

@@ -173,8 +173,8 @@ public class MoneySystem implements CommandExecutor
 		player.sendMessage("/money 透過鼠標移動到下方指令並點選 §a§l自動輸入指令!");
 		player.sendMessage("若要對其他人進行動作 請在指令最後方加上對方ID");
 		player.sendMessage("");
-		player.sendMessage(show);
-		player.sendMessage(give);
+		player.spigot().sendMessage(show);
+		player.spigot().sendMessage(give);
 		player.sendMessage("");
 		player.sendMessage("=================================================================");
 		

@@ -31,7 +31,7 @@ public class LoginQuitMessage implements Listener
 			OPJoin.addExtra(" §7§l已經上線啦");
 			
 			event.setJoinMessage(" ");
-			Bukkit.broadcast(OPJoin);
+			Bukkit.spigot().broadcast(OPJoin);
 			
 		} else {
 			
@@ -44,7 +44,7 @@ public class LoginQuitMessage implements Listener
 			OPJoin.addExtra(" §7§l已經上線啦");
 			
 			event.setJoinMessage(" ");
-			Bukkit.broadcast(OPJoin);
+			Bukkit.spigot().broadcast(OPJoin);
 			
 		}
 	}

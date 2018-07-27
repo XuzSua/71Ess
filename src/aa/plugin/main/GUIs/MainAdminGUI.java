@@ -23,7 +23,7 @@ public class MainAdminGUI implements Listener
 
 		items[11] = createItem.createItemsForICON(Material.ELYTRA, 0, 1, "§a傳送", Arrays.asList(" "));
 		
-		items[13] = createItem.createItemsForICON(Material.WATCH, 0, 1, "§6時間", Arrays.asList(" "));
+		items[13] = createItem.createItemsForICON(Material.CLOCK, 0, 1, "§6時間", Arrays.asList(" "));
 		
 		items[15] = createItem.createItemsForICON(Material.DIRT, 0, 1, "§e遊戲模式", Arrays.asList(" ")); 
 		

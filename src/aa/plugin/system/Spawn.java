@@ -15,6 +15,8 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import aa.plugin.function.cooldown;
 import aa.plugin.main.Main;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class Spawn implements CommandExecutor, Listener
 {
@@ -46,7 +48,7 @@ public class Spawn implements CommandExecutor, Listener
 							Main.plugin.SystemReLoad();
 
 							cooldown.CooldownSet(p.getName() + "_重生點設置", 5);
-							p.sendActionBar(MessageManager.SPAWN_SET);
+							sendActionBar(p, MessageManager.SPAWN_SET);
 					}
 					break;
 				
@@ -66,7 +68,7 @@ public class Spawn implements CommandExecutor, Listener
 						Location loc = new Location(w, x, y, z, pitch, yaw);
 						p.teleport(loc);
 						cooldown.CooldownSet(p.getName() + "_重生點傳送", 5);
-						p.sendActionBar(MessageManager.SPAWN_TP);
+						sendActionBar(p, MessageManager.SPAWN_TP);
 					
 					break;
 					
@@ -100,5 +102,11 @@ public class Spawn implements CommandExecutor, Listener
 		Location loc = new Location(w, x, y, z, pitch, yaw);
 		p.teleport(loc);
 		p.sendMessage(MessageManager.SPAWN_LOGIN);
+	}
+	
+	public void sendActionBar(Player player,String str) {
+		
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(str).create());
+		
 	}
 }

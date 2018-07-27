@@ -28,12 +28,12 @@ public class Weather implements CommandExecutor, Listener
 				if (args.length == 0)
 				{
 					Inventory inv = Bukkit.createInventory(null, 9*5, "天氣選單");
-					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_PLING, 4.0F, 4.0F);
+					p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 4.0F, 4.0F);
 				
 					//第一排
 					for(int i = 0; i <= 8; i++) {
 						
-						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						inv.setItem(i, createItem.createItemsForGUI(Material.WHITE_STAINED_GLASS_PANE, 15, " ", ""));
 						
 					}
 					
@@ -47,7 +47,7 @@ public class Weather implements CommandExecutor, Listener
 					//第五排
 					for(int i = 36; i <= 44; i++) {
 						
-						inv.setItem(i, createItem.createItemsForGUI(Material.STAINED_GLASS_PANE, 15, " ", ""));
+						inv.setItem(i, createItem.createItemsForGUI(Material.WHITE_STAINED_GLASS_PANE, 15, " ", ""));
 						
 					}
 				

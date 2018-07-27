@@ -13,6 +13,8 @@ import org.bukkit.inventory.ItemStack;
 
 import aa.plugin.function.createItem;
 import aa.plugin.main.MessageManager;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class TimeGUI implements Listener
 {
@@ -23,20 +25,20 @@ public class TimeGUI implements Listener
 
 		for(int i = 0; i <= 8; i++) {
 			
-			items[i] = createItem.createItemsForICON(Material.STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
+			items[i] = createItem.createItemsForICON(Material.GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
 			
 		}
 		
-		items[4] = createItem.createItemsForICON(Material.WATCH, 0, 1, " ", Arrays.asList(" "));
+		items[4] = createItem.createItemsForICON(Material.CLOCK, 0, 1, " ", Arrays.asList(" "));
 	
 		//第三排
-		items[20] = createItem.createItemsForICON(Material.DOUBLE_PLANT, 0, 1, "§6早上", Arrays.asList(" "));
-		items[24] = createItem.createItemsForICON(Material.EYE_OF_ENDER, 0, 1, "§7晚上", Arrays.asList(" "));
+		items[20] = createItem.createItemsForICON(Material.SUNFLOWER, 0, 1, "§6早上", Arrays.asList(" "));
+		items[24] = createItem.createItemsForICON(Material.ENDER_EYE, 0, 1, "§7晚上", Arrays.asList(" "));
 
 		//第五排
 		for(int i = 36; i <= 44; i++) {
 			
-			items[i] = createItem.createItemsForICON(Material.STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
+			items[i] = createItem.createItemsForICON(Material.WHITE_STAINED_GLASS_PANE, 0, 1, " ", Arrays.asList(" "));
 			
 		}
 		
@@ -59,13 +61,13 @@ public class TimeGUI implements Listener
 				case 20:
 					player.closeInventory();
 					player.getLocation().getWorld().setTime(1000);
-					player.sendActionBar(MessageManager.TIME_DAY);
+					sendActionBar(player, MessageManager.TIME_DAY);
 					break;
 					
 				case 24:
 					player.closeInventory();
 					player.getLocation().getWorld().setTime(16000);
-					player.sendActionBar(MessageManager.TIME_NIGHT);
+					sendActionBar(player, MessageManager.TIME_NIGHT);
 					break;
 					
 				default:
@@ -73,5 +75,11 @@ public class TimeGUI implements Listener
 		
 			}
 		}
+	}
+	
+	public void sendActionBar(Player player,String str) {
+		
+		player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(str).create());
+		
 	}
 }
